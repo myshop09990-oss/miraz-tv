@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#100912" />
   <meta name="description" content="Miraz TV — বিনামূল্যের ডেমো স্ট্রিমিং অ্যাপ ও ওয়েবসাইট।" />
-  <title>Miraz TV — Demo</title>
+  <title>Miraz TV — Live & Series</title>
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./icon-192.png" />
   <style>
@@ -23,7 +23,11 @@
     .bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:560px;display:flex;justify-content:space-around;align-items:stretch;height:calc(70px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:#110b15f5;border-top:1px solid #2f1830;z-index:10;backdrop-filter:blur(16px)}.nav{width:20%;border:0;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#aaa0af;font-size:12px}.nav-icon{display:grid;place-items:center;width:45px;height:29px;border-radius:18px}.nav-icon .svg-icon{height:21px;width:21px}.nav.selected{color:#fff;font-weight:750}.nav.selected .nav-icon{background:var(--accent);color:white}
     .page-head{margin:7px 0 20px}.page-head h1{font-size:24px;margin:0 0 6px}.page-head p{font-size:13px;color:#b8aabb;margin:0}.tv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.tv-card{border:1px solid #462340;border-radius:19px;background:#201022;padding:20px 10px;text-align:center;min-height:142px;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center}.tv-card .tv-symbol{font-size:28px}.tv-card b{font-size:15px}.tv-card span{font-size:11px;color:#c09bb6}.profile-card{padding:20px;border:1px solid #4b2845;background:#201122;border-radius:19px}.profile-card label{display:block;font-weight:750;font-size:13px;margin-bottom:8px}.profile-card input{width:100%;background:#100915;border:1px solid #5e3156;padding:12px;border-radius:10px;color:white}.pink-btn{border:0;border-radius:12px;padding:12px 17px;background:var(--accent);font-weight:800;margin-top:13px}.footnote{margin-top:24px;font-size:12px;line-height:1.7;color:#b4a5b7}
     .overlay{position:fixed;inset:0;background:#060309d9;z-index:30;display:none;align-items:center;justify-content:center;padding:16px}.overlay.show{display:flex}.modal{width:min(100%,620px);background:#1d1021;border-radius:18px;padding:16px;border:1px solid #69375a;box-shadow:0 25px 60px #000b}.modal-top{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:12px}.modal-top h2{font-size:19px;margin:0}.xbutton{border:0;background:#38203b;border-radius:9px;padding:4px 12px;font-size:21px}.modal video{display:block;width:100%;aspect-ratio:16/9;border-radius:10px;background:#08040a}.modal p{color:#bbaabc;font-size:12px}.drawer-bg{position:fixed;inset:0;background:#000b;z-index:19;display:none}.drawer-bg.show{display:block}.drawer{position:fixed;z-index:20;top:0;bottom:0;left:max(0px,calc((100vw - 1040px)/2));width:min(78vw,320px);background:#1b0f1f;border-right:1px solid #633653;padding:23px;transform:translateX(-120%);transition:transform .23s}.drawer.show{transform:translateX(0)}.drawer h2{color:var(--accent);margin:10px 0 20px}.drawer button{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid #362038;background:transparent;padding:13px 6px;color:white}.toast{position:fixed;z-index:50;bottom:calc(90px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%) translateY(12px);background:#e6479c;padding:10px 17px;border-radius:12px;white-space:nowrap;opacity:0;pointer-events:none;transition:all .2s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-  </style>
+  
+    .thumb-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.thumb-image + .thumb-word{display:none}
+    .content-source{margin:12px 0 6px;font-size:12px;color:#b8a9b6}
+    .video-note{color:#d4bdd0;font-size:12px;margin-top:8px}
+</style>
 </head>
 <body>
 <div class="app">
@@ -48,8 +52,12 @@
 (()=>{
 'use strict';
 const sampleVideo='https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
-const channels=['All','Star Jalsha','Zee Bangla','Colors Bangla','BACHELOR POINT'];
-const episodes=[
+let channelDetails=[{name:'Star Jalsha',emoji:'🎬',stream:''},{name:'Zee Bangla',emoji:'📺',stream:''},{name:'Colors Bangla',emoji:'🎨',stream:''},{name:'BACHELOR POINT',emoji:'🎭',stream:''}];
+let channels=['All',...channelDetails.map(c=>c.name)];
+let bannerInfo={title:'Miraz TV Live',subtitle:'Watch Premium Shows & Series',image:'./banner.svg'};
+let adInfo={title:'বিজ্ঞাপনের জায়গা',text:'আপনার নিজস্ব বিজ্ঞাপন এখানে দেখানো যাবে'};
+let hlsInstance=null;
+let episodes=[
 {id:1,title:'শহরের আলো — আজকের পর্ব (ডেমো)',channel:'Star Jalsha',date:'2026-11-05',ep:6,emoji:'🌆',colors:['#3e2363','#d94e86']},
 {id:2,title:'কুসুমের গল্প — নতুন পর্ব (ডেমো)',channel:'Zee Bangla',date:'2026-11-05',ep:5,emoji:'🌸',colors:['#1f5b81','#bc357d']},
 {id:3,title:'শেষ বিকেল — বিশেষ পর্ব (ডেমো)',channel:'Colors Bangla',date:'2026-11-04',ep:4,emoji:'🌅',colors:['#b74c43','#43224f']},
@@ -62,29 +70,81 @@ const navNames={home:'Home',series:'Series',tv:'TV',favorites:'Favorites',profil
 const state={page:'home',channel:'All',query:'',favorites:new Set(readJSON('miraztv_favorites',readJSON('banglatv_favorites',[])))};
 const pageEl=document.getElementById('page'),navEl=document.getElementById('bottomNav');
 function readJSON(key,fallback){try{const x=JSON.parse(localStorage.getItem(key));return Array.isArray(x)?x:fallback}catch{return fallback}}
+function mediaURL(s,allowRelative=false){
+  if(typeof s!=='string'||!s.trim())return '';
+  const v=s.trim();
+  if(allowRelative&&/^\.\/[a-zA-Z0-9_./-]+$/.test(v))return v;
+  try{const u=new URL(v,location.href);return u.protocol==='https:'?u.href:''}catch{return ''}
+}
+async function loadCatalog(){
+  try{
+    const response=await fetch('./content.json?t='+Date.now(),{cache:'no-store'});
+    if(!response.ok)throw new Error('No public content');
+    const data=await response.json();
+    if(!data||!Array.isArray(data.channels)||!Array.isArray(data.episodes))throw new Error('Invalid content');
+    channelDetails=data.channels.filter(c=>c&&typeof c.name==='string'&&c.name.trim()).slice(0,100).map(c=>({name:c.name.trim().slice(0,70),emoji:String(c.emoji||'📺').slice(0,8),stream:mediaURL(c.stream)}));
+    channels=['All',...channelDetails.map(c=>c.name)];
+    episodes=data.episodes.filter(e=>e&&typeof e.title==='string'&&typeof e.channel==='string').slice(0,400).map(e=>({
+      id:Number(e.id)||0,title:e.title.slice(0,200),channel:e.channel.slice(0,70),date:String(e.date||'').slice(0,12),ep:Number(e.ep)||1,
+      emoji:String(e.emoji||'🎬').slice(0,8),image:mediaURL(e.image,true),video:mediaURL(e.video),
+      colors:Array.isArray(e.colors)&&e.colors.length===2&&e.colors.every(v=>/^#[0-9a-fA-F]{6}$/.test(v))?e.colors:['#68286b','#b22f78']
+    })).filter(e=>e.id>0);
+    if(data.banner&&typeof data.banner==='object')bannerInfo={
+      title:String(data.banner.title||'Miraz TV Live').slice(0,100),subtitle:String(data.banner.subtitle||'').slice(0,150),image:mediaURL(data.banner.image,true)||'./banner.svg'
+    };
+    if(data.advertisement&&typeof data.advertisement==='object')adInfo={title:String(data.advertisement.title||'').slice(0,120),text:String(data.advertisement.text||'').slice(0,200)};
+    if(state.channel!=='All'&&!channels.includes(state.channel))state.channel='All';
+    render();
+  }catch(err){console.warn('Miraz TV: offline/default content',err)}
+}
 function icon(name){return `<svg class="svg-icon" viewBox="0 0 24 24" aria-hidden="true">${symbols[name]}</svg>`}
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function visibleEpisodes(){return episodes.filter(e=>((state.page!=='favorites'||state.favorites.has(e.id))&&(state.channel==='All'||e.channel===state.channel)&&(!state.query||`${e.title} ${e.channel}`.toLowerCase().includes(state.query.toLowerCase()))))}
 function sectionTitle(title,right=''){return `<div class="section-title"><h2>${title}</h2>${right?`<span class="count">${right}</span>`:''}</div>`}
 function channelStrip(){return `<div class="channels" role="group" aria-label="চ্যানেল ফিল্টার">${channels.map(ch=>`<button class="channel ${state.channel===ch?'selected':''}" data-channel="${escapeHTML(ch)}" aria-pressed="${state.channel===ch}"><span class="orb">${escapeHTML(ch)}</span><span class="channel-label">${escapeHTML(ch)}</span></button>`).join('')}</div>`}
-function episodeList(){const arr=visibleEpisodes();return `<div class="episodes">${arr.map(e=>`<article class="episode"><button class="thumb" style="--thumb1:${e.colors[0]};--thumb2:${e.colors[1]}" data-play="${e.id}" aria-label="${escapeHTML(e.title)} ভিডিও দেখুন"><span class="thumb-word">${e.emoji}</span><span class="ep-label">EP ${e.ep}</span><span class="play">▶</span></button><div class="ep-info"><h3 class="ep-title">${escapeHTML(e.title)}</h3><div class="meta">▢ ${e.date}</div></div><button class="heart ${state.favorites.has(e.id)?'on':''}" data-fav="${e.id}" aria-label="${state.favorites.has(e.id)?'ফেভারিট থেকে বাদ দিন':'ফেভারিট করুন'}" aria-pressed="${state.favorites.has(e.id)}">${icon('favorites')}</button></article>`).join('')}</div>${arr.length===0?'<div class="empty"><b>কোনো ভিডিও পাওয়া যায়নি</b><p>অন্য চ্যানেল বা সার্চ শব্দ নির্বাচন করুন।</p></div>':''}`}
-function home(){return `<div class="hero"><img src="./banner.svg" alt="গোলাপি নিয়ন আলোয় Miraz TV সিনেমা ডেমো ব্যানার"/><span class="hero-pill">DEMO</span><div class="hero-text"><div class="hero-title">Miraz TV Live</div><div class="hero-sub">Watch Premium Shows & Series</div></div></div>${sectionTitle('TV Channels')}${channelStrip()}<p class="small-note" style="margin-top:12px">চ্যানেল নামগুলো শুধু ডেমো ক্যাটাগরি; লাইভ সম্প্রচার নয়।</p><div class="ad"><span class="ad-label">AD</span><div><strong><span class="ad-tag">Ad</span> বিজ্ঞাপনের জায়গা</strong><p>আপনার নিজস্ব বিজ্ঞাপন এখানে দেখানো যাবে</p></div></div>${sectionTitle('Popular Series',`${visibleEpisodes().length} episodes`)}${episodeList()}`}
-function series(){return `<div class="page-head"><h1>Popular Series</h1><p>ডেমো সিরিয়াল এবং এপিসোড। সব ভিডিওতে একই CC0 নমুনা ক্লিপ চলে।</p></div>${sectionTitle('TV Channels')}${channelStrip()}${sectionTitle('Episodes',`${visibleEpisodes().length} episodes`)}${episodeList()}`}
-function tv(){return `<div class="page-head"><h1>Live TV</h1><p>এখানে এখন কোনো লাইভ চ্যানেল চালু নেই। অনুমোদিত স্ট্রিম পরে যুক্ত করা যাবে।</p></div><div class="tv-grid">${channels.slice(1).map((ch,i)=>`<button class="tv-card" data-tv="${i}"><span class="tv-symbol">${['🎬','📺','🎨','🎭'][i]}</span><b>${escapeHTML(ch)}</b><span>ডেমো ক্যাটাগরি</span></button>`).join('')}</div><div class="footnote">⚠️ কোনো টিভি চ্যানেলের লাইভ ভিডিও, লোগো বা সিরিয়াল প্রচারের জন্য প্রয়োজনীয় স্বত্বাধিকার/লাইসেন্স থাকা জরুরি।</div>`}
+function episodeList(){const arr=visibleEpisodes();return `<div class="episodes">${arr.map(e=>`<article class="episode"><button class="thumb" style="--thumb1:${e.colors[0]};--thumb2:${e.colors[1]}" data-play="${e.id}" aria-label="${escapeHTML(e.title)} ভিডিও দেখুন">${e.image?`<img class="thumb-image" src="${escapeHTML(e.image)}" loading="lazy" alt="" referrerpolicy="no-referrer">`:''}<span class="thumb-word">${escapeHTML(e.emoji)}</span><span class="ep-label">EP ${e.ep}</span><span class="play">▶</span></button><div class="ep-info"><h3 class="ep-title">${escapeHTML(e.title)}</h3><div class="meta">▢ ${escapeHTML(e.date)}</div></div><button class="heart ${state.favorites.has(e.id)?'on':''}" data-fav="${e.id}" aria-label="${state.favorites.has(e.id)?'ফেভারিট থেকে বাদ দিন':'ফেভারিট করুন'}" aria-pressed="${state.favorites.has(e.id)}">${icon('favorites')}</button></article>`).join('')}</div>${arr.length===0?'<div class="empty"><b>কোনো ভিডিও পাওয়া যায়নি</b><p>অন্য চ্যানেল বা সার্চ শব্দ নির্বাচন করুন।</p></div>':''}`}
+function home(){return `<div class="hero"><img src="${escapeHTML(bannerInfo.image)}" alt="Miraz TV ব্যানার"/><span class="hero-pill">Miraz TV</span><div class="hero-text"><div class="hero-title">${escapeHTML(bannerInfo.title)}</div><div class="hero-sub">${escapeHTML(bannerInfo.subtitle)}</div></div></div>${sectionTitle('TV Channels')}${channelStrip()}<p class="small-note" style="margin-top:12px">চ্যানেলের নাম দেখানো মানেই লাইভ সম্প্রচারের অনুমতি নয়।</p><div class="ad"><span class="ad-label">AD</span><div><strong><span class="ad-tag">Ad</span> ${escapeHTML(adInfo.title)}</strong><p>${escapeHTML(adInfo.text)}</p></div></div>${sectionTitle('Popular Series',`${visibleEpisodes().length} episodes`)}${episodeList()}`}
+function series(){return `<div class="page-head"><h1>Popular Series</h1><p>ভিডিও দেখতে পর্বের ছবিতে চাপ দিন। অনুমোদিত ভিডিও লিংকই ব্যবহার করুন।</p></div>${sectionTitle('TV Channels')}${channelStrip()}${sectionTitle('Episodes',`${visibleEpisodes().length} episodes`)}${episodeList()}`}
+function tv(){return `<div class="page-head"><h1>Live TV</h1><p>অনুমোদিত লাইভ স্ট্রিম যুক্ত থাকলে চ্যানেলে চাপ দিয়ে ভিডিও চালানো যাবে।</p></div><div class="tv-grid">${channelDetails.map((ch,i)=>`<button class="tv-card" data-tv="${i}"><span class="tv-symbol">${escapeHTML(ch.emoji)}</span><b>${escapeHTML(ch.name)}</b><span>${ch.stream?'▶ Watch now':'স্ট্রিম যোগ করা হয়নি'}</span></button>`).join('')}</div><div class="footnote">⚠️ চ্যানেল ও সিরিয়াল প্রচারের অধিকার থাকা প্রয়োজন। HLS (m3u8) চালাতে ইন্টারনেট এবং ভিডিও সার্ভারের CORS অনুমতি লাগতে পারে।</div>`}
 function favorites(){return `<div class="page-head"><h1>My Favorites ♡</h1><p>আপনি যে পর্বগুলো পছন্দ করেছেন, এখানে পাবেন। এই তথ্য শুধু এই ব্রাউজারে সংরক্ষিত হয়।</p></div>${sectionTitle('Saved Episodes',`${visibleEpisodes().length} episodes`)}${episodeList()}`}
-function profile(){const n=localStorage.getItem('miraztv_name')||localStorage.getItem('banglatv_name')||'';return `<div class="page-head"><h1>My Profile</h1><p>এই পর্যায়ে সার্ভার লগইন নেই। আপনি নিজের মোবাইলে নাম সংরক্ষণ করতে পারবেন।</p></div><div class="profile-card"><label for="profileName">আপনার নাম</label><input id="profileName" autocomplete="name" maxlength="60" placeholder="নাম লিখুন" value="${escapeHTML(n)}"/><button class="pink-btn" id="saveName">Save Name</button></div><div class="footnote">Miraz TV Demo v1.0<br/>এই ওয়েব অ্যাপটি GitHub Pages-এ বিনামূল্যে প্রকাশ করা যায়। প্রকৃত ডাটাবেজ, অনলাইন অ্যাডমিন ও লাইসেন্সকৃত চ্যানেল যুক্ত করতে আলাদা সেটআপ প্রয়োজন।</div>`}
+function profile(){const n=localStorage.getItem('miraztv_name')||localStorage.getItem('banglatv_name')||'';return `<div class="page-head"><h1>My Profile</h1><p>এই পর্যায়ে সার্ভার লগইন নেই। আপনি নিজের মোবাইলে নাম সংরক্ষণ করতে পারবেন।</p></div><div class="profile-card"><label for="profileName">আপনার নাম</label><input id="profileName" autocomplete="name" maxlength="60" placeholder="নাম লিখুন" value="${escapeHTML(n)}"/><button class="pink-btn" id="saveName">Save Name</button></div><div class="footnote">Miraz TV v2.0<br/>এই ওয়েব অ্যাপটি GitHub Pages-এ বিনামূল্যে প্রকাশ করা যায়। চ্যানেল ও ভিডিওর তালিকা content.json থেকে আসে। অ্যাডমিন পরিবর্তন প্রকাশ করতে GitHub-এ কমিট করতে হয়।</div>`}
 function render(){navEl.innerHTML=Object.keys(navNames).map(n=>`<button class="nav ${state.page===n?'selected':''}" data-page="${n}" aria-current="${state.page===n?'page':'false'}"><span class="nav-icon">${icon(n)}</span><span>${navNames[n]}</span></button>`).join('');const views={home,series,tv,favorites,profile};pageEl.innerHTML=views[state.page]();bindPage()}
 function go(page){if(!navNames[page])return;state.page=page;state.channel='All';state.query='';document.getElementById('searchInput').value='';document.getElementById('searchWrap').classList.remove('show');hideDrawer();render();window.scrollTo({top:0,behavior:'instant'})}
 function toast(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),2500)}
-function openPlayer(id){const e=episodes.find(e=>e.id===Number(id));if(!e)return;document.getElementById('modalTitle').textContent=e.title;const overlay=document.getElementById('overlay');overlay.classList.add('show');document.body.style.overflow='hidden';const player=document.getElementById('player');player.src=sampleVideo;player.load()}
-function closePlayer(){const overlay=document.getElementById('overlay');overlay.classList.remove('show');document.body.style.overflow='';const v=document.getElementById('player');v.pause();v.removeAttribute('src');v.load()}
-function bindPage(){document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>go(b.dataset.page));document.querySelectorAll('[data-channel]').forEach(b=>b.onclick=()=>{state.channel=b.dataset.channel;render()});document.querySelectorAll('[data-play]').forEach(b=>b.onclick=()=>openPlayer(b.dataset.play));document.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const id=Number(b.dataset.fav);if(state.favorites.has(id)){state.favorites.delete(id);toast('ফেভারিট থেকে সরানো হয়েছে')}else{state.favorites.add(id);toast('ফেভারিটে যোগ হয়েছে')}localStorage.setItem('miraztv_favorites',JSON.stringify([...state.favorites]));render()});document.querySelectorAll('[data-tv]').forEach(b=>b.onclick=()=>toast('এটি ডেমো: লাইভ স্ট্রিম যুক্ত করা হয়নি'));const save=document.getElementById('saveName');if(save)save.onclick=()=>{const n=document.getElementById('profileName').value.trim();localStorage.setItem('miraztv_name',n);toast('এই ডিভাইসে নাম সংরক্ষিত হয়েছে')}}
+function openPlayer(id){const e=episodes.find(e=>e.id===Number(id));if(!e)return;openVideo(e.video||(e.title.includes('(ডেমো)')?sampleVideo:''),e.title)}
+async function openVideo(url,title){
+  const src=mediaURL(url);if(!src){toast('এই ভিডিওর অনুমোদিত HTTPS লিংক দেওয়া হয়নি');return}
+  closePlayer();
+  document.getElementById('modalTitle').textContent=title;
+  document.getElementById('overlay').classList.add('show');document.body.style.overflow='hidden';
+  const player=document.getElementById('player');
+  if(/\.m3u8(?:[?#]|$)/i.test(src)){
+    if(player.canPlayType('application/vnd.apple.mpegurl')){player.src=src;player.load();return}
+    try{
+      if(!window.Hls){await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js';s.onload=resolve;s.onerror=reject;document.head.appendChild(s)})}
+      if(!document.getElementById('overlay').classList.contains('show'))return;
+      if(window.Hls&&Hls.isSupported()){
+        hlsInstance=new Hls();hlsInstance.loadSource(src);hlsInstance.attachMedia(player);
+        hlsInstance.on(Hls.Events.ERROR,(_,data)=>{if(data.fatal)toast('স্ট্রিম চালানো যাচ্ছে না; লিংক/CORS পরীক্ষা করুন')});return
+      }
+      toast('এই ব্রাউজারে HLS স্ট্রিম সমর্থিত নয়')
+    }catch{toast('HLS প্লেয়ার লোড করা যায়নি')}return;
+  }
+  player.src=src;player.load();
+}
+function closePlayer(){
+  const overlay=document.getElementById('overlay');overlay.classList.remove('show');document.body.style.overflow='';
+  const v=document.getElementById('player');v.pause();
+  if(hlsInstance){hlsInstance.destroy();hlsInstance=null}
+  v.removeAttribute('src');v.load()
+}
+function bindPage(){document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>go(b.dataset.page));document.querySelectorAll('[data-channel]').forEach(b=>b.onclick=()=>{state.channel=b.dataset.channel;render()});document.querySelectorAll('[data-play]').forEach(b=>b.onclick=()=>openPlayer(b.dataset.play));document.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const id=Number(b.dataset.fav);if(state.favorites.has(id)){state.favorites.delete(id);toast('ফেভারিট থেকে সরানো হয়েছে')}else{state.favorites.add(id);toast('ফেভারিটে যোগ হয়েছে')}localStorage.setItem('miraztv_favorites',JSON.stringify([...state.favorites]));render()});document.querySelectorAll('[data-tv]').forEach(b=>b.onclick=()=>{const c=channelDetails[Number(b.dataset.tv)];if(c&&c.stream)openVideo(c.stream,c.name);else toast('এই চ্যানেলের স্ট্রিম যোগ করা হয়নি')});const save=document.getElementById('saveName');if(save)save.onclick=()=>{const n=document.getElementById('profileName').value.trim();localStorage.setItem('miraztv_name',n);toast('এই ডিভাইসে নাম সংরক্ষিত হয়েছে')}}
 function hideDrawer(){document.getElementById('drawer').classList.remove('show');document.getElementById('drawerBg').classList.remove('show')}
 document.getElementById('menuBtn').onclick=()=>{document.getElementById('drawer').classList.add('show');document.getElementById('drawerBg').classList.add('show')};document.getElementById('drawerClose').onclick=hideDrawer;document.getElementById('drawerBg').onclick=hideDrawer;
 document.getElementById('searchBtn').onclick=()=>{if(state.page==='tv'||state.page==='profile')go('series');const s=document.getElementById('searchWrap');s.classList.toggle('show');if(s.classList.contains('show'))document.getElementById('searchInput').focus();else{state.query='';document.getElementById('searchInput').value='';render()}};
 document.getElementById('closeSearch').onclick=()=>{state.query='';document.getElementById('searchInput').value='';document.getElementById('searchWrap').classList.remove('show');render()};document.getElementById('searchInput').oninput=e=>{state.query=e.target.value.trim();render()};
 document.getElementById('premiumBtn').onclick=()=>toast('Premium ফিচার এখনও যুক্ত করা হয়নি');document.getElementById('modalClose').onclick=closePlayer;document.getElementById('overlay').onclick=e=>{if(e.target.id==='overlay')closePlayer()};document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePlayer();hideDrawer()}});
-render();
+render();loadCatalog();
 if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
 })();
 </script>
