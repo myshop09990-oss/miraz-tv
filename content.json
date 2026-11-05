@@ -29,6 +29,11 @@
       "name": "BACHELOR POINT",
       "emoji": "🎭",
       "stream": ""
+    },
+    {
+      "name": "Miraz TV Demo",
+      "emoji": "📺",
+      "stream": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
     }
   ],
   "episodes": [
