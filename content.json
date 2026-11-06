@@ -121,5 +121,17 @@
         "#8d2d86"
       ]
     }
+  ],
+  "movies": [
+    {
+      "id": 1,
+      "title": "Saptadingar Guptodhon",
+      "year": 2026,
+      "genre": "বাংলা",
+      "duration": 135,
+      "poster": "https://myshop09990-oss.github.io/miraz-tv/17843853566a5b8f4c270fd.webp",
+      "video": "",
+      "description": "Storyline : A thrilling new chapter in the Guptodhon trilogy as Sona Da returns for his deadliest treasure hunt yet, where danger lurks at every turn. Packed with mystery, action, and adventure, It takes the legacy of the beloved franchise.\nDirector : Dhrubo Banerjee\nCast(s) : Abir Chatterjee, Arjun Chakrabarty, Ishaa Saha"
+    }
   ]
 }
