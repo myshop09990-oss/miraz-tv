@@ -22,7 +22,7 @@
     .episodes{display:grid;grid-template-columns:1fr;gap:14px}.episode{display:flex;align-items:center;gap:15px;border:1px solid #342039;background:#1a0e1e;padding:13px;border-radius:21px;min-width:0;transition:background .15s}.episode:hover{background:#241229}.thumb{height:91px;width:132px;min-width:132px;border:0;border-radius:15px;position:relative;overflow:hidden;background:linear-gradient(138deg,var(--thumb1,#a01467),var(--thumb2,#273767));display:grid;place-items:center}.thumb::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 22%,#ffffff55,transparent 18%),linear-gradient(125deg,transparent 30%,#ffffff13 47%,transparent 62%)}.thumb-word{position:absolute;font-size:27px;opacity:.7;filter:drop-shadow(0 4px 5px #0005)}.ep-label{position:absolute;left:7px;top:7px;background:#b33173;font-size:11px;font-weight:800;border-radius:5px;padding:2px 7px}.play{position:relative;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--pink);box-shadow:0 7px 20px #0006;font-size:18px;padding-left:3px}.ep-info{flex:1;min-width:0}.ep-title{font-size:15px;font-weight:800;line-height:1.4;margin:0 0 8px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}.meta{color:#978a9a;font-size:12px}.heart{width:38px;height:38px;border-radius:50%;border:1px solid #4b2b49;background:#27132c;display:grid;place-items:center;flex-shrink:0;color:#e667ae}.heart.on{color:#ff5bab;background:#3a1733}.heart .svg-icon{width:19px;height:19px}.empty{border:1px dashed #513451;border-radius:17px;padding:32px 18px;text-align:center;color:#c6b4c4}.empty b{color:#fff}.empty p{margin:8px 0 0}
     .bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:560px;display:flex;justify-content:space-around;align-items:stretch;height:calc(70px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:#110b15f5;border-top:1px solid #2f1830;z-index:10;backdrop-filter:blur(16px)}.nav{width:16.6667%;min-width:0;border:0;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#aaa0af;font-size:12px}.nav-icon{display:grid;place-items:center;width:45px;height:29px;border-radius:18px}.nav-icon .svg-icon{height:21px;width:21px}.nav.selected{color:#fff;font-weight:750}.nav.selected .nav-icon{background:var(--accent);color:white}@media(max-width:375px){.nav{font-size:10px}.nav-icon{width:39px}}
     .page-head{margin:7px 0 20px}.page-head h1{font-size:24px;margin:0 0 6px}.page-head p{font-size:13px;color:#b8aabb;margin:0}.tv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.tv-card{border:1px solid #462340;border-radius:19px;background:#201022;padding:20px 10px;text-align:center;min-height:142px;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center}.tv-card .tv-symbol{font-size:28px}.tv-card b{font-size:15px}.tv-card span{font-size:11px;color:#c09bb6}.profile-card{padding:20px;border:1px solid #4b2845;background:#201122;border-radius:19px}.profile-card label{display:block;font-weight:750;font-size:13px;margin-bottom:8px}.profile-card input{width:100%;background:#100915;border:1px solid #5e3156;padding:12px;border-radius:10px;color:white}.pink-btn{border:0;border-radius:12px;padding:12px 17px;background:var(--accent);font-weight:800;margin-top:13px}.footnote{margin-top:24px;font-size:12px;line-height:1.7;color:#b4a5b7}
-    .overlay{position:fixed;inset:0;background:#060309d9;z-index:30;display:none;align-items:center;justify-content:center;padding:16px}.overlay.show{display:flex}.modal{width:min(100%,620px);background:#1d1021;border-radius:18px;padding:16px;border:1px solid #69375a;box-shadow:0 25px 60px #000b}.modal-top{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:12px}.modal-top h2{font-size:19px;margin:0}.xbutton{border:0;background:#38203b;border-radius:9px;padding:4px 12px;font-size:21px}.modal video{display:block;width:100%;aspect-ratio:16/9;border-radius:10px;background:#08040a}.modal p{color:#bbaabc;font-size:12px}.drawer-bg{position:fixed;inset:0;background:#000b;z-index:19;display:none}.drawer-bg.show{display:block}.drawer{position:fixed;z-index:20;top:0;bottom:0;left:max(0px,calc((100vw - 1040px)/2));width:min(78vw,320px);background:#1b0f1f;border-right:1px solid #633653;padding:23px;transform:translateX(-120%);transition:transform .23s}.drawer.show{transform:translateX(0)}.drawer h2{color:var(--accent);margin:10px 0 20px}.drawer button{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid #362038;background:transparent;padding:13px 6px;color:white}.toast{position:fixed;z-index:50;bottom:calc(90px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%) translateY(12px);background:#e6479c;padding:10px 17px;border-radius:12px;white-space:nowrap;opacity:0;pointer-events:none;transition:all .2s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    .overlay{position:fixed;inset:0;background:#060309d9;z-index:30;display:none;align-items:center;justify-content:center;padding:16px}.overlay.show{display:flex}.modal{width:min(100%,620px);background:#1d1021;border-radius:18px;padding:16px;border:1px solid #69375a;box-shadow:0 25px 60px #000b}.modal-top{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:12px}.modal-top h2{font-size:19px;margin:0}.xbutton{border:0;background:#38203b;border-radius:9px;padding:4px 12px;font-size:21px}.modal video,.modal iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:10px;background:#08040a}.modal video[hidden],.modal iframe[hidden]{display:none}.modal p{color:#bbaabc;font-size:12px}.drawer-bg{position:fixed;inset:0;background:#000b;z-index:19;display:none}.drawer-bg.show{display:block}.drawer{position:fixed;z-index:20;top:0;bottom:0;left:max(0px,calc((100vw - 1040px)/2));width:min(78vw,320px);background:#1b0f1f;border-right:1px solid #633653;padding:23px;transform:translateX(-120%);transition:transform .23s}.drawer.show{transform:translateX(0)}.drawer h2{color:var(--accent);margin:10px 0 20px}.drawer button{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid #362038;background:transparent;padding:13px 6px;color:white}.toast{position:fixed;z-index:50;bottom:calc(90px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%) translateY(12px);background:#e6479c;padding:10px 17px;border-radius:12px;white-space:nowrap;opacity:0;pointer-events:none;transition:all .2s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
   
     .thumb-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.thumb-image + .thumb-word{display:none}
     .content-source{margin:12px 0 6px;font-size:12px;color:#b8a9b6}
@@ -36,6 +36,47 @@
     .movie-poster .movie-fallback{font-size:56px;opacity:.75}
     .movie-poster .movie-play{position:absolute;bottom:12px;right:12px;border-radius:30px;background:var(--accent);padding:9px 12px;font-size:12px;font-weight:850;box-shadow:0 2px 10px #0009}
     .movie-body{padding:11px;display:grid;gap:4px}.movie-name{font-size:14px;line-height:1.35;margin:0;font-weight:800;min-height:38px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.movie-meta{color:#c3a8bb;font-size:11px}.movie-actions{display:flex;align-items:center;justify-content:space-between;gap:4px;margin-top:6px}.movie-watch{border:0;background:#38203b;border-radius:9px;padding:7px 9px;font-size:12px;font-weight:700}.movie-fav{background:transparent;border:0;color:#d99abc;font-size:21px;line-height:1;padding:4px 6px}.movie-fav.on{color:#ff58b0}.genre-filters{display:flex;overflow-x:auto;gap:8px;padding:3px 1px 7px;scrollbar-width:none}.genre-btn{border:1px solid #6e3662;background:#211226;color:#dec9de;border-radius:18px;padding:6px 12px;white-space:nowrap;font-size:12px}.genre-btn.selected{background:var(--accent);border-color:var(--accent);color:white}
+
+    /* OTT Phase 1: movie details, continue watching and local history */
+    .ott-section{margin:22px 0}
+    .continue-list{display:grid;grid-template-columns:1fr;gap:10px}
+    .continue-card{display:flex;gap:12px;align-items:center;background:#1b0d20;border:1px solid #462540;border-radius:16px;padding:10px;min-width:0}
+    .continue-poster{width:66px;height:88px;min-width:66px;border-radius:10px;object-fit:cover;background:#30152d;display:grid;place-items:center;font-size:25px}
+    .continue-info{flex:1;min-width:0}
+    .continue-title{font-weight:800;font-size:13px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .continue-meta{font-size:11px;color:#b9a5b8;margin:4px 0 7px}
+    .progress-track{height:5px;background:#493047;border-radius:10px;overflow:hidden}
+    .progress-fill{height:100%;background:var(--accent);border-radius:10px}
+    .continue-actions{display:flex;gap:6px;margin-top:8px}
+    .continue-actions button{border:0;border-radius:8px;padding:6px 10px;font-size:11px;font-weight:800;background:#3a203c}
+    .continue-actions .resume-btn{background:var(--accent);color:#fff}
+    .history-list{display:grid;gap:9px}
+    .history-item{display:flex;gap:10px;align-items:center;padding:10px;border:1px solid #40243e;background:#1a0e1e;border-radius:13px}
+    .history-item .history-art{width:48px;height:62px;min-width:48px;object-fit:cover;border-radius:8px;background:#32162e;display:grid;place-items:center}
+    .history-item .history-copy{flex:1;min-width:0}
+    .history-item strong{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .history-item small{display:block;color:#b8a8b8;font-size:11px;margin-top:3px}
+    .history-item button{border:1px solid #69405f;background:#2a1730;color:#ffe7f4;border-radius:8px;padding:7px 9px;font-size:11px}
+    .movie-actions .movie-details{border:1px solid #67405e;background:#2a1730;color:#f7d8e9;border-radius:9px;padding:7px 9px;font-size:12px}
+    .movie-sort{background:#1d1022;border:1px solid #61385a;color:#f7eaf3;border-radius:10px;padding:9px 11px;font:inherit;font-size:12px;max-width:160px}
+    .detail-overlay{position:fixed;inset:0;z-index:35;background:#070309ed;display:none;align-items:flex-end;justify-content:center;padding:0}
+    .detail-overlay.show{display:flex}
+    .detail-panel{width:min(100%,680px);max-height:92vh;overflow:auto;background:#1a0e1e;border:1px solid #67375a;border-radius:22px 22px 0 0;padding:16px 18px calc(22px + env(safe-area-inset-bottom));box-shadow:0 -18px 60px #0009}
+    .detail-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .detail-top h2{margin:0;font-size:18px}
+    .detail-close{width:38px;height:38px;border:0;border-radius:11px;background:#38203b;color:#fff;font-size:23px}
+    .detail-layout{display:grid;grid-template-columns:112px 1fr;gap:14px;align-items:start}
+    .detail-poster{width:112px;aspect-ratio:2/3;object-fit:cover;border-radius:13px;background:#32162e}
+    .detail-title{font-size:20px;font-weight:900;line-height:1.3;margin:0 0 7px}
+    .detail-meta{font-size:12px;color:#d3b8cd;margin-bottom:10px}
+    .detail-description{color:#d8c8d7;font-size:13px;line-height:1.7;margin:16px 0}
+    .detail-buttons{display:flex;flex-wrap:wrap;gap:9px}
+    .detail-buttons button{border:0;border-radius:10px;padding:11px 15px;font-weight:800}
+    .detail-watch{background:var(--accent);color:#fff}
+    .detail-save{background:#3a203c;color:#ffe3f1;border:1px solid #714267!important}
+    .detail-note{font-size:11px;color:#b9a5b8;margin-top:13px}
+    @media(min-width:620px){.detail-overlay{align-items:center;padding:20px}.detail-panel{border-radius:22px;max-height:88vh}}
+
     .movie-intro{border:1px dashed #4e2d4e;border-radius:16px;padding:22px 16px;text-align:center;color:#cab8c9;font-size:13px}.movie-intro b{display:block;color:#fff;font-size:16px;margin-bottom:4px}.movie-show-all{background:#2b1730;color:#f8d8ed;border:1px solid #70416a;border-radius:13px;padding:10px 15px;font-weight:750;margin:12px 0 2px}
 </style>
 </head>
@@ -56,7 +97,15 @@
   <nav class="bottom" aria-label="প্রধান নেভিগেশন" id="bottomNav"></nav>
 </div>
 <div class="drawer-bg" id="drawerBg"></div><aside class="drawer" id="drawer"><button aria-label="মেনু বন্ধ করুন" id="drawerClose">✕ &nbsp; বন্ধ করুন</button><h2>Miraz TV</h2><button data-page="home">🏠 &nbsp; Home</button><button data-page="series">▶ &nbsp; Series</button><button data-page="movies">🎬 &nbsp; বাংলা Movies</button><button data-page="tv">📺 &nbsp; TV</button><button data-page="favorites">♡ &nbsp; Favorites</button><button data-page="profile">♙ &nbsp; Profile</button></aside>
-<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="ভিডিও প্লেয়ার"><div class="modal"><div class="modal-top"><h2 id="modalTitle">নমুনা ভিডিও</h2><button class="xbutton" id="modalClose" aria-label="ভিডিও বন্ধ করুন">×</button></div><video id="player" controls playsinline preload="none"><source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4"/>আপনার ব্রাউজার ভিডিও চালাতে পারছে না।</video><p>এটি শুধু একটি CC0 লাইসেন্সের নমুনা ভিডিও। প্রকৃত টিভি চ্যানেলের সম্প্রচার এখানে যুক্ত করা হয়নি।</p></div></div>
+
+<div class="detail-overlay" id="movieDetailOverlay" role="dialog" aria-modal="true" aria-label="মুভির বিস্তারিত">
+  <section class="detail-panel">
+    <div class="detail-top"><h2>Movie Details</h2><button class="detail-close" id="detailClose" aria-label="বন্ধ করুন">×</button></div>
+    <div id="movieDetailContent"></div>
+  </section>
+</div>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="ভিডিও প্লেয়ার"><div class="modal"><div class="modal-top"><h2 id="modalTitle">নমুনা ভিডিও</h2><button class="xbutton" id="modalClose" aria-label="ভিডিও বন্ধ করুন">×</button></div><iframe id="youtubePlayer" title="YouTube video player" hidden allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe><video id="player" controls playsinline preload="none" hidden>আপনার ব্রাউজার ভিডিও চালাতে পারছে না।</video><p>অনুমোদিত ভিডিও চালানো হবে। YouTube ভিডিও হলে সেটি এই Popup-এর মধ্যেই চলবে।</p></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 (()=>{
@@ -78,7 +127,9 @@ let episodes=[
 ];
 const symbols={home:'<path d="m3 10 9-7 9 7v10H3z"/><path d="M9 20v-7h6v7"/>',series:'<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 22h8"/>',movies:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 5l3 5m3-5 3 5"/>',tv:'<circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z"/>',favorites:'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0l-1 1-1-1a5.5 5.5 0 0 0-7.8 7.8l8.8 8.5 8.8-8.5a5.5 5.5 0 0 0 0-7.8z"/>',profile:'<circle cx="12" cy="7" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2z"/>'};
 const navNames={home:'Home',series:'Series',movies:'Movies',tv:'TV',favorites:'Favorites',profile:'Profile'};
-const state={page:'home',channel:'All',genre:'All',query:'',favorites:new Set(readJSON('miraztv_favorites',readJSON('banglatv_favorites',[]))),movieFavorites:new Set(readJSON('miraztv_movie_favorites',[]))};
+const state={page:'home',channel:'All',genre:'All',query:'',movieSort:'newest',favorites:new Set(readJSON('miraztv_favorites',readJSON('banglatv_favorites',[]))),movieFavorites:new Set(readJSON('miraztv_movie_favorites',[]))};
+const PROGRESS_KEY='miraztv_playback_progress_v1', HISTORY_KEY='miraztv_watch_history_v1';
+let activeMedia=null;
 const pageEl=document.getElementById('page'),navEl=document.getElementById('bottomNav');
 function readJSON(key,fallback){try{const x=JSON.parse(localStorage.getItem(key));return Array.isArray(x)?x:fallback}catch{return fallback}}
 function mediaURL(s,allowRelative=false){
@@ -116,29 +167,89 @@ async function loadCatalog(){
 }
 function icon(name){return `<svg class="svg-icon" viewBox="0 0 24 24" aria-hidden="true">${symbols[name]}</svg>`}
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+function readList(key){try{const v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v:[]}catch{return []}}
+function getMedia(type,id){return type==='movie'?movies.find(x=>x.id===Number(id)):episodes.find(x=>x.id===Number(id))}
+function mediaPoster(type,item){return type==='movie'?(item?.poster||''):(item?.image||'')}
+function mediaVideo(type,item){return item?.video||''}
+function rememberHistory(type,id){
+  const item=getMedia(type,id);if(!item)return;
+  const list=readList(HISTORY_KEY).filter(x=>!(x.type===type&&Number(x.id)===Number(id)));
+  list.unshift({type,id:Number(id),at:Date.now()});
+  localStorage.setItem(HISTORY_KEY,JSON.stringify(list.slice(0,40)));
+}
+function getProgress(type,id){return readList(PROGRESS_KEY).find(x=>x.type===type&&Number(x.id)===Number(id))||null}
+function savePlaybackProgress(){
+  if(!activeMedia||!activeMedia.type||!activeMedia.id)return;
+  const v=document.getElementById('player');if(!v||!Number.isFinite(v.duration)||v.duration<30)return;
+  const duration=v.duration,time=v.currentTime||0;
+  let list=readList(PROGRESS_KEY).filter(x=>!(x.type===activeMedia.type&&Number(x.id)===Number(activeMedia.id)));
+  if(time>10&&time<duration-20){list.unshift({type:activeMedia.type,id:Number(activeMedia.id),time,duration,at:Date.now()});}
+  localStorage.setItem(PROGRESS_KEY,JSON.stringify(list.slice(0,30)));
+}
+function clearProgress(type,id){const list=readList(PROGRESS_KEY).filter(x=>!(x.type===type&&Number(x.id)===Number(id)));localStorage.setItem(PROGRESS_KEY,JSON.stringify(list))}
+function continueItems(){
+  return readList(PROGRESS_KEY).map(p=>({p,item:getMedia(p.type,p.id)})).filter(x=>x.item&&x.item.video).sort((a,b)=>(b.p.at||0)-(a.p.at||0)).slice(0,10);
+}
+function continueSection(){
+  const arr=continueItems();if(!arr.length)return '';
+  return `${sectionTitle('Continue Watching',`${arr.length}টি`)}<div class="continue-list">${arr.map(({p,item})=>{
+    const percent=Math.max(0,Math.min(100,Math.round((p.time/Math.max(1,p.duration))*100)));
+    const poster=mediaPoster(p.type,item);
+    return `<article class="continue-card"><div class="continue-poster">${poster?`<img src="${escapeHTML(poster)}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:10px" loading="lazy">`:p.type==='movie'?'🎬':'▶'}</div><div class="continue-info"><div class="continue-title">${escapeHTML(item.title)}</div><div class="continue-meta">${p.type==='movie'?'Movie':'Episode'} • ${percent}% দেখা হয়েছে</div><div class="progress-track"><div class="progress-fill" style="width:${percent}%"></div></div><div class="continue-actions"><button class="resume-btn" data-resume-type="${p.type}" data-resume-id="${p.id}">▶ আবার দেখুন</button><button data-clear-progress-type="${p.type}" data-clear-progress-id="${p.id}">বাদ দিন</button></div></div></article>`;
+  }).join('')}</div>`;
+}
+function historySection(){
+  const arr=readList(HISTORY_KEY).map(x=>({x,item:getMedia(x.type,x.id)})).filter(x=>x.item).slice(0,12);
+  if(!arr.length)return '<div class="movie-intro">এখনো কোনো Watch History নেই।</div>';
+  return `<div class="history-list">${arr.map(({x,item})=>{const poster=mediaPoster(x.type,item);return `<article class="history-item"><div class="history-art">${poster?`<img src="${escapeHTML(poster)}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:8px" loading="lazy">`:x.type==='movie'?'🎬':'▶'}</div><div class="history-copy"><strong>${escapeHTML(item.title)}</strong><small>${x.type==='movie'?'Movie':'Episode'} • ${new Date(x.at||Date.now()).toLocaleDateString('bn-BD')}</small></div><button data-history-play-type="${x.type}" data-history-play-id="${x.id}">চালান</button></article>`}).join('')}</div>`;
+}
+
 function visibleEpisodes(){return episodes.filter(e=>((state.page!=='favorites'||state.favorites.has(e.id))&&(state.channel==='All'||e.channel===state.channel)&&(!state.query||`${e.title} ${e.channel}`.toLowerCase().includes(state.query.toLowerCase()))))}
 function sectionTitle(title,right=''){return `<div class="section-title"><h2>${title}</h2>${right?`<span class="count">${right}</span>`:''}</div>`}
 function channelStrip(){return `<div class="channels" role="group" aria-label="চ্যানেল ফিল্টার">${channels.map(ch=>`<button class="channel ${state.channel===ch?'selected':''}" data-channel="${escapeHTML(ch)}" aria-pressed="${state.channel===ch}"><span class="orb">${escapeHTML(ch)}</span><span class="channel-label">${escapeHTML(ch)}</span></button>`).join('')}</div>`}
 function episodeList(){const arr=visibleEpisodes();return `<div class="episodes">${arr.map(e=>`<article class="episode"><button class="thumb" style="--thumb1:${e.colors[0]};--thumb2:${e.colors[1]}" data-play="${e.id}" aria-label="${escapeHTML(e.title)} ভিডিও দেখুন">${e.image?`<img class="thumb-image" src="${escapeHTML(e.image)}" loading="lazy" alt="" referrerpolicy="no-referrer">`:''}<span class="thumb-word">${escapeHTML(e.emoji)}</span><span class="ep-label">EP ${e.ep}</span><span class="play">▶</span></button><div class="ep-info"><h3 class="ep-title">${escapeHTML(e.title)}</h3><div class="meta">▢ ${escapeHTML(e.date)}</div></div><button class="heart ${state.favorites.has(e.id)?'on':''}" data-fav="${e.id}" aria-label="${state.favorites.has(e.id)?'ফেভারিট থেকে বাদ দিন':'ফেভারিট করুন'}" aria-pressed="${state.favorites.has(e.id)}">${icon('favorites')}</button></article>`).join('')}</div>${arr.length===0?'<div class="empty"><b>কোনো ভিডিও পাওয়া যায়নি</b><p>অন্য চ্যানেল বা সার্চ শব্দ নির্বাচন করুন।</p></div>':''}`}
-function home(){return `<div class="hero"><img src="${escapeHTML(bannerInfo.image)}" alt="Miraz TV ব্যানার"/><span class="hero-pill">Miraz TV</span><div class="hero-text"><div class="hero-title">${escapeHTML(bannerInfo.title)}</div><div class="hero-sub">${escapeHTML(bannerInfo.subtitle)}</div></div></div>${sectionTitle('TV Channels')}${channelStrip()}<p class="small-note" style="margin-top:12px">চ্যানেলের নাম দেখানো মানেই লাইভ সম্প্রচারের অনুমতি নয়।</p><div class="ad"><span class="ad-label">AD</span><div><strong><span class="ad-tag">Ad</span> ${escapeHTML(adInfo.title)}</strong><p>${escapeHTML(adInfo.text)}</p></div></div>${sectionTitle('Popular Series',`${visibleEpisodes().length} episodes`)}${episodeList()}${sectionTitle('🎬 বাংলা Movies',`${movies.length} movies`)}${movies.length?movieCards(movies.slice(0,4)):'<div class="movie-intro"><b>🎬 বাংলা মুভির জন্য নতুন বিভাগ</b>অ্যাডমিন প্যানেল থেকে মুভি যোগ করলে এখানে দেখা যাবে।</div>'}<button class="movie-show-all" data-page="movies">সব মুভি দেখুন →</button>`}
+function home(){return `<div class="hero"><img src="${escapeHTML(bannerInfo.image)}" alt="Miraz TV ব্যানার"/><span class="hero-pill">Miraz TV</span><div class="hero-text"><div class="hero-title">${escapeHTML(bannerInfo.title)}</div><div class="hero-sub">${escapeHTML(bannerInfo.subtitle)}</div></div></div>${continueSection()}${sectionTitle('TV Channels')}${channelStrip()}<p class="small-note" style="margin-top:12px">চ্যানেলের নাম দেখানো মানেই লাইভ সম্প্রচারের অনুমতি নয়।</p><div class="ad"><span class="ad-label">AD</span><div><strong><span class="ad-tag">Ad</span> ${escapeHTML(adInfo.title)}</strong><p>${escapeHTML(adInfo.text)}</p></div></div>${sectionTitle('Popular Series',`${visibleEpisodes().length} episodes`)}${episodeList()}${sectionTitle('🎬 বাংলা Movies',`${movies.length} movies`)}${movies.length?movieCards(movies.slice(0,4)):'<div class="movie-intro"><b>🎬 বাংলা মুভির জন্য নতুন বিভাগ</b>অ্যাডমিন প্যানেল থেকে মুভি যোগ করলে এখানে দেখা যাবে।</div>'}<button class="movie-show-all" data-page="movies">সব মুভি দেখুন →</button>`}
 function series(){return `<div class="page-head"><h1>Popular Series</h1><p>ভিডিও দেখতে পর্বের ছবিতে চাপ দিন। অনুমোদিত ভিডিও লিংকই ব্যবহার করুন।</p></div>${sectionTitle('TV Channels')}${channelStrip()}${sectionTitle('Episodes',`${visibleEpisodes().length} episodes`)}${episodeList()}`}
 function visibleMovies(){return movies.filter(m=>(state.genre==='All'||m.genre===state.genre)&&(!state.query||`${m.title} ${m.genre} ${m.year}`.toLowerCase().includes(state.query.toLowerCase())))}
-function movieCards(arr){return `<div class="movie-grid">${arr.map(m=>`<article class="movie-card"><button class="movie-poster" data-movie-play="${m.id}" aria-label="${escapeHTML(m.title)} চালান">${m.poster?`<img src="${escapeHTML(m.poster)}" loading="lazy" alt="${escapeHTML(m.title)} পোস্টার" referrerpolicy="no-referrer">`:'<span class="movie-fallback">🎬</span>'}<span class="movie-play">▶ Watch</span></button><div class="movie-body"><h3 class="movie-name">${escapeHTML(m.title)}</h3><div class="movie-meta">${m.year||'—'} • ${escapeHTML(m.genre)} ${m.duration?`• ${m.duration} min`:''}</div><div class="movie-actions"><button class="movie-watch" data-movie-play="${m.id}">▶ দেখুন</button><button class="movie-fav ${state.movieFavorites.has(m.id)?'on':''}" data-movie-fav="${m.id}" aria-label="${state.movieFavorites.has(m.id)?'মুভি ফেভারিট থেকে বাদ দিন':'মুভি ফেভারিট করুন'}">${state.movieFavorites.has(m.id)?'♥':'♡'}</button></div></div></article>`).join('')}</div>`}
-function moviesPage(){const genres=['All',...new Set(movies.map(m=>m.genre))];const arr=visibleMovies();return `<div class="page-head"><h1>🎬 বাংলা Movies</h1><p>বাংলা মুভি, পোস্টার ও অনুমোদিত ভিডিও।</p></div><div class="genre-filters">${genres.map(g=>`<button class="genre-btn ${state.genre===g?'selected':''}" data-genre="${escapeHTML(g)}">${escapeHTML(g==='All'?'সব মুভি':g)}</button>`).join('')}</div>${sectionTitle('Movies',`${arr.length} movies`)}${arr.length?movieCards(arr):'<div class="movie-intro"><b>এখনো কোনো মুভি পাওয়া যায়নি</b>Admin Panel-এর 🎬 Movies ট্যাব থেকে নতুন মুভি যোগ করুন।</div>'}<div class="footnote">শুধু নিজের বা বৈধভাবে লাইসেন্সপ্রাপ্ত সিনেমা দেখান। YouTube-এর সাধারণ watch URL সরাসরি MP4 প্লেয়ার লিংক নয়।</div>`}
+function movieCards(arr){return `<div class="movie-grid">${arr.map(m=>`<article class="movie-card"><button class="movie-poster" data-movie-details="${m.id}" aria-label="${escapeHTML(m.title)} বিস্তারিত দেখুন">${m.poster?`<img src="${escapeHTML(m.poster)}" loading="lazy" alt="${escapeHTML(m.title)} পোস্টার" referrerpolicy="no-referrer">`:'<span class="movie-fallback">🎬</span>'}<span class="movie-play">ℹ Details</span></button><div class="movie-body"><h3 class="movie-name">${escapeHTML(m.title)}</h3><div class="movie-meta">${m.year||'—'} • ${escapeHTML(m.genre)} ${m.duration?`• ${m.duration} min`:''}</div><div class="movie-actions"><button class="movie-watch" data-movie-play="${m.id}">▶ দেখুন</button><button class="movie-details" data-movie-details="${m.id}">বিস্তারিত</button><button class="movie-fav ${state.movieFavorites.has(m.id)?'on':''}" data-movie-fav="${m.id}" aria-label="${state.movieFavorites.has(m.id)?'মুভি ফেভারিট থেকে বাদ দিন':'মুভি ফেভারিট করুন'}">${state.movieFavorites.has(m.id)?'♥':'♡'}</button></div></div></article>`).join('')}</div>`}
+function moviesPage(){const genres=['All',...new Set(movies.map(m=>m.genre))];let arr=visibleMovies();if(state.movieSort==='newest')arr=arr.slice().sort((a,b)=>(b.year||0)-(a.year||0));else if(state.movieSort==='oldest')arr=arr.slice().sort((a,b)=>(a.year||0)-(b.year||0));else if(state.movieSort==='az')arr=arr.slice().sort((a,b)=>a.title.localeCompare(b.title,'bn'));return `<div class="page-head"><h1>🎬 বাংলা Movies</h1><p>সিনেমার বিস্তারিত দেখুন, Watchlist-এ রাখুন এবং পরে দেখা চালিয়ে যান।</p></div>${continueSection()}<div class="genre-filters">${genres.map(g=>`<button class="genre-btn ${state.genre===g?'selected':''}" data-genre="${escapeHTML(g)}">${escapeHTML(g==='All'?'সব মুভি':g)}</button>`).join('')}</div><div class="section-title"><h2>Movies</h2><select class="movie-sort" id="movieSort" aria-label="সিনেমা সাজান"><option value="newest" ${state.movieSort==='newest'?'selected':''}>নতুন আগে</option><option value="oldest" ${state.movieSort==='oldest'?'selected':''}>পুরোনো আগে</option><option value="az" ${state.movieSort==='az'?'selected':''}>নাম অনুযায়ী</option></select></div><div class="count">${arr.length}টি সিনেমা</div>${arr.length?movieCards(arr):'<div class="movie-intro"><b>এখনো কোনো মুভি পাওয়া যায়নি</b>Admin Panel-এর 🎬 Movies ট্যাব থেকে নতুন মুভি যোগ করুন।</div>'}<div class="footnote">শুধু নিজের বা বৈধভাবে লাইসেন্সপ্রাপ্ত সিনেমা দেখান।</div>`}
 function tv(){return `<div class="page-head"><h1>Live TV</h1><p>অনুমোদিত লাইভ স্ট্রিম যুক্ত থাকলে চ্যানেলে চাপ দিয়ে ভিডিও চালানো যাবে।</p></div><div class="tv-grid">${channelDetails.map((ch,i)=>`<button class="tv-card" data-tv="${i}"><span class="tv-symbol">${escapeHTML(ch.emoji)}</span><b>${escapeHTML(ch.name)}</b><span>${ch.stream?'▶ Watch now':'স্ট্রিম যোগ করা হয়নি'}</span></button>`).join('')}</div><div class="footnote">⚠️ চ্যানেল ও সিরিয়াল প্রচারের অধিকার থাকা প্রয়োজন। HLS (m3u8) চালাতে ইন্টারনেট এবং ভিডিও সার্ভারের CORS অনুমতি লাগতে পারে।</div>`}
 function favorites(){const favMovies=movies.filter(m=>state.movieFavorites.has(m.id));return `<div class="page-head"><h1>My Favorites ♡</h1><p>পছন্দের এপিসোড ও মুভি এই ফোনে সংরক্ষিত থাকে।</p></div>${sectionTitle('Saved Episodes',`${visibleEpisodes().length} episodes`)}${episodeList()}${sectionTitle('Saved Movies',`${favMovies.length} movies`)}${favMovies.length?movieCards(favMovies):'<div class="movie-intro">ফেভারিট মুভি নেই</div>'}`}
-function profile(){const n=localStorage.getItem('miraztv_name')||localStorage.getItem('banglatv_name')||'';return `<div class="page-head"><h1>My Profile</h1><p>এই পর্যায়ে সার্ভার লগইন নেই। আপনি নিজের মোবাইলে নাম সংরক্ষণ করতে পারবেন।</p></div><div class="profile-card"><label for="profileName">আপনার নাম</label><input id="profileName" autocomplete="name" maxlength="60" placeholder="নাম লিখুন" value="${escapeHTML(n)}"/><button class="pink-btn" id="saveName">Save Name</button></div><div class="footnote">Miraz TV v3.0<br/>এই ওয়েব অ্যাপটি GitHub Pages-এ বিনামূল্যে প্রকাশ করা যায়। চ্যানেল ও ভিডিওর তালিকা content.json থেকে আসে। অ্যাডমিন পরিবর্তন প্রকাশ করতে GitHub-এ কমিট করতে হয়।</div>`}
+function profile(){const n=localStorage.getItem('miraztv_name')||localStorage.getItem('banglatv_name')||'';return `<div class="page-head"><h1>My Profile</h1><p>এই প্রোফাইল ও Watch History এই ডিভাইসে সংরক্ষিত থাকে; এখনো অনলাইন অ্যাকাউন্ট লগইন নেই।</p></div><div class="profile-card"><label for="profileName">আপনার নাম</label><input id="profileName" autocomplete="name" maxlength="60" placeholder="নাম লিখুন" value="${escapeHTML(n)}"/><button class="pink-btn" id="saveName">Save Name</button></div>${sectionTitle('Continue Watching')}${continueSection()||'<div class="movie-intro">এখনো কোনো ভিডিও মাঝপথে বন্ধ করা হয়নি।</div>'}${sectionTitle('Recently Watched')}${historySection()}<button class="movie-show-all" id="clearHistory">Watch History মুছুন</button><div class="footnote">Miraz TV OTT Phase 1 • Profile, Watchlist ও History এই ডিভাইসে থাকে।</div>`}
 function render(){navEl.innerHTML=Object.keys(navNames).map(n=>`<button class="nav ${state.page===n?'selected':''}" data-page="${n}" aria-current="${state.page===n?'page':'false'}"><span class="nav-icon">${icon(n)}</span><span>${navNames[n]}</span></button>`).join('');const views={home,series,movies:moviesPage,tv,favorites,profile};pageEl.innerHTML=views[state.page]();bindPage()}
 function go(page){if(!navNames[page])return;state.page=page;state.channel='All';state.genre='All';state.query='';document.getElementById('searchInput').value='';document.getElementById('searchWrap').classList.remove('show');hideDrawer();render();window.scrollTo({top:0,behavior:'instant'})}
 function toast(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),2500)}
-function openPlayer(id){const e=episodes.find(e=>e.id===Number(id));if(!e)return;openVideo(e.video||(e.title.includes('(ডেমো)')?sampleVideo:''),e.title)}
-async function openVideo(url,title){
-  const src=mediaURL(url);if(!src){toast('এই ভিডিওর অনুমোদিত HTTPS লিংক দেওয়া হয়নি');return}
+function openPlayer(id){const e=episodes.find(e=>e.id===Number(id));if(!e)return;openVideo(e.video||(e.title.includes('(ডেমো)')?sampleVideo:''),e.title,{type:'episode',id:e.id})}
+function youtubeVideoId(value){
+  try{
+    const u=new URL(value),host=u.hostname.toLowerCase();
+    const isYouTube=host==='youtu.be'||host==='youtube.com'||host.endsWith('.youtube.com')||host==='youtube-nocookie.com'||host.endsWith('.youtube-nocookie.com');
+    if(!isYouTube)return '';
+    let id='';
+    if(host==='youtu.be')id=u.pathname.split('/').filter(Boolean)[0]||'';
+    else if(u.pathname==='/watch')id=u.searchParams.get('v')||'';
+    else {const p=u.pathname.split('/').filter(Boolean);if(p.length>=2&&['embed','shorts','live','v'].includes(p[0]))id=p[1]}
+    return /^[A-Za-z0-9_-]{11}$/.test(id)?id:'';
+  }catch{return ''}
+}
+async function openVideo(url,title,media=null){
+  const src=mediaURL(url);if(!src){toast('এই ভিডিওর বৈধ HTTPS লিংক দেওয়া হয়নি');return}
   closePlayer();
+  activeMedia=media&&media.type&&media.id?{type:media.type,id:Number(media.id)}:null;
+  if(activeMedia)rememberHistory(activeMedia.type,activeMedia.id);
   document.getElementById('modalTitle').textContent=title;
-  document.querySelector('.modal p').textContent='শুধু অনুমোদিত ভিডিও ও স্ট্রিম চালান।';
+  document.querySelector('.modal p').textContent='শুধু নিজের বা বৈধভাবে অনুমোদিত ভিডিও দেখান।';
   document.getElementById('overlay').classList.add('show');document.body.style.overflow='hidden';
   const player=document.getElementById('player');
+  const frame=document.getElementById('youtubePlayer');
+  const ytId=youtubeVideoId(src);
+  if(ytId){
+    activeMedia=null;player.hidden=true;frame.hidden=false;frame.title=title+' — YouTube player';
+    frame.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(ytId)+'?autoplay=1&playsinline=1&rel=0';
+    return;
+  }
+  frame.hidden=true;frame.src='about:blank';player.hidden=false;
   if(/\.m3u8(?:[?#]|$)/i.test(src)){
     if(player.canPlayType('application/vnd.apple.mpegurl')){player.src=src;player.load();return}
     try{
@@ -154,18 +265,38 @@ async function openVideo(url,title){
   player.src=src;player.load();
 }
 function closePlayer(){
+  savePlaybackProgress();activeMedia=null;
   const overlay=document.getElementById('overlay');overlay.classList.remove('show');document.body.style.overflow='';
+  const frame=document.getElementById('youtubePlayer');frame.hidden=true;frame.src='about:blank';
   const v=document.getElementById('player');v.pause();
   if(hlsInstance){hlsInstance.destroy();hlsInstance=null}
-  v.removeAttribute('src');v.load()
+  v.removeAttribute('src');v.load();v.hidden=true;
 }
-function openMovie(id){const m=movies.find(m=>m.id===Number(id));if(!m)return;if(!m.video){toast('এই মুভির বৈধ HTTPS ভিডিও লিংক এখনও যোগ হয়নি');return}openVideo(m.video,m.title);document.querySelector('.modal p').textContent=m.description||'শুধু অনুমোদিত কনটেন্ট দেখানো হচ্ছে।'}
-function bindPage(){document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>go(b.dataset.page));document.querySelectorAll('[data-channel]').forEach(b=>b.onclick=()=>{state.channel=b.dataset.channel;render()});document.querySelectorAll('[data-play]').forEach(b=>b.onclick=()=>openPlayer(b.dataset.play));document.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const id=Number(b.dataset.fav);if(state.favorites.has(id)){state.favorites.delete(id);toast('ফেভারিট থেকে সরানো হয়েছে')}else{state.favorites.add(id);toast('ফেভারিটে যোগ হয়েছে')}localStorage.setItem('miraztv_favorites',JSON.stringify([...state.favorites]));render()});document.querySelectorAll('[data-genre]').forEach(b=>b.onclick=()=>{state.genre=b.dataset.genre;render()});document.querySelectorAll('[data-movie-play]').forEach(b=>b.onclick=()=>openMovie(b.dataset.moviePlay));document.querySelectorAll('[data-movie-fav]').forEach(b=>b.onclick=()=>{const id=Number(b.dataset.movieFav);if(state.movieFavorites.has(id)){state.movieFavorites.delete(id);toast('মুভি ফেভারিট থেকে বাদ দেওয়া হয়েছে')}else{state.movieFavorites.add(id);toast('মুভি ফেভারিটে যোগ হয়েছে')}localStorage.setItem('miraztv_movie_favorites',JSON.stringify([...state.movieFavorites]));render()});document.querySelectorAll('[data-tv]').forEach(b=>b.onclick=()=>{const c=channelDetails[Number(b.dataset.tv)];if(c&&c.stream)openVideo(c.stream,c.name);else toast('এই চ্যানেলের স্ট্রিম যোগ করা হয়নি')});const save=document.getElementById('saveName');if(save)save.onclick=()=>{const n=document.getElementById('profileName').value.trim();localStorage.setItem('miraztv_name',n);toast('এই ডিভাইসে নাম সংরক্ষিত হয়েছে')}}
+function openMovie(id){const m=movies.find(m=>m.id===Number(id));if(!m)return;if(!m.video){toast('এই মুভির বৈধ HTTPS ভিডিও লিংক এখনও যোগ হয়নি');return}openVideo(m.video,m.title,{type:'movie',id:m.id});document.querySelector('.modal p').textContent=m.description||'শুধু অনুমোদিত কনটেন্ট দেখানো হচ্ছে।'}
+function openMovieDetails(id){
+  const m=movies.find(x=>x.id===Number(id));if(!m)return;
+  const saved=state.movieFavorites.has(m.id),poster=m.poster?`<img class="detail-poster" src="${escapeHTML(m.poster)}" alt="${escapeHTML(m.title)} পোস্টার">`:'<div class="detail-poster" style="display:grid;place-items:center;font-size:42px">🎬</div>';
+  document.getElementById('movieDetailContent').innerHTML=`<div class="detail-layout">${poster}<div><h3 class="detail-title">${escapeHTML(m.title)}</h3><div class="detail-meta">${m.year||'—'} • ${escapeHTML(m.genre||'বাংলা')} ${m.duration?`• ${m.duration} মিনিট`:''}</div><div class="detail-buttons"><button class="detail-watch" id="detailWatch" ${m.video?'':'disabled'}>▶ এখনই দেখুন</button><button class="detail-save" id="detailSave">${saved?'♥ Watchlist-এ আছে':'♡ Watchlist-এ রাখুন'}</button></div></div></div><p class="detail-description">${escapeHTML(m.description||'এই সিনেমার বিবরণ এখনো যোগ করা হয়নি।')}</p><div class="detail-note">Miraz TV • অনুমোদিত কনটেন্ট</div>`;
+  document.getElementById('movieDetailOverlay').classList.add('show');document.body.style.overflow='hidden';
+  document.getElementById('detailWatch').onclick=()=>{closeMovieDetails();openMovie(m.id)};
+  document.getElementById('detailSave').onclick=()=>{if(state.movieFavorites.has(m.id)){state.movieFavorites.delete(m.id);toast('Watchlist থেকে সরানো হয়েছে')}else{state.movieFavorites.add(m.id);toast('Watchlist-এ যোগ হয়েছে')}localStorage.setItem('miraztv_movie_favorites',JSON.stringify([...state.movieFavorites]));document.getElementById('detailSave').textContent=state.movieFavorites.has(m.id)?'♥ Watchlist-এ আছে':'♡ Watchlist-এ রাখুন';};
+}
+function closeMovieDetails(){document.getElementById('movieDetailOverlay').classList.remove('show');document.body.style.overflow='';}
+function resumeMedia(type,id){
+  const item=getMedia(type,id);if(!item)return;
+  const url=mediaVideo(type,item);if(!url){toast('ভিডিও লিংক পাওয়া যায়নি');return}
+  openVideo(url,item.title,{type,id:Number(id)});
+}
+function bindPage(){document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>go(b.dataset.page));document.querySelectorAll('[data-channel]').forEach(b=>b.onclick=()=>{state.channel=b.dataset.channel;render()});document.querySelectorAll('[data-play]').forEach(b=>b.onclick=()=>openPlayer(b.dataset.play));document.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const id=Number(b.dataset.fav);if(state.favorites.has(id)){state.favorites.delete(id);toast('ফেভারিট থেকে সরানো হয়েছে')}else{state.favorites.add(id);toast('ফেভারিটে যোগ হয়েছে')}localStorage.setItem('miraztv_favorites',JSON.stringify([...state.favorites]));render()});document.querySelectorAll('[data-genre]').forEach(b=>b.onclick=()=>{state.genre=b.dataset.genre;render()});document.querySelectorAll('[data-movie-details]').forEach(b=>b.onclick=()=>openMovieDetails(b.dataset.movieDetails));document.querySelectorAll('[data-movie-play]').forEach(b=>b.onclick=()=>openMovie(b.dataset.moviePlay));document.querySelectorAll('[data-movie-fav]').forEach(b=>b.onclick=()=>{const id=Number(b.dataset.movieFav);if(state.movieFavorites.has(id)){state.movieFavorites.delete(id);toast('মুভি Watchlist থেকে বাদ দেওয়া হয়েছে')}else{state.movieFavorites.add(id);toast('মুভি Watchlist-এ যোগ হয়েছে')}localStorage.setItem('miraztv_movie_favorites',JSON.stringify([...state.movieFavorites]));render()});document.querySelectorAll('[data-resume-type]').forEach(b=>b.onclick=()=>resumeMedia(b.dataset.resumeType,b.dataset.resumeId));document.querySelectorAll('[data-clear-progress-type]').forEach(b=>b.onclick=()=>{clearProgress(b.dataset.clearProgressType,b.dataset.clearProgressId);render();toast('Continue Watching থেকে সরানো হয়েছে')});document.querySelectorAll('[data-history-play-type]').forEach(b=>b.onclick=()=>resumeMedia(b.dataset.historyPlayType,b.dataset.historyPlayId));document.querySelectorAll('[data-tv]').forEach(b=>b.onclick=()=>{const c=channelDetails[Number(b.dataset.tv)];if(c&&c.stream)openVideo(c.stream,c.name);else toast('এই চ্যানেলের স্ট্রিম যোগ করা হয়নি')});const save=document.getElementById('saveName');if(save)save.onclick=()=>{const n=document.getElementById('profileName').value.trim();localStorage.setItem('miraztv_name',n);toast('এই ডিভাইসে নাম সংরক্ষিত হয়েছে')};const sort=document.getElementById('movieSort');if(sort)sort.onchange=()=>{state.movieSort=sort.value;render()};const clear=document.getElementById('clearHistory');if(clear)clear.onclick=()=>{if(confirm('সম্পূর্ণ Watch History মুছে ফেলবেন?')){localStorage.removeItem(HISTORY_KEY);localStorage.removeItem(PROGRESS_KEY);render();toast('History মুছে ফেলা হয়েছে')}}}
 function hideDrawer(){document.getElementById('drawer').classList.remove('show');document.getElementById('drawerBg').classList.remove('show')}
 document.getElementById('menuBtn').onclick=()=>{document.getElementById('drawer').classList.add('show');document.getElementById('drawerBg').classList.add('show')};document.getElementById('drawerClose').onclick=hideDrawer;document.getElementById('drawerBg').onclick=hideDrawer;
 document.getElementById('searchBtn').onclick=()=>{if(state.page==='tv'||state.page==='profile')go('series');const s=document.getElementById('searchWrap');s.classList.toggle('show');if(s.classList.contains('show'))(document.getElementById('searchInput').placeholder=state.page==='movies'?'মুভির নাম বা ক্যাটাগরি খুঁজুন...':'সিরিয়াল খুঁজুন...',document.getElementById('searchInput').focus());else{state.query='';document.getElementById('searchInput').value='';render()}};
 document.getElementById('closeSearch').onclick=()=>{state.query='';document.getElementById('searchInput').value='';document.getElementById('searchWrap').classList.remove('show');render()};document.getElementById('searchInput').oninput=e=>{state.query=e.target.value.trim();render()};
-document.getElementById('premiumBtn').onclick=()=>toast('Premium ফিচার এখনও যুক্ত করা হয়নি');document.getElementById('modalClose').onclick=closePlayer;document.getElementById('overlay').onclick=e=>{if(e.target.id==='overlay')closePlayer()};document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePlayer();hideDrawer()}});
+document.getElementById('premiumBtn').onclick=()=>toast('Premium ফিচার এখনও যুক্ত করা হয়নি');document.getElementById('detailClose').onclick=closeMovieDetails;document.getElementById('movieDetailOverlay').onclick=e=>{if(e.target.id==='movieDetailOverlay')closeMovieDetails()};document.getElementById('modalClose').onclick=closePlayer;document.getElementById('overlay').onclick=e=>{if(e.target.id==='overlay')closePlayer()};document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePlayer();closeMovieDetails();hideDrawer()}});
+const progressPlayer=document.getElementById('player');
+progressPlayer.addEventListener('timeupdate',savePlaybackProgress);
+progressPlayer.addEventListener('loadedmetadata',()=>{if(!activeMedia)return;const p=getProgress(activeMedia.type,activeMedia.id);if(p&&p.time>15&&p.time<progressPlayer.duration-20){try{progressPlayer.currentTime=p.time;toast('আগের জায়গা থেকে চালু হচ্ছে')}catch{}}});
+progressPlayer.addEventListener('ended',()=>{if(activeMedia)clearProgress(activeMedia.type,activeMedia.id);activeMedia=null});
 render();loadCatalog();
 if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
 })();

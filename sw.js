@@ -1,5 +1,5 @@
-// Miraz TV v2 — cache shell, always recheck published content.json.
-const CACHE='miraz-tv-v3-movies';
+// Miraz TV OTT Phase 1 — movie details, watchlist, history and continue watching.
+const CACHE='miraz-tv-ott-phase1';
 const ASSETS=['./','./index.html','./admin.html','./banner.svg','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
