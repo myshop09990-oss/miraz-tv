@@ -1,8 +1,10 @@
 {
-  "name": "Miraz TV Demo",
+  "id": "/miraz-tv/",
+  "name": "Miraz TV",
   "short_name": "Miraz TV",
-  "description": "Miraz TV ডেমো PWA — চ্যানেল ক্যাটাগরি, সিরিয়াল ও ভিডিও প্লেয়ার",
-  "start_url": "./",
+  "description": "Miraz TV — বাংলা সিনেমা, ওয়েব সিরিজ এবং ভিডিও দেখার অ্যাপ।",
+  "lang": "bn",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0d0710",
@@ -12,13 +14,19 @@
       "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

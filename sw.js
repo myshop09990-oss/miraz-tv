@@ -1,14 +1,36 @@
-// Miraz TV OTT Phase 2 — movie details, watchlist, history and continue watching.
-const CACHE='miraz-tv-search-fix-v2-2-20261107';
-const ASSETS=['./','./index.html','./admin.html','./banner.svg','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
-self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()))});
-self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
-self.addEventListener('fetch',e=>{
-  const req=e.request;if(req.method!=='GET'||new URL(req.url).origin!==self.location.origin)return;
+// Miraz TV v2.3 — resilient PWA install and offline shell.
+const CACHE='miraz-tv-pwa-install-v2-3-20261107';
+const SHELL=['./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable-512.png'];
+self.addEventListener('install', event=>{
+  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));
+});
+self.addEventListener('activate', event=>{
+  event.waitUntil(caches.keys().then(keys=>Promise.all(
+    keys.filter(key=>key.startsWith('miraz-tv-')&&key!==CACHE).map(key=>caches.delete(key))
+  )).then(()=>self.clients.claim()));
+});
+self.addEventListener('fetch', event=>{
+  const req=event.request;
+  if(req.method!=='GET')return;
   const url=new URL(req.url);
-  if(url.pathname.endsWith('/content.json')){e.respondWith(fetch(req,{cache:'no-store'}).catch(()=>caches.match('./content.json').then(r=>r||Response.error())));return}
-  if(req.mode==='navigate'){
-    e.respondWith(fetch(req).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(req,copy))}return res}).catch(()=>caches.match(req).then(r=>r||caches.match('./index.html'))));return;
+  if(url.origin!==self.location.origin)return;
+  if(url.pathname.endsWith('/content.json')){
+    // Always fetch the latest catalog; do not cache older Series/Movies.
+    event.respondWith(fetch(req,{cache:'no-store'}).catch(()=>caches.match(req).then(r=>r||Response.error())));
+    return;
   }
-  e.respondWith(caches.match(req).then(hit=>hit||fetch(req).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(req,copy))}return res})))
+  if(req.mode==='navigate'){
+    event.respondWith(fetch(req).then(response=>{
+      if(response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put('./index.html',copy));}
+      return response;
+    }).catch(()=>caches.match('./index.html').then(r=>r||Response.error())));
+    return;
+  }
+  // Keep the manifest/icons fresh; if offline, use the cached shell.
+  event.respondWith(fetch(req).then(response=>{
+    if(response.ok&&SHELL.some(path=>url.pathname.endsWith(path.replace('./','/')))){
+      const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(req,copy));
+    }
+    return response;
+  }).catch(()=>caches.match(req).then(r=>r||Response.error())));
 });

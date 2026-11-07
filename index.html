@@ -6,9 +6,12 @@
   <meta name="theme-color" content="#100912" />
   <meta name="description" content="Miraz TV — বিনামূল্যের ডেমো স্ট্রিমিং অ্যাপ ও ওয়েবসাইট।" />
   <title>Miraz TV — Live, Series & Movies</title>
-  <meta name="miraz-build" content="series-fix-20261107">
+  <meta name="miraz-build" content="pwa-install-fix-v2.3-20261107">
   <link rel="manifest" href="./manifest.webmanifest" />
-  <link rel="icon" href="./icon-192.png" />
+  <link rel="icon" href="./icon-192.png" sizes="192x192" type="image/png" />
+  <link rel="apple-touch-icon" href="./icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Miraz TV" />
   <style>
     :root{--bg:#0d0710;--panel:#1b0e1e;--panel2:#211126;--line:#42203c;--accent:#e6449e;--pink:#f252a7;--white:#faf6fb;--muted:#a49aa9;--gold:#f9d644;--font:system-ui,-apple-system,"Noto Sans Bengali","Hind Siliguri",sans-serif}
     *{box-sizing:border-box}html{height:100%;scroll-behavior:smooth}body{background:#080509;color:var(--white);font:15px/1.48 var(--font);margin:0;min-height:100%;-webkit-tap-highlight-color:transparent}button,input{font:inherit}button{color:inherit;cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
@@ -89,6 +92,21 @@
     .series-ep-text{flex:1;min-width:0}.series-ep-text b{display:block;font-size:13px;line-height:1.4}.series-ep-text small{display:block;color:#cdb2c7;font-size:11px;margin-top:4px}
     .series-ep-play{border:0;border-radius:10px;padding:9px 10px;background:var(--accent);color:#fff;font-weight:800;font-size:12px;flex-shrink:0}.series-ep-play:disabled{background:#50334c;color:#bca3b8;cursor:default}
     .series-select{display:block;width:100%;background:#211025;color:#fff;border:1px solid #724366;border-radius:11px;padding:11px;margin-top:12px;font:inherit}
+
+    /* PWA Install v2.3: isolated styles; original OTT layout unaffected */
+    .install-panel{display:flex;align-items:center;gap:13px;border:1px solid #774169;border-radius:18px;background:linear-gradient(120deg,#30152f,#211126);padding:14px;margin:-5px 0 21px}
+    .install-panel-copy{flex:1;min-width:0}
+    .install-panel-copy strong{font-size:14px;display:block;color:#fff;margin-bottom:2px}
+    .install-panel-copy small{color:#d1b4c8;font-size:11px;line-height:1.45;display:block}
+    .install-panel button{flex-shrink:0;border:0;background:#e6449e;color:#fff;border-radius:11px;font-size:12px;font-weight:800;padding:12px 10px;min-width:116px}
+    .install-guide-overlay{display:none;position:fixed;inset:0;z-index:60;background:#030204d9;align-items:center;justify-content:center;padding:18px}
+    .install-guide-overlay.show{display:flex}
+    .install-guide{width:min(100%,460px);border-radius:20px;border:1px solid #7a426e;background:#211126;padding:21px;color:#fff;box-shadow:0 25px 70px #000b}
+    .install-guide h2{font-size:21px;margin:0 0 10px}.install-guide p{color:#e2cade;font-size:14px;line-height:1.6}
+    .install-guide ol{padding-left:22px;color:#e8d1e5;font-size:14px;line-height:1.7}
+    .install-guide button{border:0;border-radius:11px;background:#e6449e;color:#fff;font-weight:800;padding:12px 18px;width:100%}
+    @media(max-width:380px){.install-panel{gap:8px;padding:11px}.install-panel button{min-width:100px;padding:11px 7px;font-size:11px}}
+
 </style>
 </head>
 <body>
@@ -125,6 +143,19 @@
 </div>
 
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="ভিডিও প্লেয়ার"><div class="modal"><div class="modal-top"><h2 id="modalTitle">নমুনা ভিডিও</h2><button class="xbutton" id="modalClose" aria-label="ভিডিও বন্ধ করুন">×</button></div><iframe id="youtubePlayer" title="YouTube video player" hidden allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe><video id="player" controls playsinline preload="none" hidden>আপনার ব্রাউজার ভিডিও চালাতে পারছে না।</video><p>অনুমোদিত ভিডিও চালানো হবে। YouTube ভিডিও হলে সেটি এই Popup-এর মধ্যেই চলবে।</p></div></div>
+<div class="install-guide-overlay" id="installHelpOverlay" role="dialog" aria-modal="true" aria-label="Miraz TV ইনস্টল সহায়তা">
+  <div class="install-guide">
+    <h2>📲 Miraz TV ইনস্টল করুন</h2>
+    <p id="installHelpText">Chrome থেকে অ্যাপ ইনস্টল করার নির্দেশনা:</p>
+    <ol id="installHelpSteps">
+      <li>ওয়েবসাইটটি Chrome-এর সাধারণ ট্যাবে খুলুন (Incognito নয়)।</li>
+      <li>ওপরের ⋮ মেনু থেকে “Install app” অথবা “Add to Home screen” নির্বাচন করুন।</li>
+      <li>Install / Add দিয়ে নিশ্চিত করুন।</li>
+    </ol>
+    <p>মেনুতে চাপলেও কিছু না হলে Chrome আপডেট করুন, আগে থেকে Miraz TV ইনস্টল আছে কি না দেখুন, তারপর Chrome আবার চালু করুন।</p>
+    <button type="button" id="installHelpClose">বুঝেছি</button>
+  </div>
+</div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 (()=>{
@@ -240,10 +271,62 @@ function historySection(){
 }
 
 function visibleEpisodes(){return episodes.filter(e=>((state.page!=='favorites'||state.favorites.has(e.id))&&(state.channel==='All'||e.channel===state.channel)&&(!state.query||`${e.title} ${e.channel}`.toLowerCase().includes(state.query.toLowerCase()))))}
+
+let deferredInstallPrompt=null;
+let pwaInstallationDetected=false;
+function isMirazInstalled(){
+  return window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.standalone === true || pwaInstallationDetected;
+}
+window.addEventListener('beforeinstallprompt', event=>{
+  event.preventDefault();
+  deferredInstallPrompt=event;
+});
+window.addEventListener('appinstalled', ()=>{
+  deferredInstallPrompt=null;
+  pwaInstallationDetected=true;
+  if(document.getElementById('installHelpOverlay'))document.getElementById('installHelpOverlay').classList.remove('show');
+  toast('Miraz TV ইনস্টল সম্পন্ন হয়েছে');
+  if(state.page==='home')render();
+});
+function installBanner(){
+  if(isMirazInstalled())return '';
+  return `<section class="install-panel" aria-label="Miraz TV অ্যাপ ইনস্টল"><div class="install-panel-copy"><strong>📲 Miraz TV ফোনে রাখুন</strong><small>Play Store ছাড়াই Home Screen-এ অ্যাপ ইনস্টল করুন</small></div><button type="button" data-install-app>Install Miraz TV</button></section>`;
+}
+function showInstallHelp(){
+  const ios=/iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const text=document.getElementById('installHelpText');
+  const steps=document.getElementById('installHelpSteps');
+  if(ios){
+    text.textContent='iPhone বা iPad-এ Safari দিয়ে Miraz TV খুলে নিচের ধাপ অনুসরণ করুন।';
+    steps.innerHTML='<li>Safari-তে Miraz TV ওয়েবসাইট খুলুন।</li><li>Share (□↑) চাপুন।</li><li>Add to Home Screen নির্বাচন করে Add চাপুন।</li>';
+  }else{
+    text.textContent='Chrome-এর সাধারণ ট্যাবে (Incognito নয়) Miraz TV খুলুন।';
+    steps.innerHTML='<li>Chrome-এর ডানদিকে ⋮ মেনু চাপুন।</li><li>“Install app” বা “Install and create shortcut” → Install / Add to Home screen নির্বাচন করুন।</li><li>ফোনের Home Screen অথবা App Drawer-এ Miraz TV খুঁজুন।</li>';
+  }
+  document.getElementById('installHelpOverlay').classList.add('show');
+}
+async function installMiraz(){
+  if(isMirazInstalled()){toast('Miraz TV ইতিমধ্যেই ইনস্টল করা আছে');return;}
+  if(deferredInstallPrompt){
+    const prompt=deferredInstallPrompt;
+    deferredInstallPrompt=null;
+    try{
+      await prompt.prompt();
+      const choice=await prompt.userChoice;
+      if(choice.outcome==='dismissed')showInstallHelp();
+    }catch(e){showInstallHelp();}
+  }else{
+    showInstallHelp();
+  }
+}
+document.getElementById('installHelpClose').addEventListener('click',()=>document.getElementById('installHelpOverlay').classList.remove('show'));
+document.getElementById('installHelpOverlay').addEventListener('click',e=>{if(e.target.id==='installHelpOverlay')e.currentTarget.classList.remove('show')});
+
 function sectionTitle(title,right=''){return `<div class="section-title"><h2>${title}</h2>${right?`<span class="count">${right}</span>`:''}</div>`}
 function channelStrip(){return `<div class="channels" role="group" aria-label="চ্যানেল ফিল্টার">${channels.map(ch=>`<button class="channel ${state.channel===ch?'selected':''}" data-channel="${escapeHTML(ch)}" aria-pressed="${state.channel===ch}"><span class="orb">${escapeHTML(ch)}</span><span class="channel-label">${escapeHTML(ch)}</span></button>`).join('')}</div>`}
 function episodeList(arr=visibleEpisodes()){return `<div class="episodes">${arr.map(e=>`<article class="episode"><button class="thumb" style="--thumb1:${e.colors[0]};--thumb2:${e.colors[1]}" data-play="${e.id}" aria-label="${escapeHTML(e.title)} ভিডিও দেখুন">${e.image?`<img class="thumb-image" src="${escapeHTML(e.image)}" loading="lazy" alt="" referrerpolicy="no-referrer">`:''}<span class="thumb-word">${escapeHTML(e.emoji)}</span><span class="ep-label">EP ${e.ep}</span><span class="play">▶</span></button><div class="ep-info"><h3 class="ep-title">${escapeHTML(e.title)}</h3><div class="meta">▢ ${escapeHTML(e.date)}</div></div><button class="heart ${state.favorites.has(e.id)?'on':''}" data-fav="${e.id}" aria-label="${state.favorites.has(e.id)?'ফেভারিট থেকে বাদ দিন':'ফেভারিট করুন'}" aria-pressed="${state.favorites.has(e.id)}">${icon('favorites')}</button></article>`).join('')}</div>${arr.length===0?'<div class="empty"><b>কোনো ভিডিও পাওয়া যায়নি</b><p>অন্য চ্যানেল বা সার্চ শব্দ নির্বাচন করুন।</p></div>':''}`}
-function home(){return `<div class="hero"><img src="${escapeHTML(bannerInfo.image)}" alt="Miraz TV ব্যানার"/><span class="hero-pill">Miraz TV</span><div class="hero-text"><div class="hero-title">${escapeHTML(bannerInfo.title)}</div><div class="hero-sub">${escapeHTML(bannerInfo.subtitle)}</div></div></div>${continueSection()}${sectionTitle('TV Channels')}${channelStrip()}<p class="small-note" style="margin-top:12px">চ্যানেলের নাম দেখানো মানেই লাইভ সম্প্রচারের অনুমতি নয়।</p><div class="ad"><span class="ad-label">AD</span><div><strong><span class="ad-tag">Ad</span> ${escapeHTML(adInfo.title)}</strong><p>${escapeHTML(adInfo.text)}</p></div></div>${sectionTitle('Popular Series',`${visibleEpisodes().length} episodes`)}${episodeList()}${webSeriesHome()}${sectionTitle('🎬 বাংলা Movies',`${movies.length} movies`)}${movies.length?movieCards(movies.slice(0,4)):'<div class="movie-intro"><b>🎬 বাংলা মুভির জন্য নতুন বিভাগ</b>অ্যাডমিন প্যানেল থেকে মুভি যোগ করলে এখানে দেখা যাবে।</div>'}<button class="movie-show-all" data-page="movies">সব মুভি দেখুন →</button>`}
+function home(){return `<div class="hero"><img src="${escapeHTML(bannerInfo.image)}" alt="Miraz TV ব্যানার"/><span class="hero-pill">Miraz TV</span><div class="hero-text"><div class="hero-title">${escapeHTML(bannerInfo.title)}</div><div class="hero-sub">${escapeHTML(bannerInfo.subtitle)}</div></div></div>${installBanner()}${continueSection()}${sectionTitle('TV Channels')}${channelStrip()}<p class="small-note" style="margin-top:12px">চ্যানেলের নাম দেখানো মানেই লাইভ সম্প্রচারের অনুমতি নয়।</p><div class="ad"><span class="ad-label">AD</span><div><strong><span class="ad-tag">Ad</span> ${escapeHTML(adInfo.title)}</strong><p>${escapeHTML(adInfo.text)}</p></div></div>${sectionTitle('Popular Series',`${visibleEpisodes().length} episodes`)}${episodeList()}${webSeriesHome()}${sectionTitle('🎬 বাংলা Movies',`${movies.length} movies`)}${movies.length?movieCards(movies.slice(0,4)):'<div class="movie-intro"><b>🎬 বাংলা মুভির জন্য নতুন বিভাগ</b>অ্যাডমিন প্যানেল থেকে মুভি যোগ করলে এখানে দেখা যাবে।</div>'}<button class="movie-show-all" data-page="movies">সব মুভি দেখুন →</button>`}
 function series(){const arr=webSeries.filter(s=>!state.query||`${s.title} ${s.genre} ${s.year}`.toLowerCase().includes(state.query.toLowerCase()));return `<div class="page-head"><h1>📺 Web Series</h1><p>সিজন নির্বাচন করুন ও এপিসোড দেখুন। · v2.2</p></div>${sectionTitle('Web Series',`${arr.length}টি সিরিজ`)}${arr.length?webSeriesCardList(arr):'<div class="movie-intro"><b>এখনো কোনো ওয়েব সিরিজ নেই</b>Admin Panel → 📚 Web Series থেকে সিরিজ ও সিজন যোগ করুন।</div>'}${sectionTitle('TV Channels')}${channelStrip()}${sectionTitle('অন্যান্য এপিসোড',`${visibleEpisodes().length} episodes`)}${episodeList()}` }
 
 function webSeriesCardList(arr){return `<div class="movie-grid">${arr.map(s=>{
@@ -365,7 +448,7 @@ function resumeMedia(type,id){
   const url=mediaVideo(type,item);if(!url){toast('ভিডিও লিংক পাওয়া যায়নি');return}
   openVideo(url,item.title,{type,id:Number(id)});
 }
-function bindPage(){document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>go(b.dataset.page));document.querySelectorAll('[data-channel]').forEach(b=>b.onclick=()=>{state.channel=b.dataset.channel;render()});document.querySelectorAll('[data-play]').forEach(b=>b.onclick=()=>openPlayer(b.dataset.play));document.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const id=Number(b.dataset.fav);if(state.favorites.has(id)){state.favorites.delete(id);toast('ফেভারিট থেকে সরানো হয়েছে')}else{state.favorites.add(id);toast('ফেভারিটে যোগ হয়েছে')}localStorage.setItem('miraztv_favorites',JSON.stringify([...state.favorites]));render()});document.querySelectorAll('[data-genre]').forEach(b=>b.onclick=()=>{state.genre=b.dataset.genre;render()});document.querySelectorAll('[data-series-details]').forEach(b=>b.onclick=()=>openSeriesDetails(b.dataset.seriesDetails));document.querySelectorAll('[data-movie-details]').forEach(b=>b.onclick=()=>openMovieDetails(b.dataset.movieDetails));document.querySelectorAll('[data-movie-play]').forEach(b=>b.onclick=()=>openMovie(b.dataset.moviePlay));document.querySelectorAll('[data-movie-fav]').forEach(b=>b.onclick=()=>{const id=Number(b.dataset.movieFav);if(state.movieFavorites.has(id)){state.movieFavorites.delete(id);toast('মুভি Watchlist থেকে বাদ দেওয়া হয়েছে')}else{state.movieFavorites.add(id);toast('মুভি Watchlist-এ যোগ হয়েছে')}localStorage.setItem('miraztv_movie_favorites',JSON.stringify([...state.movieFavorites]));render()});document.querySelectorAll('[data-resume-type]').forEach(b=>b.onclick=()=>resumeMedia(b.dataset.resumeType,b.dataset.resumeId));document.querySelectorAll('[data-clear-progress-type]').forEach(b=>b.onclick=()=>{clearProgress(b.dataset.clearProgressType,b.dataset.clearProgressId);render();toast('Continue Watching থেকে সরানো হয়েছে')});document.querySelectorAll('[data-history-play-type]').forEach(b=>b.onclick=()=>resumeMedia(b.dataset.historyPlayType,b.dataset.historyPlayId));document.querySelectorAll('[data-tv]').forEach(b=>b.onclick=()=>{const c=channelDetails[Number(b.dataset.tv)];if(c&&c.stream)openVideo(c.stream,c.name);else toast('এই চ্যানেলের স্ট্রিম যোগ করা হয়নি')});const save=document.getElementById('saveName');if(save)save.onclick=()=>{const n=document.getElementById('profileName').value.trim();localStorage.setItem('miraztv_name',n);toast('এই ডিভাইসে নাম সংরক্ষিত হয়েছে')};const sort=document.getElementById('movieSort');if(sort)sort.onchange=()=>{state.movieSort=sort.value;render()};const clear=document.getElementById('clearHistory');if(clear)clear.onclick=()=>{if(confirm('সম্পূর্ণ Watch History মুছে ফেলবেন?')){localStorage.removeItem(HISTORY_KEY);localStorage.removeItem(PROGRESS_KEY);render();toast('History মুছে ফেলা হয়েছে')}}}
+function bindPage(){document.querySelectorAll('[data-install-app]').forEach(b=>b.onclick=installMiraz);document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>go(b.dataset.page));document.querySelectorAll('[data-channel]').forEach(b=>b.onclick=()=>{state.channel=b.dataset.channel;render()});document.querySelectorAll('[data-play]').forEach(b=>b.onclick=()=>openPlayer(b.dataset.play));document.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const id=Number(b.dataset.fav);if(state.favorites.has(id)){state.favorites.delete(id);toast('ফেভারিট থেকে সরানো হয়েছে')}else{state.favorites.add(id);toast('ফেভারিটে যোগ হয়েছে')}localStorage.setItem('miraztv_favorites',JSON.stringify([...state.favorites]));render()});document.querySelectorAll('[data-genre]').forEach(b=>b.onclick=()=>{state.genre=b.dataset.genre;render()});document.querySelectorAll('[data-series-details]').forEach(b=>b.onclick=()=>openSeriesDetails(b.dataset.seriesDetails));document.querySelectorAll('[data-movie-details]').forEach(b=>b.onclick=()=>openMovieDetails(b.dataset.movieDetails));document.querySelectorAll('[data-movie-play]').forEach(b=>b.onclick=()=>openMovie(b.dataset.moviePlay));document.querySelectorAll('[data-movie-fav]').forEach(b=>b.onclick=()=>{const id=Number(b.dataset.movieFav);if(state.movieFavorites.has(id)){state.movieFavorites.delete(id);toast('মুভি Watchlist থেকে বাদ দেওয়া হয়েছে')}else{state.movieFavorites.add(id);toast('মুভি Watchlist-এ যোগ হয়েছে')}localStorage.setItem('miraztv_movie_favorites',JSON.stringify([...state.movieFavorites]));render()});document.querySelectorAll('[data-resume-type]').forEach(b=>b.onclick=()=>resumeMedia(b.dataset.resumeType,b.dataset.resumeId));document.querySelectorAll('[data-clear-progress-type]').forEach(b=>b.onclick=()=>{clearProgress(b.dataset.clearProgressType,b.dataset.clearProgressId);render();toast('Continue Watching থেকে সরানো হয়েছে')});document.querySelectorAll('[data-history-play-type]').forEach(b=>b.onclick=()=>resumeMedia(b.dataset.historyPlayType,b.dataset.historyPlayId));document.querySelectorAll('[data-tv]').forEach(b=>b.onclick=()=>{const c=channelDetails[Number(b.dataset.tv)];if(c&&c.stream)openVideo(c.stream,c.name);else toast('এই চ্যানেলের স্ট্রিম যোগ করা হয়নি')});const save=document.getElementById('saveName');if(save)save.onclick=()=>{const n=document.getElementById('profileName').value.trim();localStorage.setItem('miraztv_name',n);toast('এই ডিভাইসে নাম সংরক্ষিত হয়েছে')};const sort=document.getElementById('movieSort');if(sort)sort.onchange=()=>{state.movieSort=sort.value;render()};const clear=document.getElementById('clearHistory');if(clear)clear.onclick=()=>{if(confirm('সম্পূর্ণ Watch History মুছে ফেলবেন?')){localStorage.removeItem(HISTORY_KEY);localStorage.removeItem(PROGRESS_KEY);render();toast('History মুছে ফেলা হয়েছে')}}}
 function hideDrawer(){document.getElementById('drawer').classList.remove('show');document.getElementById('drawerBg').classList.remove('show')}
 document.getElementById('menuBtn').onclick=()=>{document.getElementById('drawer').classList.add('show');document.getElementById('drawerBg').classList.add('show')};document.getElementById('drawerClose').onclick=hideDrawer;document.getElementById('drawerBg').onclick=hideDrawer;
 document.getElementById('searchBtn').onclick=()=>{const s=document.getElementById('searchWrap');s.classList.toggle('show');if(s.classList.contains('show')){document.getElementById('searchInput').placeholder='সিরিজ, সিনেমা, এপিসোড বা চ্যানেল খুঁজুন...';document.getElementById('searchInput').focus()}else{state.query='';document.getElementById('searchInput').value='';render()}};
