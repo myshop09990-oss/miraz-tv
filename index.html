@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#100912" />
   <meta name="description" content="Miraz TV — বিনামূল্যের ডেমো স্ট্রিমিং অ্যাপ ও ওয়েবসাইট।" />
   <title>Miraz TV — Live, Series & Movies</title>
+  <meta name="miraz-build" content="series-fix-20261107">
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./icon-192.png" />
   <style>
@@ -159,7 +160,7 @@ function mediaURL(s,allowRelative=false){
 }
 async function loadCatalog(){
   try{
-    const response=await fetch('./content.json?t='+Date.now(),{cache:'no-store'});
+    const response=await fetch('./content.json?v=series-fix-20261107&t='+Date.now(),{cache:'no-store'});
     if(!response.ok)throw new Error('No public content');
     const data=await response.json();
     if(!data||!Array.isArray(data.channels)||!Array.isArray(data.episodes))throw new Error('Invalid content');
@@ -243,7 +244,7 @@ function sectionTitle(title,right=''){return `<div class="section-title"><h2>${t
 function channelStrip(){return `<div class="channels" role="group" aria-label="চ্যানেল ফিল্টার">${channels.map(ch=>`<button class="channel ${state.channel===ch?'selected':''}" data-channel="${escapeHTML(ch)}" aria-pressed="${state.channel===ch}"><span class="orb">${escapeHTML(ch)}</span><span class="channel-label">${escapeHTML(ch)}</span></button>`).join('')}</div>`}
 function episodeList(){const arr=visibleEpisodes();return `<div class="episodes">${arr.map(e=>`<article class="episode"><button class="thumb" style="--thumb1:${e.colors[0]};--thumb2:${e.colors[1]}" data-play="${e.id}" aria-label="${escapeHTML(e.title)} ভিডিও দেখুন">${e.image?`<img class="thumb-image" src="${escapeHTML(e.image)}" loading="lazy" alt="" referrerpolicy="no-referrer">`:''}<span class="thumb-word">${escapeHTML(e.emoji)}</span><span class="ep-label">EP ${e.ep}</span><span class="play">▶</span></button><div class="ep-info"><h3 class="ep-title">${escapeHTML(e.title)}</h3><div class="meta">▢ ${escapeHTML(e.date)}</div></div><button class="heart ${state.favorites.has(e.id)?'on':''}" data-fav="${e.id}" aria-label="${state.favorites.has(e.id)?'ফেভারিট থেকে বাদ দিন':'ফেভারিট করুন'}" aria-pressed="${state.favorites.has(e.id)}">${icon('favorites')}</button></article>`).join('')}</div>${arr.length===0?'<div class="empty"><b>কোনো ভিডিও পাওয়া যায়নি</b><p>অন্য চ্যানেল বা সার্চ শব্দ নির্বাচন করুন।</p></div>':''}`}
 function home(){return `<div class="hero"><img src="${escapeHTML(bannerInfo.image)}" alt="Miraz TV ব্যানার"/><span class="hero-pill">Miraz TV</span><div class="hero-text"><div class="hero-title">${escapeHTML(bannerInfo.title)}</div><div class="hero-sub">${escapeHTML(bannerInfo.subtitle)}</div></div></div>${continueSection()}${sectionTitle('TV Channels')}${channelStrip()}<p class="small-note" style="margin-top:12px">চ্যানেলের নাম দেখানো মানেই লাইভ সম্প্রচারের অনুমতি নয়।</p><div class="ad"><span class="ad-label">AD</span><div><strong><span class="ad-tag">Ad</span> ${escapeHTML(adInfo.title)}</strong><p>${escapeHTML(adInfo.text)}</p></div></div>${sectionTitle('Popular Series',`${visibleEpisodes().length} episodes`)}${episodeList()}${webSeriesHome()}${sectionTitle('🎬 বাংলা Movies',`${movies.length} movies`)}${movies.length?movieCards(movies.slice(0,4)):'<div class="movie-intro"><b>🎬 বাংলা মুভির জন্য নতুন বিভাগ</b>অ্যাডমিন প্যানেল থেকে মুভি যোগ করলে এখানে দেখা যাবে।</div>'}<button class="movie-show-all" data-page="movies">সব মুভি দেখুন →</button>`}
-function series(){const arr=webSeries.filter(s=>!state.query||`${s.title} ${s.genre} ${s.year}`.toLowerCase().includes(state.query.toLowerCase()));return `<div class="page-head"><h1>📺 Web Series</h1><p>সিজন নির্বাচন করুন ও এপিসোড দেখুন।</p></div>${sectionTitle('Web Series',`${arr.length}টি সিরিজ`)}${arr.length?webSeriesCardList(arr):'<div class="movie-intro"><b>এখনো কোনো ওয়েব সিরিজ নেই</b>Admin Panel → 📚 Web Series থেকে সিরিজ ও সিজন যোগ করুন।</div>'}${sectionTitle('TV Channels')}${channelStrip()}${sectionTitle('অন্যান্য এপিসোড',`${visibleEpisodes().length} episodes`)}${episodeList()}` }
+function series(){const arr=webSeries.filter(s=>!state.query||`${s.title} ${s.genre} ${s.year}`.toLowerCase().includes(state.query.toLowerCase()));return `<div class="page-head"><h1>📺 Web Series</h1><p>সিজন নির্বাচন করুন ও এপিসোড দেখুন। · v2.1</p></div>${sectionTitle('Web Series',`${arr.length}টি সিরিজ`)}${arr.length?webSeriesCardList(arr):'<div class="movie-intro"><b>এখনো কোনো ওয়েব সিরিজ নেই</b>Admin Panel → 📚 Web Series থেকে সিরিজ ও সিজন যোগ করুন।</div>'}${sectionTitle('TV Channels')}${channelStrip()}${sectionTitle('অন্যান্য এপিসোড',`${visibleEpisodes().length} episodes`)}${episodeList()}` }
 
 function webSeriesCardList(arr){return `<div class="movie-grid">${arr.map(s=>{
  const seasons=s.seasons.length,eps=s.seasons.reduce((a,x)=>a+x.episodes.length,0);
