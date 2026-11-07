@@ -1,8 +1,8 @@
 {
   "version": 1,
   "banner": {
-    "title": "Miraz TV Live",
-    "subtitle": "Watch Premium Shows & Series",
+    "title": "Miraz TV",
+    "subtitle": "সিনেমা, ওয়েব সিরিজ ও বিনোদন এক জায়গায়",
     "image": "./banner.svg"
   },
   "advertisement": {
@@ -137,7 +137,7 @@
   "webSeries": [
     {
       "id": 1,
-      "title": "Kurulus Osman",
+      "title": "Kurlus Osman",
       "year": 2019,
       "genre": "বাংলা",
       "poster": "",
