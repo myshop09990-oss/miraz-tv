@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#100912" />
   <meta name="description" content="Miraz TV — বিনামূল্যের ডেমো স্ট্রিমিং অ্যাপ ও ওয়েবসাইট।" />
   <title>Miraz TV — Live, Series & Movies</title>
-  <meta name="miraz-build" content="pwa-install-fix-v2.3-20261107">
+  <meta name="miraz-build" content="info-pages-v2.4-20261107">
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./icon-192.png" sizes="192x192" type="image/png" />
   <link rel="apple-touch-icon" href="./icon-192.png" />
@@ -105,6 +105,18 @@
     .install-guide h2{font-size:21px;margin:0 0 10px}.install-guide p{color:#e2cade;font-size:14px;line-height:1.6}
     .install-guide ol{padding-left:22px;color:#e8d1e5;font-size:14px;line-height:1.7}
     .install-guide button{border:0;border-radius:11px;background:#e6449e;color:#fff;font-weight:800;padding:12px 18px;width:100%}
+    /* Miraz TV v2.4: additional information pages only */
+    .drawer{overflow-y:auto;padding-bottom:calc(94px + env(safe-area-inset-bottom))}
+    .drawer-divider{margin:12px 0;border-top:1px solid #5c3050}
+    .info-page{max-width:680px;margin:0 auto;padding-bottom:20px}
+    .info-page .info-intro{color:#ccb8cc;line-height:1.75;margin:6px 0 18px}
+    .info-card{background:#201122;border:1px solid #4a2b45;border-radius:17px;padding:18px 17px;margin:14px 0}
+    .info-card h2{font-size:18px;margin:0 0 11px;color:#fff}
+    .info-card p,.info-card li{font-size:14px;line-height:1.85;color:#d8c6d8;margin:8px 0}
+    .info-card ul{padding-left:24px;margin:8px 0}
+    .info-page a{color:#ff93d0;overflow-wrap:anywhere}
+    .info-callout{border-left:4px solid #e6449e;background:#321529;padding:12px 14px;border-radius:9px;font-size:13px;color:#f5dceb;line-height:1.75}
+    .info-back{border:1px solid #63375b;background:#351c38;color:white;border-radius:12px;padding:12px 16px;margin:16px 0;cursor:pointer}
     @media(max-width:380px){.install-panel{gap:8px;padding:11px}.install-panel button{min-width:100px;padding:11px 7px;font-size:11px}}
 
 </style>
@@ -125,7 +137,7 @@
   </main>
   <nav class="bottom" aria-label="প্রধান নেভিগেশন" id="bottomNav"></nav>
 </div>
-<div class="drawer-bg" id="drawerBg"></div><aside class="drawer" id="drawer"><button aria-label="মেনু বন্ধ করুন" id="drawerClose">✕ &nbsp; বন্ধ করুন</button><h2>Miraz TV</h2><button data-page="home">🏠 &nbsp; Home</button><button data-page="series">▶ &nbsp; Series</button><button data-page="movies">🎬 &nbsp; বাংলা Movies</button><button data-page="tv">📺 &nbsp; TV</button><button data-page="favorites">♡ &nbsp; Favorites</button><button data-page="profile">♙ &nbsp; Profile</button></aside>
+<div class="drawer-bg" id="drawerBg"></div><aside class="drawer" id="drawer"><button aria-label="মেনু বন্ধ করুন" id="drawerClose">✕ &nbsp; বন্ধ করুন</button><h2>Miraz TV</h2><button data-page="home">🏠 &nbsp; Home</button><button data-page="series">▶ &nbsp; Series</button><button data-page="movies">🎬 &nbsp; বাংলা Movies</button><button data-page="tv">📺 &nbsp; TV</button><button data-page="favorites">♡ &nbsp; Favorites</button><button data-page="profile">♙ &nbsp; Profile</button><div class="drawer-divider" aria-hidden="true"></div><button data-page="about">ℹ️ &nbsp; About Us</button><button data-page="privacy">🔒 &nbsp; Privacy Policy</button><button data-page="contact">✉️ &nbsp; Contact Us</button></aside>
 
 <div class="detail-overlay" id="movieDetailOverlay" role="dialog" aria-modal="true" aria-label="মুভির বিস্তারিত">
   <section class="detail-panel">
@@ -378,8 +390,30 @@ function searchResults(){
   if(matchedChannels.length)result+=sectionTitle('📺 TV Channels',matchedChannels.length+'টি')+`<div class="tv-grid">${matchedChannels.map(({channel,index})=>`<button class="tv-card" data-tv="${index}"><span class="tv-symbol">${escapeHTML(channel.emoji)}</span><b>${escapeHTML(channel.name)}</b><span>${channel.stream?'▶ Watch now':'স্ট্রিম যোগ করা হয়নি'}</span></button>`).join('')}</div>`;
   return result;
 }
-function render(){navEl.innerHTML=Object.keys(navNames).map(n=>`<button class="nav ${state.page===n?'selected':''}" data-page="${n}" aria-current="${state.page===n?'page':'false'}"><span class="nav-icon">${icon(n)}</span><span>${navNames[n]}</span></button>`).join('');const views={home,series,movies:moviesPage,tv,favorites,profile};pageEl.innerHTML=state.query.trim()?searchResults():views[state.page]();bindPage()}
-function go(page){if(!navNames[page])return;state.page=page;state.channel='All';state.genre='All';state.query='';document.getElementById('searchInput').value='';document.getElementById('searchWrap').classList.remove('show');hideDrawer();render();window.scrollTo({top:0,behavior:'instant'})}
+// Info pages: user-facing information, no changes to catalog, playback or profile state.
+function infoBack(){return '<button class="info-back" data-page="home">← Home-এ ফিরে যান</button>'}
+function aboutPage(){return `<section class="info-page">
+  <div class="page-head"><h1>ℹ️ About Miraz TV</h1><p>Miraz TV সম্পর্কে জানুন</p></div>
+  <div class="info-card"><h2>Miraz TV কী?</h2><p>Miraz TV একটি বাংলা বিনোদনভিত্তিক ওয়েব অ্যাপ (PWA)। এখানে সিনেমা, ওয়েব সিরিজ, সিজন, পর্ব এবং টিভি চ্যানেলের তথ্য দেখা যায়। অনুমোদিত ভিডিও লিংক যুক্ত থাকলে অ্যাপের ভেতরে ভিডিও চালানো যায়।</p><p>এটি বর্তমানে উন্নয়ন ও পরীক্ষামূলক পর্যায়ে রয়েছে। কিছু প্রদর্শিত কনটেন্ট ডেমো; ভিডিও লিংক না থাকলে “আসছে” দেখাতে পারে।</p></div>
+  <div class="info-card"><h2>আমাদের লক্ষ্য</h2><p>মোবাইল থেকে সহজে ব্যবহার করা যায় এমন একটি বাংলা ভাষার বিনোদন প্ল্যাটফর্ম তৈরি করা। Google Play Store ছাড়াও সমর্থিত ব্রাউজার থেকে অ্যাপটি ইনস্টল করা যায়।</p></div>
+  <div class="info-callout">Miraz TV কোনো টিভি চ্যানেল বা চলচ্চিত্রের অফিসিয়াল প্রতিনিধি হওয়ার দাবি করে না। ভিডিও, পোস্টার ও অন্যান্য কনটেন্ট ব্যবহারের অনুমতি থাকা প্রয়োজন।</div>
+  ${infoBack()}</section>`}
+function privacyPage(){return `<section class="info-page">
+  <div class="page-head"><h1>🔒 Privacy Policy</h1><p>সর্বশেষ হালনাগাদ: ৭ নভেম্বর ২০২৬</p></div>
+  <div class="info-card"><h2>১. কী তথ্য সংরক্ষিত হয়?</h2><p>আপনি Profile-এ যে নাম লিখে Save করেন, Favorites/Watchlist, Watch History এবং ভিডিও দেখার অগ্রগতি—এসব তথ্য এই ডিভাইসের ব্রাউজার বা ইনস্টল করা অ্যাপের স্থানীয় স্টোরেজে সংরক্ষিত হতে পারে। বর্তমানে Miraz TV-তে আলাদা অনলাইন অ্যাকাউন্ট বা লগইন ব্যবস্থা নেই।</p></div>
+  <div class="info-card"><h2>২. ওয়েবসাইট ও তৃতীয় পক্ষ</h2><p>Miraz TV GitHub Pages-এ হোস্ট করা। সাইট খোলা হলে হোস্টিং সেবা প্রযুক্তিগত অনুরোধের তথ্য প্রক্রিয়াকরণ করতে পারে। আপনি ভিডিও চালালে সংশ্লিষ্ট ভিডিও হোস্ট, YouTube বা স্ট্রিমিং সেবা এবং প্রয়োজনে HLS Player লাইব্রেরির প্রদানকারী তাদের নিজস্ব নীতি অনুযায়ী তথ্য পেতে পারে।</p></div>
+  <div class="info-card"><h2>৩. তথ্যের ব্যবহার ও নিয়ন্ত্রণ</h2><p>স্থানীয় নাম, Favorites, History ও দেখার অগ্রগতির তথ্য অ্যাপের সংশ্লিষ্ট সুবিধা চালাতে ব্যবহৃত হয়। Watch History মুছতে Profile-এর “Watch History মুছুন” ব্যবহার করতে পারেন। অন্যান্য স্থানীয় তথ্য সরাতে ব্রাউজারের সাইট ডেটা মুছতে হতে পারে। এতে আপনার সংরক্ষিত পছন্দ ও হিস্টরি হারিয়ে যাবে।</p></div>
+  <div class="info-card"><h2>৪. পেমেন্ট ও বিজ্ঞাপন</h2><p>বর্তমান সংস্করণে Miraz TV কোনো পেমেন্ট কার্ড বা আর্থিক তথ্য সংগ্রহ করার ফর্ম রাখে না। বিজ্ঞাপনের জন্য একটি জায়গা দেখানো হতে পারে; ভবিষ্যতে তৃতীয় পক্ষের বিজ্ঞাপন সেবা যুক্ত হলে এই নীতি আপডেট করতে হবে।</p></div>
+  <div class="info-card"><h2>৫. এই নীতির পরিবর্তন ও যোগাযোগ</h2><p>অ্যাপের ফিচার বা তথ্য ব্যবহারের ধরন বদলালে এই নীতি হালনাগাদ করা হবে। যোগাযোগের বর্তমান উপায় জানতে Contact Us পেজ দেখুন।</p></div>
+  ${infoBack()}</section>`}
+function contactPage(){return `<section class="info-page">
+  <div class="page-head"><h1>✉️ Contact Us</h1><p>Miraz TV সম্পর্কে মতামত বা সমস্যা জানান</p></div>
+  <div class="info-card"><h2>যোগাযোগের তথ্য</h2><p>Miraz TV-এর অফিসিয়াল সাপোর্ট ইমেইল বা ফোন নম্বর এখনো প্রকাশ করা হয়নি। একটি অনুমোদিত যোগাযোগের ঠিকানা যুক্ত হলে এখানে দেখানো হবে।</p></div>
+  <div class="info-card"><h2>প্রযুক্তিগত সমস্যা জানাতে</h2><p>GitHub অ্যাকাউন্ট থাকলে নিচের রিপোজিটরির Issues বিভাগ ব্যবহার করে সমস্যা জানানোর চেষ্টা করতে পারেন, যদি Issues সক্রিয় থাকে।</p><p><a href="https://github.com/myshop09990-oss/miraz-tv/issues" target="_blank" rel="noopener noreferrer">Miraz TV — GitHub Issues ↗</a></p><p>কোনো বার্তায় পাসওয়ার্ড, OTP, কার্ড নম্বর বা অন্য ব্যক্তিগত গোপন তথ্য প্রকাশ করবেন না।</p></div>
+  <div class="info-callout">এই পেজে এখনো সরাসরি ইমেইল পাঠানোর ব্যবস্থা নেই। কোনো ইমেইল ঠিকানা যাচাই ছাড়া যোগ করা হয়নি।</div>
+  ${infoBack()}</section>`}
+function render(){navEl.innerHTML=Object.keys(navNames).map(n=>`<button class="nav ${state.page===n?'selected':''}" data-page="${n}" aria-current="${state.page===n?'page':'false'}"><span class="nav-icon">${icon(n)}</span><span>${navNames[n]}</span></button>`).join('');const views={home,series,movies:moviesPage,tv,favorites,profile,about:aboutPage,privacy:privacyPage,contact:contactPage};pageEl.innerHTML=state.query.trim()?searchResults():views[state.page]();bindPage()}
+function go(page){if(!navNames[page]&&!['about','privacy','contact'].includes(page))return;state.page=page;state.channel='All';state.genre='All';state.query='';document.getElementById('searchInput').value='';document.getElementById('searchWrap').classList.remove('show');hideDrawer();render();window.scrollTo({top:0,behavior:'instant'})}
 function toast(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),2500)}
 function openPlayer(id){const e=episodes.find(e=>e.id===Number(id));if(!e)return;openVideo(e.video||(e.title.includes('(ডেমো)')?sampleVideo:''),e.title,{type:'episode',id:e.id})}
 function youtubeVideoId(value){

@@ -1,5 +1,5 @@
-// Miraz TV v2.3 — resilient PWA install and offline shell.
-const CACHE='miraz-tv-pwa-install-v2-3-20261107';
+// Miraz TV v2.4 — informational pages and PWA shell.
+const CACHE='miraz-tv-info-pages-v2-4-20261107';
 const SHELL=['./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable-512.png'];
 self.addEventListener('install', event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));
