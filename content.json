@@ -133,5 +133,168 @@
       "video": "",
       "description": "Storyline : A thrilling new chapter in the Guptodhon trilogy as Sona Da returns for his deadliest treasure hunt yet, where danger lurks at every turn. Packed with mystery, action, and adventure, It takes the legacy of the beloved franchise.\nDirector : Dhrubo Banerjee\nCast(s) : Abir Chatterjee, Arjun Chakrabarty, Ishaa Saha"
     }
+  ],
+  "webSeries": [
+    {
+      "id": 1,
+      "title": "Kurlus Osman",
+      "year": 2019,
+      "genre": "বাংলা",
+      "poster": "",
+      "description": "",
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": [
+            {
+              "id": 1,
+              "number": 129,
+              "title": "5",
+              "image": "",
+              "video": "",
+              "duration": 42,
+              "description": "Storyline : The series will focus on the life of Osman Bey, the son of Ertugrul Gazi and the founder of the Ottoman Empire.\nDirector : N/A\nCast(s) : Burak Özçivit, Özge Törer, Yigit Ucan"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+  "version": 1,
+  "banner": {
+    "title": "Miraz TV Live",
+    "subtitle": "Watch Premium Shows & Series",
+    "image": "./banner.svg"
+  },
+  "advertisement": {
+    "title": "বিজ্ঞাপনের জায়গা",
+    "text": "আপনার নিজস্ব বিজ্ঞাপন এখানে দেখানো যাবে"
+  },
+  "channels": [
+    {
+      "name": "Star Jalsha",
+      "emoji": "🎬",
+      "stream": ""
+    },
+    {
+      "name": "Zee Bangla",
+      "emoji": "📺",
+      "stream": ""
+    },
+    {
+      "name": "Colors Bangla",
+      "emoji": "🎨",
+      "stream": ""
+    },
+    {
+      "name": "BACHELOR POINT",
+      "emoji": "🎭",
+      "stream": ""
+    },
+    {
+      "name": "Miraz TV Demo",
+      "emoji": "📺",
+      "stream": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+    }
+  ],
+  "episodes": [
+    {
+      "id": 1,
+      "title": "শহরের আলো — আজকের পর্ব (ডেমো)",
+      "channel": "Star Jalsha",
+      "date": "2026-11-05",
+      "ep": 6,
+      "emoji": "🌆",
+      "image": "",
+      "video": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      "colors": [
+        "#3e2363",
+        "#d94e86"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "কুসুমের গল্প — নতুন পর্ব (ডেমো)",
+      "channel": "Zee Bangla",
+      "date": "2026-11-05",
+      "ep": 5,
+      "emoji": "🌸",
+      "image": "",
+      "video": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      "colors": [
+        "#1f5b81",
+        "#bc357d"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "শেষ বিকেল — বিশেষ পর্ব (ডেমো)",
+      "channel": "Colors Bangla",
+      "date": "2026-11-04",
+      "ep": 4,
+      "emoji": "🌅",
+      "image": "",
+      "video": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      "colors": [
+        "#b74c43",
+        "#43224f"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "বন্ধুদের আড্ডা — সিরিজ (ডেমো)",
+      "channel": "BACHELOR POINT",
+      "date": "2026-11-04",
+      "ep": 3,
+      "emoji": "🎭",
+      "image": "",
+      "video": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      "colors": [
+        "#4b276c",
+        "#28758c"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "নতুন সকাল — এপিসোড (ডেমো)",
+      "channel": "Star Jalsha",
+      "date": "2026-11-03",
+      "ep": 2,
+      "emoji": "🌄",
+      "image": "",
+      "video": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      "colors": [
+        "#85532e",
+        "#814d85"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "বৃষ্টির রাত — পর্ব ১ (ডেমো)",
+      "channel": "Zee Bangla",
+      "date": "2026-11-03",
+      "ep": 1,
+      "emoji": "🌧️",
+      "image": "",
+      "video": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      "colors": [
+        "#12506a",
+        "#8d2d86"
+      ]
+    }
+  ],
+  "movies": [
+    {
+      "id": 1,
+      "title": "Saptadingar Guptodhon",
+      "year": 2026,
+      "genre": "বাংলা",
+      "duration": 135,
+      "poster": "https://myshop09990-oss.github.io/miraz-tv/17843853566a5b8f4c270fd.webp",
+      "video": "",
+      "description": "Storyline : A thrilling new chapter in the Guptodhon trilogy as Sona Da returns for his deadliest treasure hunt yet, where danger lurks at every turn. Packed with mystery, action, and adventure, It takes the legacy of the beloved franchise.\nDirector : Dhrubo Banerjee\nCast(s) : Abir Chatterjee, Arjun Chakrabarty, Ishaa Saha"
+    }
   ]
 }
