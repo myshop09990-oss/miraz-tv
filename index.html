@@ -23,7 +23,7 @@
   <meta name="twitter:description" content="Miraz TV-তে বাংলা সিনেমা, ওয়েব সিরিজ, সিজন ও এপিসোডের তথ্য খুঁজুন। পছন্দের তালিকা তৈরি করুন এবং উপলব্ধ ভিডিও দেখুন।" />
   <meta name="twitter:image" content="https://myshop09990-oss.github.io/miraz-tv/icon-512.png" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Miraz TV","url":"https://myshop09990-oss.github.io/miraz-tv/","description":"Miraz TV-তে বাংলা সিনেমা, ওয়েব সিরিজ, সিজন ও এপিসোডের তথ্য খুঁজুন। পছন্দের তালিকা তৈরি করুন এবং উপলব্ধ ভিডিও দেখুন।","inLanguage":"bn-BD"}</script>
-  <meta name="miraz-build" content="seo-v2.6-20261108">
+  <meta name="miraz-build" content="seo-pages-v2.7-20261108">
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./icon-192.png" sizes="192x192" type="image/png" />
   <link rel="apple-touch-icon" href="./icon-192.png" />
@@ -136,6 +136,13 @@
     .info-back{border:1px solid #63375b;background:#351c38;color:white;border-radius:12px;padding:12px 16px;margin:16px 0;cursor:pointer}
     @media(max-width:380px){.install-panel{gap:8px;padding:11px}.install-panel button{min-width:100px;padding:11px 7px;font-size:11px}}
 
+
+  /* SEO v2.7: links to standalone, HTML-readable title pages */
+  .seo-directory{margin:34px 0 5px;padding:13px 15px;border:1px solid #42203c;border-radius:13px;background:#170b1c;font-size:12px;line-height:1.9;color:#c4aac0}
+  .seo-directory strong{font-size:12px;display:block;color:#dcc4d8;margin-bottom:3px}
+  .seo-directory a{display:inline-block;margin:0 15px 0 0;color:#ec85bf;text-decoration:underline;text-underline-offset:3px}
+  .seo-card-link{display:inline-block;padding:5px 0;margin-top:5px;color:#f4a2d0;font-size:12px;text-decoration:underline;text-underline-offset:2px}
+  .seo-directory a:focus-visible,.seo-card-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 </style>
 </head>
 <body>
@@ -151,6 +158,11 @@
   <main class="content">
     <div class="searchbox" id="searchWrap"><svg class="svg-icon" viewBox="0 0 24 24"><circle cx="10.7" cy="10.7" r="6.4"/><path d="m15.6 15.6 5.1 5.1"/></svg><input id="searchInput" type="search" placeholder="সিরিজ, সিনেমা, পর্ব বা চ্যানেল খুঁজুন..." aria-label="Miraz TV-এর সব কনটেন্ট খুঁজুন"/><button class="close-search" aria-label="সার্চ বন্ধ করুন" id="closeSearch">×</button></div>
     <div id="page"></div>
+    <nav class="seo-directory" aria-label="সিনেমা ও ওয়েব সিরিজের পৃথক তথ্য পেজ">
+      <strong>সিনেমা ও ওয়েব সিরিজের আলাদা পেজ</strong>
+      <a href="./movie-saptadingar-guptodhon.html">Saptadingar Guptodhon — Movie Details</a>
+      <a href="./series-kurulus-osman.html">Kurulus Osman — Series Details</a>
+    </nav>
   </main>
   <nav class="bottom" aria-label="প্রধান নেভিগেশন" id="bottomNav"></nav>
 </div>
@@ -360,7 +372,7 @@ function series(){const arr=webSeries.filter(s=>!state.query||`${s.title} ${s.ge
 
 function webSeriesCardList(arr){return `<div class="movie-grid">${arr.map(s=>{
  const seasons=s.seasons.length,eps=s.seasons.reduce((a,x)=>a+x.episodes.length,0);
- return `<article class="movie-card series-card"><button class="movie-poster" data-series-details="${s.id}" aria-label="${escapeHTML(s.title)} বিস্তারিত দেখুন">${s.poster?`<img src="${escapeHTML(s.poster)}" alt="${escapeHTML(s.title)} পোস্টার" loading="lazy">`:'<span class="movie-fallback">📺</span>'}<span class="movie-play">সিজন দেখুন</span></button><div class="movie-body"><h3 class="movie-name">${escapeHTML(s.title)}</h3><div class="series-meta">${escapeHTML(s.genre)} • ${seasons} সিজন • ${eps} পর্ব</div><button class="movie-watch" data-series-details="${s.id}">পর্বগুলো দেখুন</button></div></article>`;
+ return `<article class="movie-card series-card"><button class="movie-poster" data-series-details="${s.id}" aria-label="${escapeHTML(s.title)} বিস্তারিত দেখুন">${s.poster?`<img src="${escapeHTML(s.poster)}" alt="${escapeHTML(s.title)} পোস্টার" loading="lazy">`:'<span class="movie-fallback">📺</span>'}<span class="movie-play">সিজন দেখুন</span></button><div class="movie-body"><h3 class="movie-name">${escapeHTML(s.title)}</h3><div class="series-meta">${escapeHTML(s.genre)} • ${seasons} সিজন • ${eps} পর্ব</div><button class="movie-watch" data-series-details="${s.id}">পর্বগুলো দেখুন</button>${s.id===1&&/kurulus osman/i.test(s.title)?'<a class="seo-card-link" href="./series-kurulus-osman.html">আলাদা তথ্য পেজ ↗</a>':''}</div></article>`;
 }).join('')}</div>`}
 function webSeriesHome(){return webSeries.length?`${sectionTitle('📺 Web Series',`${webSeries.length}টি`)}${webSeriesCardList(webSeries.slice(0,3))}<button class="movie-show-all" data-page="series">সব ওয়েব সিরিজ দেখুন →</button>`:''}
 function openSeriesDetails(id,preferredSeason=null){
@@ -382,7 +394,7 @@ function openSeriesDetails(id,preferredSeason=null){
 function closeSeriesDetails(){document.getElementById('seriesDetailOverlay').classList.remove('show');document.body.style.overflow='';}
 
 function visibleMovies(){return movies.filter(m=>(state.genre==='All'||m.genre===state.genre)&&(!state.query||`${m.title} ${m.genre} ${m.year}`.toLowerCase().includes(state.query.toLowerCase())))}
-function movieCards(arr){return `<div class="movie-grid">${arr.map(m=>`<article class="movie-card"><button class="movie-poster" data-movie-details="${m.id}" aria-label="${escapeHTML(m.title)} বিস্তারিত দেখুন">${m.poster?`<img src="${escapeHTML(m.poster)}" loading="lazy" alt="${escapeHTML(m.title)} পোস্টার" referrerpolicy="no-referrer">`:'<span class="movie-fallback">🎬</span>'}<span class="movie-play">ℹ Details</span></button><div class="movie-body"><h3 class="movie-name">${escapeHTML(m.title)}</h3><div class="movie-meta">${m.year||'—'} • ${escapeHTML(m.genre)} ${m.duration?`• ${m.duration} min`:''}</div><div class="movie-actions"><button class="movie-watch" data-movie-play="${m.id}">▶ দেখুন</button><button class="movie-details" data-movie-details="${m.id}">বিস্তারিত</button><button class="movie-fav ${state.movieFavorites.has(m.id)?'on':''}" data-movie-fav="${m.id}" aria-label="${state.movieFavorites.has(m.id)?'মুভি ফেভারিট থেকে বাদ দিন':'মুভি ফেভারিট করুন'}">${state.movieFavorites.has(m.id)?'♥':'♡'}</button></div></div></article>`).join('')}</div>`}
+function movieCards(arr){return `<div class="movie-grid">${arr.map(m=>`<article class="movie-card"><button class="movie-poster" data-movie-details="${m.id}" aria-label="${escapeHTML(m.title)} বিস্তারিত দেখুন">${m.poster?`<img src="${escapeHTML(m.poster)}" loading="lazy" alt="${escapeHTML(m.title)} পোস্টার" referrerpolicy="no-referrer">`:'<span class="movie-fallback">🎬</span>'}<span class="movie-play">ℹ Details</span></button><div class="movie-body"><h3 class="movie-name">${escapeHTML(m.title)}</h3><div class="movie-meta">${m.year||'—'} • ${escapeHTML(m.genre)} ${m.duration?`• ${m.duration} min`:''}</div><div class="movie-actions"><button class="movie-watch" data-movie-play="${m.id}">▶ দেখুন</button><button class="movie-details" data-movie-details="${m.id}">বিস্তারিত</button><button class="movie-fav ${state.movieFavorites.has(m.id)?'on':''}" data-movie-fav="${m.id}" aria-label="${state.movieFavorites.has(m.id)?'মুভি ফেভারিট থেকে বাদ দিন':'মুভি ফেভারিট করুন'}">${state.movieFavorites.has(m.id)?'♥':'♡'}</button></div>${m.id===1&&/saptadingar guptodhon/i.test(m.title)?'<a class="seo-card-link" href="./movie-saptadingar-guptodhon.html">আলাদা তথ্য পেজ ↗</a>':''}</div></article>`).join('')}</div>`}
 function moviesPage(){const genres=['All',...new Set(movies.map(m=>m.genre))];let arr=visibleMovies();if(state.movieSort==='newest')arr=arr.slice().sort((a,b)=>(b.year||0)-(a.year||0));else if(state.movieSort==='oldest')arr=arr.slice().sort((a,b)=>(a.year||0)-(b.year||0));else if(state.movieSort==='az')arr=arr.slice().sort((a,b)=>a.title.localeCompare(b.title,'bn'));return `<div class="page-head"><h1>🎬 বাংলা Movies</h1><p>সিনেমার বিস্তারিত দেখুন, Watchlist-এ রাখুন এবং পরে দেখা চালিয়ে যান।</p></div>${continueSection()}<div class="genre-filters">${genres.map(g=>`<button class="genre-btn ${state.genre===g?'selected':''}" data-genre="${escapeHTML(g)}">${escapeHTML(g==='All'?'সব মুভি':g)}</button>`).join('')}</div><div class="section-title"><h2>Movies</h2><select class="movie-sort" id="movieSort" aria-label="সিনেমা সাজান"><option value="newest" ${state.movieSort==='newest'?'selected':''}>নতুন আগে</option><option value="oldest" ${state.movieSort==='oldest'?'selected':''}>পুরোনো আগে</option><option value="az" ${state.movieSort==='az'?'selected':''}>নাম অনুযায়ী</option></select></div><div class="count">${arr.length}টি সিনেমা</div>${arr.length?movieCards(arr):'<div class="movie-intro"><b>এখনো কোনো মুভি পাওয়া যায়নি</b>Admin Panel-এর 🎬 Movies ট্যাব থেকে নতুন মুভি যোগ করুন।</div>'}<div class="footnote">শুধু নিজের বা বৈধভাবে লাইসেন্সপ্রাপ্ত সিনেমা দেখান।</div>`}
 function tv(){return `<div class="page-head"><h1>Live TV</h1><p>অনুমোদিত লাইভ স্ট্রিম যুক্ত থাকলে চ্যানেলে চাপ দিয়ে ভিডিও চালানো যাবে।</p></div><div class="tv-grid">${channelDetails.map((ch,i)=>`<button class="tv-card" data-tv="${i}"><span class="tv-symbol">${escapeHTML(ch.emoji)}</span><b>${escapeHTML(ch.name)}</b><span>${ch.stream?'▶ Watch now':'স্ট্রিম যোগ করা হয়নি'}</span></button>`).join('')}</div><div class="footnote">⚠️ চ্যানেল ও সিরিয়াল প্রচারের অধিকার থাকা প্রয়োজন। HLS (m3u8) চালাতে ইন্টারনেট এবং ভিডিও সার্ভারের CORS অনুমতি লাগতে পারে।</div>`}
 function favorites(){const favMovies=movies.filter(m=>state.movieFavorites.has(m.id));return `<div class="page-head"><h1>My Favorites ♡</h1><p>পছন্দের এপিসোড ও মুভি এই ফোনে সংরক্ষিত থাকে।</p></div>${sectionTitle('Saved Episodes',`${visibleEpisodes().length} episodes`)}${episodeList()}${sectionTitle('Saved Movies',`${favMovies.length} movies`)}${favMovies.length?movieCards(favMovies):'<div class="movie-intro">ফেভারিট মুভি নেই</div>'}`}
@@ -509,7 +521,13 @@ const progressPlayer=document.getElementById('player');
 progressPlayer.addEventListener('timeupdate',savePlaybackProgress);
 progressPlayer.addEventListener('loadedmetadata',()=>{if(!activeMedia)return;const p=getProgress(activeMedia.type,activeMedia.id);if(p&&p.time>15&&p.time<progressPlayer.duration-20){try{progressPlayer.currentTime=p.time;toast('আগের জায়গা থেকে চালু হচ্ছে')}catch{}}});
 progressPlayer.addEventListener('ended',()=>{if(activeMedia)clearProgress(activeMedia.type,activeMedia.id);activeMedia=null});
-render();loadCatalog();
+function openSEOLink(){
+  const p=new URLSearchParams(location.search);
+  const kind=p.get('seo_view'),id=Number(p.get('seo_id'));
+  if(kind==='movies') {go('movies');if(id>0)openMovieDetails(id)}
+  else if(kind==='series') {go('series');if(id>0)openSeriesDetails(id)}
+}
+render();loadCatalog().then(openSEOLink);
 if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
 })();
 </script>
