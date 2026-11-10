@@ -1,6 +1,8 @@
 (()=>{'use strict';
 const API=String(window.MIRAZ_PREMIUM_API_URL||'').trim();
-const configured = /^https:\/\/[a-z0-9-]+\.supabase\.co\/functions\/v1\/miraz-pin-auth\/?$/i.test(API);
+
+const configured = /^https:\/\/[a-z0-9-]+\.supabase\.co\/functions\/v1\/miraz-premium-v2\/?$/i.test(API);
+
 const $=id=>document.getElementById(id);
 const KEY='miraz-premium-session-v1';
 let token='';
