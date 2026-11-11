@@ -17,7 +17,9 @@ async function call(action,extra={}){
   const timeout=setTimeout(()=>controller.abort(),15000);
   try{
     const res=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({https://github.com/myshop09990-oss/miraz-tv/edit/main/premium.js?utm_source=chatgpt.com}),cache:'no-store',signal:controller.signal});
+      body:JSON.stringify(action === 'login'
+  ? {phone:extra.phone,pin:extra.pin}
+  : {action,...extra}
     const data=await res.json();
     if(!res.ok||data?.ok!==true)throw new Error(data?.error||'সার্ভারের সঙ্গে যোগাযোগ করা যাচ্ছে না।');
     return data;
