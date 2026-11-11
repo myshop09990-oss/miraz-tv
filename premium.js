@@ -76,7 +76,7 @@ $('logoutButton').addEventListener('click',async()=>{const t=token;clearSession(
 if(configured){
   (async()=>{
     try{token=sessionStorage.getItem(KEY)||''}catch{token=''}
-    if(!/^[a-f0-9-]{72}$/.test(token)){clearSession();return}
+    if(!/^/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(token)){clearSession();return}
     try{const s=await call('check',{token});setMember(s);await catalog()}
     catch{clearSession()}
   })();
