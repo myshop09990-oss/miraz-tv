@@ -842,5 +842,73 @@ setInterval(()=>{
  }
 },30000);
 </script>
+ 
+<!-- Miraz TV Premium Payment Popup -->
+<style>
+#mirazPaymentPopup {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0,0,0,.88);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+#mirazPaymentPopup .payment-box {
+  background: #192238;
+  color: #fff;
+  padding: 28px 22px;
+  border-radius: 20px;
+  border: 1px solid #405170;
+  width: 100%;
+  max-width: 390px;
+  text-align: center;
+}
+#mirazPaymentPopup h1 {
+  color: #f7c653;
+  font-size: 40px;
+}
+#mirazPaymentPopup button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #f7c653;
+  color: #111;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+</style>
+
+<div id="mirazPaymentPopup"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Premium Subscription">
+  <div class="payment-box">
+    <h2>🔒 Miraz TV Premium</h2>
+    <h1>৳২০</h1>
+
+    <p>
+      Premium Zone-এ প্রবেশ করতে
+      ২০ টাকা বিকাশের মাধ্যমে
+      সাবস্ক্রিপশন কিনতে হবে।
+    </p>
+
+    <p>
+      পেমেন্ট করার পর Request Access দিন।
+      অ্যাডমিন Telegram-এর মাধ্যমে
+      অনুমোদন দেবেন।
+    </p>
+
+    <button type="button"
+      onclick="document.getElementById('mirazPaymentPopup').remove()">
+      বুঝেছি — Continue
+    </button>
+  </div>
+</div>
+<!-- End Premium Payment Popup -->
+
 </body>
 </html>
