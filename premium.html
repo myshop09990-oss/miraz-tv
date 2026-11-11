@@ -1,59 +1,414 @@
+
 <!doctype html>
 <html lang="bn">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<meta name="theme-color" content="#100912"/>
-<meta name="robots" content="noindex,nofollow,noarchive"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; img-src 'self' https: data:; connect-src 'self' https://*.supabase.co; media-src https://*.supabase.co blob:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'"/>
-<title>18+ Premium Zone | Miraz TV</title>
-<link rel="icon" href="./icon-192.png" type="image/png"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b1020">
+<title>Miraz TV | Premium Zone</title>
 <style>
-:root{--bg:#0d0710;--panel:#1b0e1e;--panel2:#2b1830;--border:#512b49;--pink:#e6449e;--text:#faf3f9;--muted:#c1a9bd}
-*{box-sizing:border-box}body{margin:0;background:#080509;color:var(--text);font-family:system-ui,-apple-system,"Noto Sans Bengali","Hind Siliguri",sans-serif;font-size:15px;line-height:1.65}button,input{font:inherit}button{cursor:pointer}a{color:#fac5e0}
-main{max-width:600px;margin:auto;min-height:100vh;background:var(--bg);padding-bottom:35px}
-header{display:flex;align-items:center;justify-content:space-between;padding:18px;border-bottom:1px solid #321a30;background:#110913}header h1{font-size:25px;margin:0;font-weight:850}header h1 span{color:var(--pink)}header a{font-size:13px;text-decoration:none;border:1px solid var(--border);border-radius:10px;padding:8px 11px}
-article{padding:22px 18px}.box{background:var(--panel);border:1px solid var(--border);border-radius:21px;padding:22px 19px;margin:0 0 18px}.hero{background:radial-gradient(circle at 80% 0,#6c2155,#210d20 55%,#1a0b1d);text-align:center;padding:33px 22px}.hero .mark{font-size:46px}.hero h2{font-size:31px;margin:3px 0 8px;color:#ffd5ee}.hero p{margin:5px auto;color:#efcae0;max-width:400px}.tag{display:inline-block;border:1px solid #9d427f;color:#ffd5eb;background:#4c203e;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:700;margin-top:14px}
-label{display:block;font-weight:750;margin:15px 0 6px}input[type=tel],input[type=password],input[type=text]{width:100%;background:#100912;color:#fff;border:1px solid #7b4774;border-radius:12px;padding:12px 14px;min-height:50px;font-size:17px;outline-offset:2px}input:focus{outline:2px solid var(--pink)}.check{display:flex;align-items:flex-start;gap:11px;font-weight:500;color:#e6cfde}.check input{width:18px;height:18px;margin-top:5px;flex:0 0 18px;accent-color:var(--pink)}.check span{flex:1}
-button.primary{width:100%;border:0;background:var(--pink);color:#fff;border-radius:12px;padding:13px 16px;font-weight:850;font-size:17px;margin-top:18px;min-height:50px}button.primary:disabled{background:#583149;opacity:.75;cursor:not-allowed}.secondary{background:#402342;color:#fff;border:1px solid #7a4470;border-radius:11px;padding:10px 12px}.text-muted{color:var(--muted);font-size:13px}.hidden{display:none!important}.notice{padding:11px 13px;border:1px solid #67465c;background:#2b1a2d;border-radius:10px;margin-top:14px;color:#f5ddeb}.notice.error{border-color:#bf536b;background:#3a1b29}.notice.success{border-color:#4b9773;background:#172e27}
-#catalog{display:grid;gap:13px}.item{border:1px solid var(--border);border-radius:16px;padding:13px;display:flex;gap:12px;align-items:flex-start;background:#221229}.item img,.placeholder{width:80px;min-width:80px;height:110px;object-fit:cover;border-radius:10px;background:#401a37;display:grid;place-items:center;font-size:32px}.item-info{flex:1;min-width:0}.item h3{font-size:16px;line-height:1.4;margin:0 0 4px}.item p{font-size:12px;color:var(--muted);margin:0 0 8px}.item button{background:var(--pink);border:0;border-radius:9px;color:white;font-weight:750;padding:8px 12px}
-.video-wrap{margin:16px 0}.video-wrap video{width:100%;background:black;border-radius:11px;max-height:420px}.small-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.small-head h2{margin:0 0 8px;font-size:20px}.status{min-height:1.5em}footer{padding:0 20px;color:#a995a6;font-size:11px;line-height:1.75}footer a{color:#eebad7}
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #080d19;
+  color: white;
+}
+main {
+  max-width: 620px;
+  margin: auto;
+  padding: 22px 16px 60px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.brand {
+  font-size: 25px;
+  font-weight: 850;
+}
+.brand span { color: #f6c453; }
+a {
+  color: #d1d9ee;
+  text-decoration: none;
+}
+.card {
+  background: #151e31;
+  border: 1px solid #303d55;
+  border-radius: 18px;
+  padding: 23px;
+  margin-top: 18px;
+}
+h1 {
+  font-size: 25px;
+  margin: 0 0 12px;
+}
+h2 { font-size: 19px; }
+p {
+  color: #bfc9db;
+  line-height: 1.6;
+}
+button {
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 8px 0;
+  background: #f6c453;
+  color: #121622;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+button.secondary {
+  background: #28354d;
+  color: white;
+}
+button:disabled { opacity: .55; }
+.hidden { display: none !important; }
+#message {
+  min-height: 26px;
+  white-space: pre-wrap;
+}
+.muted {
+  font-size: 13px;
+  color: #93a2ba;
+}
+.item {
+  background: #10192a;
+  border: 1px solid #33415a;
+  border-radius: 12px;
+  padding: 14px;
+  margin: 12px 0;
+}
+.item img {
+  width: 100%;
+  max-height: 270px;
+  object-fit: cover;
+  border-radius: 8px;
+}
 </style>
 </head>
+
 <body>
 <main>
-<header><h1><span>Miraz</span> TV</h1><a href="./index.html">← Home</a></header>
-<article>
-<section class="box hero"><div class="mark" aria-hidden="true">🔞</div><h2>18+ PREMIUM ZONE</h2><p>কেবল যাচাইকৃত প্রাপ্তবয়স্ক ও সক্রিয় Premium সদস্যদের জন্য।</p><span class="tag">🔒 ব্যক্তিগত PIN · Manual bKash/Nagad</span></section>
 
-<section class="box" id="loginSection">
-<h2 style="margin-top:0">Premium সদস্য লগইন</h2>
-<p class="text-muted">পেমেন্ট যাচাই ও প্রাপ্তবয়স্ক হওয়ার যাচাই সম্পন্ন হওয়ার পর অ্যাডমিন যে PIN দিয়েছেন সেটি ব্যবহার করুন।</p>
-<form id="loginForm" autocomplete="off">
-<label for="phone">মোবাইল নম্বর</label>
-<input id="phone" type="tel" inputmode="numeric" maxlength="11" minlength="11" pattern="01[0-9]{9}" placeholder="01XXXXXXXXX" required autocomplete="off"/>
-<label for="pin">ব্যক্তিগত ৪ সংখ্যার PIN</label>
-<input id="pin" type="password" inputmode="numeric" maxlength="4" minlength="4" pattern="[0-9]{4}" placeholder="••••" required autocomplete="off"/>
-<label class="check" for="adult"><input id="adult" type="checkbox" required/><span>আমি নিশ্চিত করছি আমার বয়স ১৮ বছর বা বেশি। অ্যাডমিনের যাচাইও প্রয়োজন।</span></label>
-<button type="submit" class="primary" id="loginButton">Unlock Premium Zone</button>
-</form>
-<div id="setupNotice" class="notice hidden">সার্ভার সেটআপ সম্পন্ন হয়নি। Premium সদস্য লগইন এখনো চালু হয়নি।</div>
-<div id="loginMessage" class="notice hidden" role="status" aria-live="polite"></div>
-<p class="text-muted">PIN কারও সঙ্গে শেয়ার করবেন না। ৫ বার ভুল PIN দিলে সাময়িকভাবে অ্যাকাউন্ট লক হতে পারে।</p>
+<header>
+  <div class="brand">Miraz <span>TV</span></div>
+  <a href="./index.html">← Home</a>
+</header>
+
+<section class="card" id="gate">
+  <h1>🔒 18+ Premium Zone</h1>
+
+  <p>
+    প্রিমিয়াম কনটেন্ট দেখতে অ্যাক্সেসের আবেদন করুন।
+    অনুমোদন Telegram-এর মাধ্যমে দেওয়া হবে।
+    মোবাইল নম্বর বা PIN লাগবে না।
+  </p>
+
+  <label>
+    <input type="checkbox" id="adult">
+    আমার বয়স ১৮ বছর বা তার বেশি।
+  </label>
+
+  <p id="statusText">অ্যাক্সেস যাচাই করা হচ্ছে…</p>
+
+  <button id="requestBtn" class="hidden">
+    🔔 Request Access
+  </button>
+
+  <button id="refreshBtn" class="secondary">
+    🔄 Check Approval Status
+  </button>
+
+  <p id="message" role="status" aria-live="polite"></p>
+
+  <p class="muted">
+    একই ব্রাউজারে অনুমোদন মনে রাখা হবে।
+    ব্রাউজারের ডেটা মুছে ফেললে নতুন আবেদন করতে হতে পারে।
+  </p>
 </section>
 
-<section class="box hidden" id="memberSection">
-<div class="small-head"><h2>স্বাগতম, <span id="memberName"></span></h2><button class="secondary" id="logoutButton" type="button">Logout</button></div>
-<p class="text-muted">Premium মেয়াদ: <strong id="expiry"></strong></p>
-<div id="catalog" aria-live="polite"></div>
-<div id="playerSection" class="video-wrap hidden"><h3 id="playerTitle"></h3><video controls playsinline preload="metadata" id="player" controlslist="nodownload"></video><p class="text-muted">ভিডিও দেখার জন্য ইন্টারনেট প্রয়োজন। প্লেব্যাক সমস্যা হলে আবার Play চাপুন।</p></div>
-<div id="memberMessage" class="notice hidden" role="status" aria-live="polite"></div>
+<section class="card hidden" id="premium">
+  <h1>✅ Premium Access Approved</h1>
+  <p>আপনার Premium Zone চালু হয়েছে।</p>
+
+  <div id="catalog">
+    <p>প্রিমিয়াম কনটেন্ট লোড হচ্ছে…</p>
+  </div>
+
+  <button class="secondary" id="checkAgain">
+    🔄 Recheck Access
+  </button>
 </section>
 
-<section class="box"><h2 style="margin-top:0">কীভাবে Premium সদস্য হবেন?</h2><p>Miraz TV অ্যাডমিনের সঙ্গে যোগাযোগ করুন। অফিসিয়াল নম্বর নিশ্চিত করে bKash বা Nagad-এ পেমেন্ট করুন। অ্যাডমিন পেমেন্ট ও বয়স যাচাই করে আপনার মোবাইল নম্বরের জন্য আলাদা PIN ও সদস্যপদের মেয়াদ নির্ধারণ করবেন।</p><p class="text-muted">অ্যাপে PIN বা পেমেন্টের স্ক্রিনশট পাঠাতে হবে না। এই পেজ নিজে কোনো পেমেন্ট গ্রহণ করে না।</p></section>
-</article>
-<footer>শুধু আইনসম্মত ও বিতরণের অনুমতি থাকা ভিডিও প্রকাশ করুন। বয়সের সাধারণ ঘোষণা স্বাধীন বয়স যাচাইয়ের বিকল্প নয়। Premium ভিডিওর লিংক সাময়িকভাবে শেয়ার করা সম্ভব; এটি DRM নয়। <a href="./index.html">Miraz TV</a></footer>
 </main>
-<script src="./premium-config.js"></script>
-<script src="./premium.js"></script>
-</body></html>
+
+<script>
+'use strict';
+
+const API =
+  'https://artkbcgblsckzvldnykn.supabase.co/functions/v1/miraz-telegram-approval-';
+
+const STORAGE_KEY = 'miraz_tv_premium_device_v1';
+
+const $ = id => document.getElementById(id);
+
+let deviceToken = localStorage.getItem(STORAGE_KEY);
+
+if (!/^[a-f0-9]{64}$/i.test(deviceToken || '')) {
+  const bytes = new Uint8Array(32);
+  crypto.getRandomValues(bytes);
+
+  deviceToken = Array.from(
+    bytes,
+    b => b.toString(16).padStart(2, '0')
+  ).join('');
+
+  localStorage.setItem(STORAGE_KEY, deviceToken);
+}
+
+let busy = false;
+
+async function callApi(action) {
+  const response = await fetch(API, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      action: action,
+      device_token: deviceToken
+    })
+  });
+
+  const data = await response.json().catch(() => ({}));
+
+  if (!response.ok || data.ok === false) {
+    throw new Error(
+      data.error || 'Server error (' + response.status + ')'
+    );
+  }
+
+  return data;
+}
+
+function showStatus(status) {
+  const approved = status === 'approved';
+
+  $('premium').classList.toggle('hidden', !approved);
+  $('gate').classList.toggle('hidden', approved);
+
+  $('requestBtn').classList.toggle(
+    'hidden',
+    status !== 'not_requested'
+  );
+
+  const labels = {
+    not_requested: 'এখনো অ্যাক্সেসের আবেদন করা হয়নি।',
+    pending: '⏳ আবেদন পাঠানো হয়েছে। অনুমোদনের অপেক্ষায় আছে।',
+    approved: '✅ অনুমোদিত',
+    denied: '❌ আবেদন বাতিল করা হয়েছে।',
+    revoked: '🚫 আপনার অ্যাক্সেস বন্ধ করা হয়েছে।'
+  };
+
+  $('statusText').textContent =
+    labels[status] || 'অবস্থা: ' + status;
+
+  if (approved) {
+    loadCatalog();
+  }
+}
+
+async function checkStatus(silent = false) {
+  if (busy) return;
+
+  busy = true;
+  $('refreshBtn').disabled = true;
+
+  if (!silent) {
+    $('message').textContent = 'যাচাই হচ্ছে…';
+  }
+
+  try {
+    const data = await callApi('status');
+
+    showStatus(data.status || 'not_requested');
+
+    if (!silent) {
+      $('message').textContent = '';
+    }
+  } catch (err) {
+    if (!silent) {
+      $('message').textContent =
+        'সমস্যা: ' + err.message;
+    }
+  } finally {
+    busy = false;
+    $('refreshBtn').disabled = false;
+  }
+}
+
+$('requestBtn').addEventListener('click', async () => {
+  if (!$('adult').checked) {
+    $('message').textContent =
+      'প্রথমে আপনার বয়স ১৮+ নিশ্চিত করুন।';
+    return;
+  }
+
+  if (busy) return;
+
+  busy = true;
+  $('requestBtn').disabled = true;
+  $('message').textContent = 'আবেদন পাঠানো হচ্ছে…';
+
+  try {
+    const data = await callApi('request');
+
+    showStatus(data.status || 'pending');
+
+    $('message').textContent =
+      'আবেদন পাঠানো হয়েছে। Telegram-এ Approve করার পর Check Approval Status চাপুন।';
+  } catch (err) {
+    $('message').textContent =
+      'সমস্যা: ' + err.message;
+  } finally {
+    busy = false;
+    $('requestBtn').disabled = false;
+  }
+});
+
+$('refreshBtn').addEventListener(
+  'click',
+  () => checkStatus()
+);
+
+$('checkAgain').addEventListener(
+  'click',
+  () => checkStatus()
+);
+
+function isPremium(x) {
+  const tag = String(
+    x.category || x.type || x.section || ''
+  ).toLowerCase();
+
+  return (
+    x.premium === true ||
+    x.isPremium === true ||
+    x.is_premium === true ||
+    tag.includes('premium') ||
+    tag.includes('18+')
+  );
+}
+
+async function loadCatalog() {
+  const target = $('catalog');
+
+  if (target.dataset.loaded) return;
+
+  try {
+    const res = await fetch('./content.json', {
+      cache: 'no-store'
+    });
+
+    if (!res.ok) {
+      throw new Error('Catalog unavailable');
+    }
+
+    const data = await res.json();
+
+    const all = Array.isArray(data)
+      ? data
+      : Array.isArray(data.contents)
+      ? data.contents
+      : Array.isArray(data.items)
+      ? data.items
+      : Array.isArray(data.content)
+      ? data.content
+      : [];
+
+    const items = all.filter(isPremium);
+
+    target.innerHTML = '';
+
+    if (!items.length) {
+      target.textContent =
+        'এখনো Premium কনটেন্ট যোগ করা হয়নি।';
+      return;
+    }
+
+    for (const x of items) {
+      const card = document.createElement('div');
+      card.className = 'item';
+
+      const title = document.createElement('h2');
+      title.textContent =
+        x.title || x.name || 'Premium Video';
+      card.append(title);
+
+      const poster =
+        x.poster || x.image || x.thumbnail;
+
+      if (poster) {
+        const img = document.createElement('img');
+        img.src = poster;
+        img.alt = title.textContent;
+        img.loading = 'lazy';
+        card.append(img);
+      }
+
+      if (x.description) {
+        const p = document.createElement('p');
+        p.textContent = x.description;
+        card.append(p);
+      }
+
+      const url =
+        x.video_url ||
+        x.videoUrl ||
+        x.video ||
+        x.url ||
+        x.link;
+
+      if (
+        typeof url === 'string' &&
+        /^https:\/\//i.test(url)
+      ) {
+        const a = document.createElement('a');
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.textContent = '▶ Watch Video';
+        card.append(a);
+      }
+
+      target.append(card);
+    }
+
+    target.dataset.loaded = '1';
+
+  } catch (err) {
+    target.textContent =
+      'Premium catalog এখনো প্রস্তুত নয়।';
+  }
+}
+
+checkStatus();
+
+setInterval(() => {
+  if (!document.hidden) {
+    checkStatus(true);
+  }
+}, 30000);
+
+</script>
+</body>
+</html>
