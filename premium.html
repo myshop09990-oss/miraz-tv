@@ -3,95 +3,154 @@
 <html lang="bn">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#0b1020">
+<meta name="theme-color" content="#080d19">
 <title>Miraz TV | Premium Zone</title>
+
 <style>
-:root {
-  color-scheme: dark;
-  font-family: system-ui, sans-serif;
+*{box-sizing:border-box}
+body{
+ margin:0;
+ background:#080d19;
+ color:#fff;
+ font-family:system-ui,sans-serif
 }
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: #080d19;
-  color: white;
+main{
+ max-width:680px;
+ margin:auto;
+ padding:20px 16px 70px
 }
-main {
-  max-width: 620px;
-  margin: auto;
-  padding: 22px 16px 60px;
+header{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:25px
 }
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
+.brand{font-size:27px;font-weight:900}
+.brand span{color:#f6c453}
+a{color:#d4e1ff;text-decoration:none}
+.card{
+ background:#151e31;
+ border:1px solid #34415a;
+ border-radius:18px;
+ padding:21px;
+ margin:16px 0
 }
-.brand {
-  font-size: 25px;
-  font-weight: 850;
+h1{font-size:25px;margin:0 0 12px}
+h2{font-size:20px}
+p{color:#b9c7df;line-height:1.6}
+.muted{font-size:13px;color:#99aac4}
+button{
+ border:0;
+ border-radius:12px;
+ background:#f6c453;
+ color:#171b27;
+ font-size:16px;
+ font-weight:700;
+ padding:13px 16px;
+ cursor:pointer
 }
-.brand span { color: #f6c453; }
-a {
-  color: #d1d9ee;
-  text-decoration: none;
+button:disabled{opacity:.55}
+.secondary{background:#293751;color:#fff}
+.danger{background:#6a2632;color:#fff}
+.full{width:100%;margin:7px 0}
+.hidden{display:none!important}
+input,textarea,select{
+ width:100%;
+ border:1px solid #46536b;
+ border-radius:10px;
+ background:#0b1424;
+ color:#fff;
+ font-size:16px;
+ padding:12px;
+ margin:7px 0 14px
 }
-.card {
-  background: #151e31;
-  border: 1px solid #303d55;
-  border-radius: 18px;
-  padding: 23px;
-  margin-top: 18px;
+input[type=checkbox]{
+ width:auto;
+ margin-right:8px
 }
-h1 {
-  font-size: 25px;
-  margin: 0 0 12px;
+label{display:block;font-weight:600}
+.check{
+ display:flex;
+ align-items:center;
+ margin:20px 0
 }
-h2 { font-size: 19px; }
-p {
-  color: #bfc9db;
-  line-height: 1.6;
+.toolbar{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ flex-wrap:wrap;
+ margin-bottom:15px
 }
-button {
-  width: 100%;
-  border: 0;
-  border-radius: 12px;
-  padding: 15px;
-  margin: 8px 0;
-  background: #f6c453;
-  color: #121622;
-  font-size: 16px;
-  font-weight: 800;
-  cursor: pointer;
+.folder-grid{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:12px
 }
-button.secondary {
-  background: #28354d;
-  color: white;
+.folder{
+ text-align:left;
+ background:#202d45;
+ color:white;
+ border:1px solid #3b4a63;
+ border-radius:14px;
+ min-height:100px;
+ padding:17px 12px
 }
-button:disabled { opacity: .55; }
-.hidden { display: none !important; }
-#message {
-  min-height: 26px;
-  white-space: pre-wrap;
+.folder .emoji{
+ display:block;
+ font-size:27px;
+ margin-bottom:8px
 }
-.muted {
-  font-size: 13px;
-  color: #93a2ba;
+.folder .name{
+ display:block;
+ font-size:14px;
+ overflow-wrap:anywhere
 }
-.item {
-  background: #10192a;
-  border: 1px solid #33415a;
-  border-radius: 12px;
-  padding: 14px;
-  margin: 12px 0;
+.folder .count{
+ display:block;
+ color:#9eafc9;
+ font-size:12px;
+ margin-top:6px
 }
-.item img {
-  width: 100%;
-  max-height: 270px;
-  object-fit: cover;
-  border-radius: 8px;
+.video-card{
+ background:#0e1729;
+ border:1px solid #36445d;
+ border-radius:14px;
+ padding:13px;
+ margin:13px 0
+}
+.video-card img{
+ width:100%;
+ max-height:250px;
+ object-fit:cover;
+ border-radius:10px
+}
+.video-card h3{overflow-wrap:anywhere}
+.watch{
+ display:block;
+ text-align:center;
+ background:#f6c453;
+ color:#161b28;
+ padding:12px;
+ border-radius:10px;
+ font-weight:800;
+ margin-top:12px
+}
+.small-actions{
+ display:flex;
+ gap:8px;
+ margin-top:10px
+}
+#message,#adminMessage{
+ white-space:pre-wrap;
+ min-height:24px
+}
+@media(min-width:500px){
+ .folder-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr))
+ }
 }
 </style>
 </head>
@@ -100,315 +159,688 @@ button:disabled { opacity: .55; }
 <main>
 
 <header>
-  <div class="brand">Miraz <span>TV</span></div>
-  <a href="./index.html">← Home</a>
+ <div class="brand">Miraz <span>TV</span></div>
+ <a href="./index.html">← Home</a>
 </header>
 
-<section class="card" id="gate">
-  <h1>🔒 18+ Premium Zone</h1>
+<section id="gate" class="card">
+ <h1>🔒 18+ Premium Zone</h1>
+ <p>
+  Premium কনটেন্ট দেখতে Telegram-এর মাধ্যমে
+  অনুমোদন নিন। মোবাইল নম্বর বা PIN লাগবে না।
+ </p>
 
-  <p>
-    প্রিমিয়াম কনটেন্ট দেখতে অ্যাক্সেসের আবেদন করুন।
-    অনুমোদন Telegram-এর মাধ্যমে দেওয়া হবে।
-    মোবাইল নম্বর বা PIN লাগবে না।
-  </p>
+ <label class="check">
+  <input type="checkbox" id="adult">
+  আমার বয়স ১৮ বছর বা তার বেশি।
+ </label>
 
-  <label>
-    <input type="checkbox" id="adult">
-    আমার বয়স ১৮ বছর বা তার বেশি।
-  </label>
+ <p id="statusText">অ্যাক্সেস যাচাই করা হচ্ছে…</p>
 
-  <p id="statusText">অ্যাক্সেস যাচাই করা হচ্ছে…</p>
+ <button id="requestBtn" class="full hidden">
+  🔔 Request Access
+ </button>
 
-  <button id="requestBtn" class="hidden">
-    🔔 Request Access
-  </button>
+ <button id="refreshBtn" class="secondary full">
+  🔄 Check Approval Status
+ </button>
 
-  <button id="refreshBtn" class="secondary">
-    🔄 Check Approval Status
-  </button>
-
-  <p id="message" role="status" aria-live="polite"></p>
-
-  <p class="muted">
-    একই ব্রাউজারে অনুমোদন মনে রাখা হবে।
-    ব্রাউজারের ডেটা মুছে ফেললে নতুন আবেদন করতে হতে পারে।
-  </p>
+ <p id="message"></p>
 </section>
 
-<section class="card hidden" id="premium">
-  <h1>✅ Premium Access Approved</h1>
-  <p>আপনার Premium Zone চালু হয়েছে।</p>
+<section id="premium" class="hidden">
 
-  <div id="catalog">
-    <p>প্রিমিয়াম কনটেন্ট লোড হচ্ছে…</p>
+ <div class="card">
+  <div class="toolbar">
+   <div>
+    <h1>🎬 Premium Library</h1>
+    <span class="muted">
+     Telegram Approved · ২২টি ফোল্ডার
+    </span>
+   </div>
+   <button id="recheck" class="secondary">
+    🔄 Check
+   </button>
   </div>
 
-  <button class="secondary" id="checkAgain">
-    🔄 Recheck Access
-  </button>
-</section>
+  <div id="folderView">
+   <input id="search"
+    type="search"
+    placeholder="🔎 ফোল্ডার খুঁজুন">
 
+   <div id="folderGrid" class="folder-grid"></div>
+  </div>
+
+  <div id="videoView" class="hidden">
+   <div class="toolbar">
+    <button id="backFolders" class="secondary">
+     ← All Folders
+    </button>
+    <span id="folderCount" class="muted"></span>
+   </div>
+
+   <h2 id="folderTitle"></h2>
+   <div id="videoList"></div>
+  </div>
+ </div>
+
+ <div class="card">
+  <button id="adminToggle" class="secondary full">
+   ⚙️ Admin: Add / Manage Videos
+  </button>
+
+  <div id="adminPanel" class="hidden">
+
+   <p class="muted">
+    শুধু মালিকের জন্য। GitHub fine-grained
+    access token প্রয়োজন। Token এই পেজে
+    সংরক্ষণ করা হবে না।
+   </p>
+
+   <label>GitHub Access Token</label>
+   <input id="ghToken" type="password"
+    autocomplete="off"
+    placeholder="github_pat_...">
+
+   <label>Folder</label>
+   <select id="videoFolder"></select>
+
+   <label>Video Title</label>
+   <input id="videoTitle"
+    placeholder="ভিডিওর নাম">
+
+   <label>Video URL</label>
+   <input id="videoUrl"
+    type="url"
+    placeholder="https://...">
+
+   <label>Poster URL (optional)</label>
+   <input id="posterUrl"
+    type="url"
+    placeholder="https://...">
+
+   <label>Description (optional)</label>
+   <textarea id="videoDesc" rows="3"></textarea>
+
+   <button id="saveVideo" class="full">
+    ➕ Publish Video
+   </button>
+
+   <button id="reloadVideos" class="secondary full">
+    🔄 Refresh Library
+   </button>
+
+   <p id="adminMessage"></p>
+  </div>
+ </div>
+
+</section>
 </main>
 
 <script>
 'use strict';
 
 const API =
-  'https://artkbcgblsckzvldnykn.supabase.co/functions/v1/miraz-telegram-approval-';
+'https://artkbcgblsckzvldnykn.supabase.co/functions/v1/miraz-telegram-approval-';
 
-const STORAGE_KEY = 'miraz_tv_premium_device_v1';
+const GH_API =
+'https://api.github.com/repos/myshop09990-oss/miraz-tv/contents/premium-content.json';
 
-const $ = id => document.getElementById(id);
+const STORAGE_KEY='miraz_tv_premium_device_v1';
 
-let deviceToken = localStorage.getItem(STORAGE_KEY);
+const AGE_KEY='miraz_tv_age_confirmed_v1';
 
-if (!/^[a-f0-9]{64}$/i.test(deviceToken || '')) {
-  const bytes = new Uint8Array(32);
-  crypto.getRandomValues(bytes);
+const $=id=>document.getElementById(id);
 
-  deviceToken = Array.from(
-    bytes,
-    b => b.toString(16).padStart(2, '0')
-  ).join('');
+const FOLDERS=[
+ ['movies','Movies'],
+ ['web-series','Web Series'],
+ ['pornhub','pornhub.com'],
+ ['xvideos','xvideos.com'],
+ ['xhamster','xhamster.com'],
+ ['onlyfans','onlyfans.com'],
+ ['xvideos-es','xvideos.es'],
+ ['njavtv','njavtv.com'],
+ ['rutube','rutube.ru'],
+ ['yandex-tr','yandex.com.tr'],
+ ['xhamsterlive','xhamsterlive.com'],
+ ['fpo','fpo.xxx'],
+ ['dlsite','dlsite.com'],
+ ['f95zone','f95zone.to'],
+ ['xgroovy','xgroovy.com'],
+ ['videoxx','videoxx.com'],
+ ['pornpics','pornpics.com'],
+ ['qorno','qorno.com'],
+ ['socialmediagirls','socialmediagirls.com'],
+ ['superchatlive','superchatlive.com'],
+ ['cityheaven','cityheaven.net'],
+ ['beeg','beeg.com']
+];
 
-  localStorage.setItem(STORAGE_KEY, deviceToken);
+let items=[];
+let currentFolder=null;
+let approved=false;
+let busy=false;
+let libraryLoaded=false;
+let lastStatus='loading';
+
+let deviceToken=localStorage.getItem(STORAGE_KEY);
+
+if(!/^[a-f0-9]{64}$/i.test(deviceToken||'')){
+ const bytes=new Uint8Array(32);
+ crypto.getRandomValues(bytes);
+
+ deviceToken=Array.from(
+  bytes,
+  b=>b.toString(16).padStart(2,'0')
+ ).join('');
+
+ localStorage.setItem(STORAGE_KEY,deviceToken);
 }
 
-let busy = false;
+$('adult').checked=
+ localStorage.getItem(AGE_KEY)==='yes';
 
-async function callApi(action) {
-  const response = await fetch(API, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      action: action,
-      device_token: deviceToken
-    })
-  });
-
-  const data = await response.json().catch(() => ({}));
-
-  if (!response.ok || data.ok === false) {
-    throw new Error(
-      data.error || 'Server error (' + response.status + ')'
-    );
-  }
-
-  return data;
-}
-
-function showStatus(status) {
-  const approved = status === 'approved';
-
-  $('premium').classList.toggle('hidden', !approved);
-  $('gate').classList.toggle('hidden', approved);
-
-  $('requestBtn').classList.toggle(
-    'hidden',
-    status !== 'not_requested'
-  );
-
-  const labels = {
-    not_requested: 'এখনো অ্যাক্সেসের আবেদন করা হয়নি।',
-    pending: '⏳ আবেদন পাঠানো হয়েছে। অনুমোদনের অপেক্ষায় আছে।',
-    approved: '✅ অনুমোদিত',
-    denied: '❌ আবেদন বাতিল করা হয়েছে।',
-    revoked: '🚫 আপনার অ্যাক্সেস বন্ধ করা হয়েছে।'
-  };
-
-  $('statusText').textContent =
-    labels[status] || 'অবস্থা: ' + status;
-
-  if (approved) {
-    loadCatalog();
-  }
-}
-
-async function checkStatus(silent = false) {
-  if (busy) return;
-
-  busy = true;
-  $('refreshBtn').disabled = true;
-
-  if (!silent) {
-    $('message').textContent = 'যাচাই হচ্ছে…';
-  }
-
-  try {
-    const data = await callApi('status');
-
-    showStatus(data.status || 'not_requested');
-
-    if (!silent) {
-      $('message').textContent = '';
-    }
-  } catch (err) {
-    if (!silent) {
-      $('message').textContent =
-        'সমস্যা: ' + err.message;
-    }
-  } finally {
-    busy = false;
-    $('refreshBtn').disabled = false;
-  }
-}
-
-$('requestBtn').addEventListener('click', async () => {
-  if (!$('adult').checked) {
-    $('message').textContent =
-      'প্রথমে আপনার বয়স ১৮+ নিশ্চিত করুন।';
-    return;
-  }
-
-  if (busy) return;
-
-  busy = true;
-  $('requestBtn').disabled = true;
-  $('message').textContent = 'আবেদন পাঠানো হচ্ছে…';
-
-  try {
-    const data = await callApi('request');
-
-    showStatus(data.status || 'pending');
-
-    $('message').textContent =
-      'আবেদন পাঠানো হয়েছে। Telegram-এ Approve করার পর Check Approval Status চাপুন।';
-  } catch (err) {
-    $('message').textContent =
-      'সমস্যা: ' + err.message;
-  } finally {
-    busy = false;
-    $('requestBtn').disabled = false;
-  }
+$('adult').addEventListener('change',()=>{
+ if($('adult').checked){
+  localStorage.setItem(AGE_KEY,'yes');
+ }else{
+  localStorage.removeItem(AGE_KEY);
+ }
+ showStatus(lastStatus);
 });
 
-$('refreshBtn').addEventListener(
-  'click',
-  () => checkStatus()
-);
+async function callApi(action){
+ const r=await fetch(API,{
+  method:'POST',
+  headers:{
+   'Content-Type':'application/json'
+  },
+  body:JSON.stringify({
+   action,
+   device_token:deviceToken
+  })
+ });
 
-$('checkAgain').addEventListener(
-  'click',
-  () => checkStatus()
-);
+ const data=await r.json().catch(()=>({}));
 
-function isPremium(x) {
-  const tag = String(
-    x.category || x.type || x.section || ''
-  ).toLowerCase();
+ if(!r.ok||data.ok===false){
+  throw Error(data.error||'Server error '+r.status);
+ }
 
-  return (
-    x.premium === true ||
-    x.isPremium === true ||
-    x.is_premium === true ||
-    tag.includes('premium') ||
-    tag.includes('18+')
-  );
+ return data;
 }
 
-async function loadCatalog() {
-  const target = $('catalog');
+function showStatus(status){
+ lastStatus=status;
+ approved=status==='approved';
 
-  if (target.dataset.loaded) return;
+ const canView=approved&&$('adult').checked;
 
-  try {
-    const res = await fetch('./content.json', {
-      cache: 'no-store'
-    });
+ $('premium').classList.toggle('hidden',!canView);
+ $('gate').classList.toggle('hidden',canView);
 
-    if (!res.ok) {
-      throw new Error('Catalog unavailable');
-    }
+ $('requestBtn').classList.toggle(
+  'hidden',
+  status!=='not_requested'
+ );
 
-    const data = await res.json();
+ const labels={
+  loading:'অ্যাক্সেস যাচাই করা হচ্ছে…',
+  not_requested:'এখনো আবেদন করা হয়নি।',
+  pending:'⏳ Telegram অনুমোদনের অপেক্ষায় আছে।',
+  approved:'✅ Access Approved',
+  denied:'❌ আবেদন বাতিল হয়েছে।',
+  revoked:'🚫 অ্যাক্সেস বাতিল করা হয়েছে।'
+ };
 
-    const all = Array.isArray(data)
-      ? data
-      : Array.isArray(data.contents)
-      ? data.contents
-      : Array.isArray(data.items)
-      ? data.items
-      : Array.isArray(data.content)
-      ? data.content
-      : [];
+ $('statusText').textContent=
+  labels[status]||'Status: '+status;
 
-    const items = all.filter(isPremium);
+ if(canView&&!libraryLoaded){
+  loadLibrary();
+ }
 
-    target.innerHTML = '';
+ if(!canView){
+  currentFolder=null;
+  items=[];
+  libraryLoaded=false;
+  $('folderGrid').replaceChildren();
+  $('videoList').replaceChildren();
+  $('adminPanel').classList.add('hidden');
+  $('ghToken').value='';
+ }
+}
 
-    if (!items.length) {
-      target.textContent =
-        'এখনো Premium কনটেন্ট যোগ করা হয়নি।';
-      return;
-    }
+async function checkStatus(silent=false){
+ if(busy)return;
 
-    for (const x of items) {
-      const card = document.createElement('div');
-      card.className = 'item';
+ busy=true;
+ $('refreshBtn').disabled=true;
 
-      const title = document.createElement('h2');
-      title.textContent =
-        x.title || x.name || 'Premium Video';
-      card.append(title);
+ if(!silent){
+  $('message').textContent='যাচাই হচ্ছে…';
+ }
 
-      const poster =
-        x.poster || x.image || x.thumbnail;
+ try{
+  const d=await callApi('status');
+  showStatus(d.status||'not_requested');
 
-      if (poster) {
-        const img = document.createElement('img');
-        img.src = poster;
-        img.alt = title.textContent;
-        img.loading = 'lazy';
-        card.append(img);
-      }
-
-      if (x.description) {
-        const p = document.createElement('p');
-        p.textContent = x.description;
-        card.append(p);
-      }
-
-      const url =
-        x.video_url ||
-        x.videoUrl ||
-        x.video ||
-        x.url ||
-        x.link;
-
-      if (
-        typeof url === 'string' &&
-        /^https:\/\//i.test(url)
-      ) {
-        const a = document.createElement('a');
-        a.href = url;
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-        a.textContent = '▶ Watch Video';
-        card.append(a);
-      }
-
-      target.append(card);
-    }
-
-    target.dataset.loaded = '1';
-
-  } catch (err) {
-    target.textContent =
-      'Premium catalog এখনো প্রস্তুত নয়।';
+  if(!silent){
+   $('message').textContent='';
   }
+ }catch(e){
+  if(!silent){
+   $('message').textContent='সমস্যা: '+e.message;
+  }
+ }finally{
+  busy=false;
+  $('refreshBtn').disabled=false;
+ }
 }
+
+$('requestBtn').addEventListener('click',async()=>{
+ if(!$('adult').checked){
+  $('message').textContent=
+   'প্রথমে ১৮+ নিশ্চিত করুন।';
+  return;
+ }
+
+ if(busy)return;
+
+ busy=true;
+ $('requestBtn').disabled=true;
+ $('message').textContent='আবেদন পাঠানো হচ্ছে…';
+
+ try{
+  const d=await callApi('request');
+  showStatus(d.status||'pending');
+
+  $('message').textContent=
+   'Telegram-এ Approve করার পর Check Approval Status চাপুন।';
+ }catch(e){
+  $('message').textContent='সমস্যা: '+e.message;
+ }finally{
+  busy=false;
+  $('requestBtn').disabled=false;
+ }
+});
+
+$('refreshBtn').onclick=()=>checkStatus();
+$('recheck').onclick=()=>checkStatus();
+
+async function loadLibrary(){
+ if(!approved||!$('adult').checked)return;
+
+ try{
+  const r=await fetch(
+   './premium-content.json?v='+Date.now(),
+   {cache:'no-store'}
+  );
+
+  if(r.status===404){
+   items=[];
+  }else if(!r.ok){
+   throw Error('Library HTTP '+r.status);
+  }else{
+   const data=await r.json();
+   items=Array.isArray(data.items)?data.items:[];
+  }
+
+  libraryLoaded=true;
+  renderFolders();
+
+  if(currentFolder){
+   renderVideos();
+  }
+
+ }catch(e){
+  $('folderGrid').textContent=
+   'ভিডিও তালিকা লোড হয়নি: '+e.message;
+ }
+}
+
+function make(tag,text,cls){
+ const e=document.createElement(tag);
+
+ if(text!==undefined){
+  e.textContent=text;
+ }
+
+ if(cls){
+  e.className=cls;
+ }
+
+ return e;
+}
+
+function renderFolders(){
+ const grid=$('folderGrid');
+ grid.replaceChildren();
+
+ const q=$('search').value.trim().toLowerCase();
+
+ for(const [id,name] of FOLDERS){
+  if(q&&!name.toLowerCase().includes(q)){
+   continue;
+  }
+
+  const count=items.filter(
+   v=>v.folder===id
+  ).length;
+
+  const btn=make('button',undefined,'folder');
+
+  btn.append(
+   make('span','📁','emoji'),
+   make('span',name,'name'),
+   make('span',count+' videos','count')
+  );
+
+  btn.addEventListener('click',()=>{
+   currentFolder=id;
+   renderVideos();
+  });
+
+  grid.append(btn);
+ }
+}
+
+function renderVideos(){
+ const found=FOLDERS.find(
+  f=>f[0]===currentFolder
+ );
+
+ const name=found?found[1]:'Folder';
+
+ $('folderTitle').textContent='📁 '+name;
+
+ $('folderView').classList.add('hidden');
+ $('videoView').classList.remove('hidden');
+
+ const list=$('videoList');
+ list.replaceChildren();
+
+ const videos=items.filter(
+  v=>v.folder===currentFolder
+ );
+
+ $('folderCount').textContent=
+  videos.length+' videos';
+
+ if(!videos.length){
+  list.append(
+   make('p','এই ফোল্ডারে এখনো ভিডিও যোগ করা হয়নি।')
+  );
+  return;
+ }
+
+ for(const v of videos){
+  const card=make('div',undefined,'video-card');
+
+  if(
+   typeof v.poster==='string' &&
+   /^https:\/\//i.test(v.poster)
+  ){
+   const img=document.createElement('img');
+   img.src=v.poster;
+   img.loading='lazy';
+   img.alt=v.title||'Video poster';
+   img.referrerPolicy='no-referrer';
+   card.append(img);
+  }
+
+  card.append(make('h3',v.title||'Video'));
+
+  if(v.description){
+   card.append(make('p',v.description));
+  }
+
+  if(
+   typeof v.url==='string' &&
+   /^https:\/\//i.test(v.url)
+  ){
+   const link=make('a','▶ Watch Video','watch');
+   link.href=v.url;
+   link.target='_blank';
+   link.rel='noopener noreferrer';
+   card.append(link);
+  }
+
+  if(!$('adminPanel').classList.contains('hidden')){
+   const controls=make('div',undefined,'small-actions');
+   const del=make('button','🗑 Delete','danger');
+
+   del.onclick=()=>deleteVideo(v.id);
+
+   controls.append(del);
+   card.append(controls);
+  }
+
+  list.append(card);
+ }
+}
+
+$('backFolders').onclick=()=>{
+ currentFolder=null;
+ $('videoView').classList.add('hidden');
+ $('folderView').classList.remove('hidden');
+};
+
+$('search').addEventListener('input',renderFolders);
+
+$('adminToggle').onclick=()=>{
+ $('adminPanel').classList.toggle('hidden');
+
+ if(currentFolder){
+  renderVideos();
+ }
+};
+
+for(const [id,name] of FOLDERS){
+ const opt=document.createElement('option');
+ opt.value=id;
+ opt.textContent=name;
+ $('videoFolder').append(opt);
+}
+
+function githubHeaders(){
+ const token=$('ghToken').value.trim();
+
+ if(!token){
+  throw Error('GitHub token দিন।');
+ }
+
+ return {
+  'Accept':'application/vnd.github+json',
+  'Authorization':'Bearer '+token,
+  'X-GitHub-Api-Version':'2022-11-28'
+ };
+}
+
+async function readGithub(){
+ const headers=githubHeaders();
+
+ const r=await fetch(
+  GH_API+'?ref=main',
+  {headers,cache:'no-store'}
+ );
+
+ if(r.status===404){
+  return {sha:null,items:[]};
+ }
+
+ const result=await r.json();
+
+ if(!r.ok){
+  throw Error(result.message||'GitHub read failed');
+ }
+
+ const raw=atob(result.content.replace(/\s/g,''));
+
+ const bytes=Uint8Array.from(
+  raw,c=>c.charCodeAt(0)
+ );
+
+ const data=JSON.parse(
+  new TextDecoder().decode(bytes)
+ );
+
+ return {
+  sha:result.sha,
+  items:Array.isArray(data.items)?data.items:[]
+ };
+}
+
+function base64Utf8(s){
+ const bytes=new TextEncoder().encode(s);
+ let binary='';
+
+ for(const b of bytes){
+  binary+=String.fromCharCode(b);
+ }
+
+ return btoa(binary);
+}
+
+async function writeGithub(next,sha,message){
+ const payload={
+  message,
+  branch:'main',
+  content:base64Utf8(
+   JSON.stringify({version:1,items:next},null,2)
+  )
+ };
+
+ if(sha){
+  payload.sha=sha;
+ }
+
+ const r=await fetch(GH_API,{
+  method:'PUT',
+  headers:{
+   ...githubHeaders(),
+   'Content-Type':'application/json'
+  },
+  body:JSON.stringify(payload)
+ });
+
+ const result=await r.json().catch(()=>({}));
+
+ if(!r.ok){
+  throw Error(result.message||'GitHub publish failed');
+ }
+
+ items=next;
+ libraryLoaded=true;
+
+ renderFolders();
+
+ if(currentFolder){
+  renderVideos();
+ }
+}
+
+$('saveVideo').onclick=async()=>{
+ const title=$('videoTitle').value.trim();
+ const url=$('videoUrl').value.trim();
+ const poster=$('posterUrl').value.trim();
+ const description=$('videoDesc').value.trim();
+ const folder=$('videoFolder').value;
+
+ if(!title||!/^https:\/\//i.test(url)){
+  $('adminMessage').textContent=
+   'ভিডিওর নাম এবং HTTPS ভিডিও লিংক দিন।';
+  return;
+ }
+
+ if(poster&&!/^https:\/\//i.test(poster)){
+  $('adminMessage').textContent=
+   'Poster URL অবশ্যই HTTPS হতে হবে।';
+  return;
+ }
+
+ const btn=$('saveVideo');
+ btn.disabled=true;
+
+ $('adminMessage').textContent=
+  'GitHub-এ Publish হচ্ছে…';
+
+ try{
+  const remote=await readGithub();
+
+  const next=[
+   ...remote.items,
+   {
+    id:crypto.randomUUID(),
+    folder,
+    title,
+    url,
+    poster,
+    description,
+    created_at:new Date().toISOString()
+   }
+  ];
+
+  await writeGithub(
+   next,
+   remote.sha,
+   'Add premium video: '+title.slice(0,60)
+  );
+
+  $('videoTitle').value='';
+  $('videoUrl').value='';
+  $('posterUrl').value='';
+  $('videoDesc').value='';
+
+  $('adminMessage').textContent=
+   '✅ ভিডিও Publish হয়েছে।';
+
+ }catch(e){
+  $('adminMessage').textContent=
+   '❌ '+e.message;
+ }finally{
+  btn.disabled=false;
+ }
+};
+
+async function deleteVideo(id){
+ if(!confirm('ভিডিওটি মুছে ফেলবে?')){
+  return;
+ }
+
+ $('adminMessage').textContent='Delete হচ্ছে…';
+
+ try{
+  const remote=await readGithub();
+
+  await writeGithub(
+   remote.items.filter(v=>v.id!==id),
+   remote.sha,
+   'Remove premium video'
+  );
+
+  $('adminMessage').textContent=
+   '✅ ভিডিও মুছে ফেলা হয়েছে।';
+
+ }catch(e){
+  $('adminMessage').textContent=
+   '❌ '+e.message;
+ }
+}
+
+$('reloadVideos').onclick=()=>{
+ libraryLoaded=false;
+ loadLibrary();
+};
 
 checkStatus();
 
-setInterval(() => {
-  if (!document.hidden) {
-    checkStatus(true);
-  }
-}, 30000);
-
+setInterval(()=>{
+ if(!document.hidden){
+  checkStatus(true);
+ }
+},30000);
 </script>
 </body>
 </html>
