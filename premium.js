@@ -18,7 +18,7 @@ async function call(action,extra={}){
   try{
     const res=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify(action === 'login'
-  ? {phone:extra.phone,pin:extra.pin}
+  ? {? {action:'login',phone:extra.phone,pin:extra.pin}}
   : {action,...extra}
     const data=await res.json();
     if(!res.ok||data?.ok!==true)throw new Error(data?.error||'সার্ভারের সঙ্গে যোগাযোগ করা যাচ্ছে না।');
