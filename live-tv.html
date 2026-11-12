@@ -82,7 +82,7 @@
     player.addEventListener('error', () => { status.textContent = 'ভিডিও চালানো যায়নি।'; });
     document.getElementById('demoBtn').addEventListener('click', () => {
       // Public HLS example from Video.js documentation. This is VOD, NOT live TV.
-      playHls('https://stream.mux.com/BV3YZtogl89mg9VcNBhhnHm02Y34zI1nlMuMQfAbl3dM.m3u8', 'ডেমো ভিডিও');
+      player.src = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4'; player.load(); player.play();
     });
     window.addEventListener('pagehide', stopCurrent);
   </script>
