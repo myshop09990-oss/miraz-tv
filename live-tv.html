@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#160a1d">
+  <title>Live TV | Miraz TV</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, -apple-system, 'Noto Sans Bengali', sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #fff; background: #0e0813; }
+    header { padding: 19px 16px; display: flex; align-items: center; gap: 12px; background: #1d1025; border-bottom: 1px solid #39203f; }
+    header a { color: #e8d4ed; text-decoration: none; font-size: 14px; }
+    header strong { font-size: 20px; color: #f1c4e5; }
+    main { max-width: 760px; margin: auto; padding: 20px 16px 48px; }
+    h1 { font-size: 24px; margin: 0 0 6px; }
+    p { line-height: 1.6; color: #c5b8ca; }
+    .hint { margin-top: 4px; font-size: 14px; }
+    .player { background: #000; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; border: 1px solid #462b4d; }
+    video { display: block; width: 100%; height: 100%; background: #000; }
+    #status { min-height: 42px; font-size: 14px; margin: 10px 0 22px; color: #d6c7da; }
+    h2 { font-size: 18px; margin: 18px 0 12px; }
+    .channels { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+    button { text-align: left; font: inherit; color: white; background: #24142c; border: 1px solid #503055; border-radius: 14px; padding: 15px; cursor: pointer; min-height: 98px; }
+    button:focus-visible { outline: 3px solid #e6a2d3; }
+    button[disabled] { opacity: .6; cursor: not-allowed; }
+    .name { display: block; font-weight: 700; margin-bottom: 8px; }
+    .meta { font-size: 12px; color: #d7b8da; }
+    .demo { border-color: #a94c8d; }
+    .notice { margin-top: 24px; padding: 15px; border-radius: 12px; background: #211629; border: 1px solid #45314c; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <header><a href="./index.html" aria-label="Back to Miraz TV">← ফিরে যাও</a><strong>Miraz TV</strong></header>
+  <main>
+    <h1>📺 Live TV</h1>
+    <p class="hint">চ্যানেলে চাপ দিলে এই পেজের ভেতরেই ভিডিও চলবে।</p>
+    <div class="player"><video id="tvPlayer" controls playsinline preload="none" aria-label="Miraz TV player"></video></div>
+    <p id="status" role="status" aria-live="polite">প্রথমে নিচের পরীক্ষামূলক ভিডিও চালিয়ে দেখো।</p>
+    <h2>চ্যানেলসমূহ</h2>
+    <div class="channels">
+      <button type="button" class="demo" id="demoBtn"><span class="name">▶ Player Test</span><span class="meta">ডেমো ভিডিও — লাইভ সম্প্রচার নয়</span></button>
+      <button type="button" disabled><span class="name">Zee Bangla</span><span class="meta">অনুমোদিত লাইভ URL প্রয়োজন</span></button>
+      <button type="button" disabled><span class="name">Star Jalsha</span><span class="meta">অনুমোদিত লাইভ URL প্রয়োজন</span></button>
+      <button type="button" disabled><span class="name">Colors Bangla</span><span class="meta">অনুমোদিত লাইভ URL প্রয়োজন</span></button>
+    </div>
+    <div class="notice">ℹ️ এই ফাইলে কোনো টিভি চ্যানেলের অননুমোদিত স্ট্রিম নেই। চ্যানেলগুলোর বৈধ HLS URL বা embed অনুমতি পাওয়া গেলে সেগুলো সক্রিয় করা যাবে।</div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
+  <script>
+    const player = document.getElementById('tvPlayer');
+    const status = document.getElementById('status');
+    let hls = null;
+    function stopCurrent() {
+      player.pause();
+      player.removeAttribute('src');
+      player.load();
+      if (hls) { hls.destroy(); hls = null; }
+    }
+    function playHls(url, label) {
+      stopCurrent();
+      status.textContent = label + ' লোড হচ্ছে…';
+      if (player.canPlayType('application/vnd.apple.mpegurl')) {
+        player.src = url;
+        player.play().catch(() => { status.textContent = '▶ Play বাটনে চাপো।'; });
+      } else if (window.Hls && Hls.isSupported()) {
+        hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(player);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          status.textContent = label + ' প্রস্তুত।';
+          player.play().catch(() => { status.textContent = '▶ Play বাটনে চাপো।'; });
+        });
+        hls.on(Hls.Events.ERROR, (_event, data) => {
+          if (data.fatal) status.textContent = 'ভিডিও চালানো যাচ্ছে না। স্ট্রিম, CORS বা নেটওয়ার্ক পরীক্ষা করো।';
+        });
+      } else {
+        status.textContent = 'এই ব্রাউজারে HLS ভিডিও চালানো সমর্থিত নয়।';
+      }
+    }
+    player.addEventListener('playing', () => { status.textContent = 'ভিডিও চলছে।'; });
+    player.addEventListener('error', () => { status.textContent = 'ভিডিও চালানো যায়নি।'; });
+    document.getElementById('demoBtn').addEventListener('click', () => {
+      // Public HLS example from Video.js documentation. This is VOD, NOT live TV.
+      playHls('https://stream.mux.com/BV3YZtogl89mg9VcNBhhnHm02Y34zI1nlMuMQfAbl3dM.m3u8', 'ডেমো ভিডিও');
+    });
+    window.addEventListener('pagehide', stopCurrent);
+  </script>
+</body>
+</html>
