@@ -76,10 +76,10 @@
 <a href="https://www.itvbd.com/" target="_blank" rel="noopener noreferrer"><strong>📺 Independent TV</strong><small>অফিসিয়াল ওয়েবসাইট ↗</small></a>
 <a href="https://dbcnews.tv/" target="_blank" rel="noopener noreferrer"><strong>📺 DBC News</strong><small>অফিসিয়াল ওয়েবসাইট ↗</small></a>
 
-<a ...>📺 DBC News ...</a>
+
 </div>
 </main>
-  </main>
+  
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
   <script>
     const player = document.getElementById('tvPlayer');
@@ -92,7 +92,7 @@
       if (hls) { hls.destroy(); hls = null; }
     }
     function playHls(url, label) {
-      stopCurrent();
+      stopCurrent()
       status.textContent = label + ' লোড হচ্ছে…';
       if (player.canPlayType('application/vnd.apple.mpegurl')) {
         player.src = url;
