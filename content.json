@@ -136,6 +136,30 @@
   ],
   "webSeries": [
     {
+      "id": 2,
+      "title": "Bachelor Point",
+      "year": 2026,
+      "genre": "বাংলা",
+      "poster": "https://pub-644e82fe5b774bd8a3b3dc780c18ff54.r2.dev/bachelor-point-2025-s05e129-13_DCbXqNVt.jpg",
+      "description": "Director : Kajal Arefin Ome\nCast(s) : Chashi Alam,Marzuk Russell,Saidur Rahman Pavel,Ziaul Hoque Polash,Faria Shahrin,Lamima Lam\nLanguage : Bengali\nQuality : WEB-DL",
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": [
+            {
+              "id": 1,
+              "number": 134,
+              "title": "Bachelor Point (2025) S05E129-134 Bengali BongoBD",
+              "image": "https://pub-644e82fe5b774bd8a3b3dc780c18ff54.r2.dev/bachelor-point-2025-s05e129-13_DCbXqNVt.jpg",
+              "video": "",
+              "duration": 50,
+              "description": "Director : Kajal Arefin Ome\nCast(s) : Chashi Alam,Marzuk Russell,Saidur Rahman Pavel,Ziaul Hoque Polash,Faria Shahrin,Lamima Lam"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": 1,
       "title": "Kurlus Osman",
       "year": 2019,
