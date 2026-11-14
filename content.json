@@ -124,6 +124,16 @@
   ],
   "movies": [
     {
+      "id": 2,
+      "title": "jailer 2 bangla",
+      "year": 2026,
+      "genre": "বাংলা",
+      "duration": 120,
+      "poster": "https://pub-644e82fe5b774bd8a3b3dc780c18ff54.r2.dev/Backelor-Point/ab67616d0000b2736a07d4231adb84ee13a34afc.jpeg",
+      "video": "https://pub-644e82fe5b774bd8a3b3dc780c18ff54.r2.dev/Backelor-Point/jailer%202%20bangla%20dubbing.mkv",
+      "description": "জেলার ২’ (Jailer 2) সিনেমার কাহিনি শুরু হয় প্রথম পর্বের ঠিক তিন মাস পর থেকে। নিজের ছেলে অর্জুনকে হত্যা করার পর অবসরপ্রাপ্ত জেলার টাইগার মুথুভেল পান্ডিয়ান (রজনীকান্ত) তার পরিবারকে নিয়ে কেরালা-তামিলনাড়ু সীমান্তে শান্তিপূর্ণ জীবন কাটানোর চেষ্টা করেন।"
+    },
+    {
       "id": 1,
       "title": "Saptadingar Guptodhon",
       "year": 2026,
