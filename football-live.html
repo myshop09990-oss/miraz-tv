@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="bn"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#100912"><title>Football Live | Miraz TV</title>
+<style>
+:root{--bg:#0d0710;--panel:#1b0e1e;--line:#42203c;--pink:#e6449e;--muted:#b7a7b8;color-scheme:dark;font-family:system-ui,-apple-system,"Noto Sans Bengali","Hind Siliguri",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:#080509;color:#faf6fb}.app{max-width:850px;min-height:100vh;margin:auto;background:var(--bg);padding-bottom:35px}
+header{position:sticky;top:0;z-index:3;background:#100912;border-bottom:1px solid #301b32;padding:17px 20px;display:flex;align-items:center;gap:15px}
+a{color:#ffd1e9}header a{text-decoration:none;font-size:14px}header strong{font-size:22px}header strong span{color:var(--pink)}
+main{padding:20px}.hero{padding:21px;border:1px solid #633052;border-radius:20px;background:radial-gradient(circle at 90% 10%,#6b1d50 0,transparent 43%),linear-gradient(130deg,#29102b,#120b18)}
+h1{font-size:25px;margin:0 0 6px}.hero p,.muted{color:var(--muted);font-size:13px;margin:0}.live-dot{color:#ff647c;font-weight:800;font-size:12px}
+.tabs{display:flex;gap:9px;margin:19px 0;flex-wrap:wrap}.tabs button,.filter{border:1px solid #58304f;background:#211225;color:#f9eaf5;border-radius:25px;padding:9px 15px;font:inherit}.tabs button.active{background:var(--pink);border-color:var(--pink);color:white;font-weight:750}
+.section{display:flex;align-items:center;justify-content:space-between;margin:22px 0 12px}.section h2{font-size:17px;margin:0}.cards{display:grid;gap:12px}.match{border:1px solid #42203c;background:var(--panel);border-radius:17px;padding:15px}.match-top{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px;margin-bottom:13px}.teams{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;text-align:center}.team{font-weight:750;font-size:14px}.flag{display:block;font-size:27px;margin-bottom:5px}.score{font-size:22px;font-weight:850}.status{font-size:11px;color:#ff789f;font-weight:800}.match-foot{border-top:1px solid #38213a;margin-top:13px;padding-top:11px;display:flex;justify-content:space-between;align-items:center;gap:10px}.watch{border:0;border-radius:9px;background:var(--pink);color:white;padding:9px 13px;font-weight:750;text-decoration:none;font-size:12px}.watch.disabled{background:#3a293b;color:#c7b8c9}.notice{margin-top:20px;padding:15px;border:1px solid #59404f;border-radius:14px;background:#1b1420;color:#cdbdce;font-size:13px;line-height:1.65}.empty{padding:25px;text-align:center;color:var(--muted);border:1px dashed #56364f;border-radius:15px}
+</style></head><body><div class="app">
+<header><a href="./index.html">← Miraz TV</a><strong><span>⚽ Football</span> Live</strong></header>
+<main>
+<section class="hero"><div class="live-dot">● MATCH CENTER</div><h1>ফুটবল লাইভ</h1><p>লাইভ ম্যাচ, আসন্ন খেলা ও ফলাফল এক জায়গায়।</p></section>
+<div class="tabs" role="tablist"><button class="active" data-tab="all">সব ম্যাচ</button><button data-tab="live">🔴 Live</button><button data-tab="upcoming">আসন্ন</button><button data-tab="finished">শেষ হয়েছে</button></div>
+<div class="section"><h2 id="listTitle">ম্যাচ তালিকা</h2><span class="muted">Miraz TV</span></div>
+<div class="cards" id="matches"></div>
+<div class="notice"><b>ভিডিও সম্প্রচার সম্পর্কে</b><br>এই মুহূর্তে Miraz TV-তে কোনো লাইসেন্সপ্রাপ্ত ফুটবল ভিডিও স্ট্রিম যুক্ত করা হয়নি। সম্প্রচার স্বত্ব ছাড়া কোনো চ্যানেলের ভিডিও দেখানো হবে না। ম্যাচের অফিসিয়াল সম্প্রচার লিংক পাওয়া গেলে “অফিসিয়াল দেখুন” বাটন সক্রিয় করা হবে। স্কোর/ফিক্সচার ডেটা সংযোগও পরবর্তী ধাপে যুক্ত করতে হবে; নিচের ডেমো কার্ডগুলো বাস্তব লাইভ স্কোর নয়।</div>
+</main></div>
+<script>
+const sample=[
+ {status:"upcoming",league:"ডেমো ফিক্সচার • উদাহরণ",date:"সময় ও তারিখ API যুক্ত হলে দেখাবে",home:"বাংলাদেশ",away:"পাকিস্তান",hf:"🇧🇩",af:"🇵🇰",score:"VS"},
+ {status:"upcoming",league:"ডেমো ফিক্সচার • উদাহরণ",date:"সময় ও তারিখ API যুক্ত হলে দেখাবে",home:"ব্রাজিল",away:"আর্জেন্টিনা",hf:"🇧🇷",af:"🇦🇷",score:"VS"}
+];
+const host=document.getElementById('matches'),title=document.getElementById('listTitle');
+function render(filter='all'){
+ const rows=sample.filter(x=>filter==='all'||x.status===filter);
+ title.textContent=({all:'ম্যাচ তালিকা',live:'লাইভ ম্যাচ',upcoming:'আসন্ন ম্যাচ',finished:'শেষ হওয়া ম্যাচ'})[filter];
+ host.innerHTML=rows.length?rows.map(m=>'<article class="match"><div class="match-top"><span>'+m.league+'</span><span>'+m.date+'</span></div><div class="teams"><div class="team"><span class="flag">'+m.hf+'</span>'+m.home+'</div><div><div class="score">'+m.score+'</div><div class="status">'+(m.status==='live'?'● LIVE':m.status==='finished'?'FULL TIME':'UPCOMING')+'</div></div><div class="team"><span class="flag">'+m.af+'</span>'+m.away+'</div></div><div class="match-foot"><span class="muted">ভিডিও লিংক এখনো যুক্ত হয়নি</span><span class="watch disabled">শিগগিরই</span></div></article>').join(''):'<div class="empty">এই বিভাগে আপাতত কোনো ম্যাচ নেই।</div>';
+}
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));render(b.dataset.tab)}));
+render();
+</script></body></html>
